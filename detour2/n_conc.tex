@@ -1,0 +1,460 @@
+\documentclass[12pt]{amsart}
+
+\input preambolo
+
+\def\J{\mathcal{J}}
+\begin{document}
+
+\author{F$^\ddag$ and I$^\dag$}
+\title{$\infty$-concreteness}
+
+\address{
+\newline $^\dag$I. Di Liberti\newline
+Department of Mathematics and Statistics\newline
+Masaryk University, Faculty of Sciences\newline
+Kotl\'{a}\v{r}sk\'{a} 2, 611 37 Brno, Czech Republic\newline
+\href{mailto:diliberti@math.muni.cz}{\sf diliberti@math.muni.cz}
+}
+\address{
+\newline $^\ddag$F. Loregiàn\newline
+Department of Mathematics and Statistics\newline
+Masaryk University, Faculty of Sciences\newline
+Kotl\'{a}\v{r}sk\'{a} 2, 611 37 Brno, Czech Republic\newline
+\href{mailto:loregianf@math.muni.cz}{\sf loregianf@math.muni.cz}
+}
+
+
+
+\date{}
+\maketitle 
+
+% \begin{abstract}
+
+% \end{abstract}
+\keywords{}
+\subjclass{}
+
+\section{Introduction}
+\begin{definition}
+A category $\C$ is called \emph{concrete} if it admits a faithful functor $U\colon \C \to \Sets$.
+\end{definition}
+\begin{remark}
+Every small category is concrete.
+\end{remark}
+\begin{proof}
+
+\end{proof}
+\begin{remark}\label{acc-is-conc}
+Every accessible category is concrete.
+\end{remark}
+\begin{proof}
+
+\end{proof}
+\begin{remark}
+Concreteness is a self-dual property.
+\end{remark}
+\begin{proof}
+
+\end{proof}
+\begin{remark}
+If $\C$ is concrete and $\J$ is small, then the category of all functors $[\J, \C]$ is concrete.
+\end{remark}
+\begin{proof}
+
+\end{proof}
+\begin{remark}
+If $\C$ is monadic over $\Set$, then it is concrete.
+\end{remark}
+\begin{proof}
+
+\end{proof}
+Because of these reasons, concreteness is a fairly natural property for a category. And yet
+\begin{proposition}\cite{Freydconc}
+There exists a non-concrete category: the category $\cate{HTop}$ that has the same objects of $\cate{Top}$ and homotopy classes of maps $X \to Y$ as morphisms.
+\end{proposition}
+The proof of this result is based on the following result, for which we introduce a few preliminary definitions.
+
+For $f\in \A/A$ an object of the slice category, let $\mathcal{C}(f,B)$ be the class of pairs $u,v : A \to B$ such that $uf=vf$ as morphisms $\text{src}(f) \to A \to B$.
+
+Define an equivalence relation $\asymp$ on $(\A/A)_0$ that says $f\asymp g$ iff $C(f,B)=C(g,B)$ for every $B\in\A$, and let $\textsf{S}(\A/A)$ the quotient $\left(\A/A\right)_{0,/\asymp}$.
+\begin{lemma}[Isbell condition]
+$\A$ is concrete if and only if $\textsf{S}(\A/A)$ is a set for every $A\in\A$.
+\end{lemma}
+A sketch of Freyd's proof in \cite[\S 2]{freyd1969concreteness} is the following:
+\begin{proof}
+
+\end{proof}
+This result can be restated in 2017 in the following form:
+\begin{proposition}
+There is a homotopical category $(\iGpd, \W)$, such that the localization $\iGpd\left[\W^{-1}\right]$ is not concrete.
+\end{proposition}
+The situation can be summarized as follows: it is difficult to produce a non-concrete category using set theory; on the other hand, the localizations often used in homotopical algebra produce such categories quite naturally. It is in fact possible to adapt Freyd/Isbell to show that the relative categories
+\begin{itemize}
+	\item $(\Cat, \Eqv)$, where $\Eqv$ is the class of equivalences of categories;
+	\item $(\Ch(\mathbb{Z}), \Qis)$, where $\Qis$ is the class of quasi-isomorphisms of chain complexes;
+	\item \dots
+\end{itemize}
+all produce examples of non-concrete categories when they are localized.
+
+This can be seen as a clue that set theoretic and homotopy-theoretical constructions rarely interact together. An even stronger clue is offered by the following result:
+\begin{theorem}
+A category of algebras over a Lawvere theory cannot carry a nontrivial model structure.
+\end{theorem}
+\Que{Nope. False: there is a nontrivial model structure on $Mod(R)$}
+\begin{proof}
+Crans' transfer from the nine model structure on $\Set$, or direct proof, or something else.
+\end{proof}
+The following remark shows how tightly concreteness depends on the dimension of the universe we live in.
+\begin{remark}[The category of finite spaces is/isn't concrete] Let $\cate{FinTop}$ be the category of finite topological spaces (meaning that the carrier of the space is a finite set). Then $\cate{FinTop}$ is ($\Set$-)concrete but not $\cate{FinSet}$-concrete.
+\end{remark}
+\begin{proof}
+
+\end{proof}
+Since a concrete category can be thought as a set with some bells and whistles attached, it is fairly natural to expect that every algebraic category (in broader sense than the proper definition of algebraicity) is concrete; on the other hand ``brave new algebra is not algebraic'', since it does not involve ``operations'' in the old sense. 
+
+This is certainly a fairly na\"ive but somehow convincing explanation of why homotopy is not concrete. It is certainly possible to say more! 
+
+The scope of this note is to pursue this track, starting from a different perspective/intuition about concreteness: \aprop \refbf{acc-is-conc} tells us that another fairly natural factory of examples for concrete categories is the sub-2-category $\twocate{Acc}_\mho$ of accessible locally small categories.
+
+A full-fledged definition of accessible and presentable $(\infty,1)$-category, nonetheless, does exists and works pretty well as analogue of the 1-dimensional notion \cite{HTT,Joy}. Moreover, the $(\infty,1)$-category of topological spaces is accessible, as well as the (stable) $(\infty,1)$-category of chain complexes of $R$-modules, since the model structures thereof are combinatorial.
+
+It appears quite clear then that whatever it means, the category of topological spaces is ``$\infty$-concrete'', as it is the paradigmatic example of a \inftop, hence of an accessible $(\infty,1)$-category; nonetheless, the more we admit the existence of spaces having nonzero homotopy groups in high dimension, the less we can expect our category to be classically concrete. In fact, it is possible to adapt Freyd's argument to show that even the subcategory of 1-types alone is not concrete:
+\Que{The proof is missing at the moment}
+Isbell criterion furthermore suggests that the notion of concreteness is tightly linked, if not equivalent, to a set-theoretic condition on the class of monics in $\C$; sure enough, it is the fact that in $(\infty,1)$-category theory the concept of epi/mono factorization breaks into a countable spectrum, and the fact that this operation ultimately generalizes the Postnikov/Whitehead tower associated to a topological space, is what makes concreteness tightly linked to some homotopical condition. That's why we state the definitions in the following section: what we need is a definition of $n$-concrete category for each $n\ge 0$, ``filling the gap'' such that a 0-concrete category is concrete in the classical sense and every ``honest'' \inftop is ``$\omega$-concrete'' if we let $n\to \infty$.
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\fill[black!5] (0,0) circle (3pt) node[below=3mm] {\color{black}$0$-concrete};
+\foreach \i in {90,80,...,10}
+	\fill[black!\i] ($0.1*(\i,0)$) circle (3pt);
+\fill (10,0) circle (3pt) node[below=3mm] {$\infty$-concrete};
+\begin{scope}[yshift=7.5mm]
+\fill (0,0) circle (3pt) node[above=3mm] {\color{black}$0$-truncated};
+\foreach \i/\r in {10/90,20/80, 30/70, 40/60, 50/50, 60/40, 70/30, 80/20, 90/10}
+	\fill[black!\r] ($0.1*(\i,0)$) circle (3pt);
+\fill[black!5] (10,0) circle (3pt) node[above=3mm] {\color{black}$\infty$-truncated};
+\end{scope}
+\draw[yshift=3.75mm,->] (-.5,0) -- (10.5,0);
+\end{tikzpicture}
+\caption{}
+\end{figure}
+As a last preliminary section (and also in order to keep all the relevant material in the same document) we outline the construction of the generalized Postnikov tower, as defined in \cite[???]{HTT}, with particular emphasis on the ``multiple factorization'' approach (these two points of view are equivalent in view of \cite{RT}); more informations on multiple factorization systems are available in Appendix A.
+\begin{definition}[Towers]
+Let $\mathbb{N}^\rhd$ be the (nerve of the) category $\{0\le 1\le \cdots \le \infty\}$. We define
+\begin{itemize}
+	\item A \emph{(Postnikov) tower} in $\H$ to be a functor $(\mathbb{N}^\rhd)^\opp \to \H$: $X_0\leftarrow \cdots \leftarrow X_\infty$ (such that $X_k \cong \tau_{\le k}(X_\infty)$);
+	\item A \emph{(Postnikov) pretower} in $\H$ to be a functor $\mathbb{N}^\opp \to \H$: $X_0\leftarrow \cdots$ (such that $X_n\cong \tau_{\le n}(X_{n+1})$)
+\end{itemize}
+We denote $\varphi \colon \text{Post}^+(\H) \hookrightarrow \text{Post}(\H)$ the inclusion of Postnikov towers into Postnikov pretowers. We say that \emph{Postnikov towers are convergent} in $\H$ if $\varphi$ is an equivalence, whose inverse is given by taking the limit $\varprojlim (X_0\leftarrow X_1\leftarrow \cdots)$.
+\end{definition}
+Let $\cate{W}\subseteq \H \times \mathbb{N}^\rhd$ be the category of all pairs $(C,n)$ where $C\in\H_{\le n}$ is a $n$-truncated object. Then (since this is the category of elements of $n\mapsto \H_{\le n}$) there exists a cocartesian fibration $p \colon \cate{W} \to \mathbb{N}^\rhd$ such that $p^\leftarrow(n) = \H_{\le n}$; this fibration classifies a tower of functors
+\[
+\H_{\le 0} \leftarrow \H_{\le 1}\leftarrow \cdots \leftarrow \H
+\]
+Postnikov towers are then identified with cocartesian sections of $p$, and Postnikov pretowers with the cocartesian sections of $\tilde p$:
+\[
+\begin{kodi}
+\obj[rectangular={8em}{4em}]{
+|(pull)| \cate{W}\times_{(\mathbb{N}^\rhd)^\opp}\mathbb{N}^\opp &|(W)|    \cate{W} \\
+|(Nop)|  \mathbb{N}^\opp                                        &|(Nop')| (\mathbb{N}^\rhd)^\opp\\};
+\mor pull -> W p:-> Nop';
+\mor * {\tilde p}:swap,-> Nop -> *; 
+\end{kodi}
+\]
+Now, Postnikov towers are convergent if and only if there is a limit diagram
+\[
+\H \cong \varprojlim\big( \H_{\le 0} \leftarrow \H_{\le 1}\leftarrow \cdots \big)
+\]
+in such a way that $\H(X,Y)\cong \varprojlim_n \H_{\le n}(\tau_{\le n}X, \tau_{\le n}Y)$.
+\begin{remark}
+Let $\H$ be a \inftop, and assume that Postnikov towers are convergent in $\H$. Then every Postnikov tower is a limit diagram in $\H$:
+\begin{align*}
+\H(X,Y) &\cong \varprojlim_n \H_{\le n}(\tau_{\le n}X, \tau_{\le n}Y)\\
+		&\cong \varprojlim_n \H(X, \tau_{\le n}Y)\\
+		&\cong \H(X,\varprojlim_n \tau_{\le n}Y).
+\end{align*}
+\end{remark}
+\begin{remark}
+This notion admits a fairly straightforward generalization to an arbitrary totally ordered set $J$ and a functor $J \to \H$; if we denote $J^+ = (J^\lhd)^\rhd = (J^\rhd)^\lhd$, then a $J$-Postnikov tower is a functor $(J^+)^\text{op} \to \H: X_{-\infty} \leftarrow \cdots \leftarrow X_i \xrightarrow{i\le j} X_j \leftarrow \cdots \leftarrow X_{+\infty}$ such that 
+	\begin{enumerate}
+		\item $X_{-\infty}\cong *$ and $X_{+\infty}\cong X$;
+		\item ($X_j = R_j(X_{+\infty})$ for $j\in J$).
+	\end{enumerate}
+\cite{heart} explores this construction in the case where instead of a \inftop $\H$ we consider a stable $(\infty,1)$-category $\C$.
+\end{remark}
+\section{$n$-concreteness via factorizations}
+\begin{definition}
+A space is \emph{$n$-connected} if $\pi_m(X,x_0) = 0$ for $m\le n$ and any choice of basepoint. Dually, a space is \emph{$n$-truncated} if $\pi_m(X,x_0) = 0$ for $m\ge n+1$ and any choice of basepoint. Every space is $(-1)$-connected by definition.
+
+A similar definition works for \emph{maps}: $f \colon X \to Y$ is $n$-connected\fshyp{}$n$-truncated if the fiber of it over any point is an $n$-connected\fshyp{}$n$-truncated space.
+\end{definition}
+\begin{proposition}
+There is a factorization system on the category $\iGpd$ of spaces where the left class is made by $n$-connected maps, and the right class by $n$-truncated maps. This is part of a factorization system in $\omega$ stages, in the sense of \cite[\adef \textbf{1.5.10}]{tstructures} (we recall, however, the main definitions below).
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+A nontrivial feature of the notion of connectedness in a general \inftop is that it admits an equivalent characterization as a vanishing-of-homotopy-groups-like property, for a suitable notion of homotopy groups ``internal'' to the structure of $\H$. 
+\begin{definition}[Truncated objects and morphisms in $\H$]
+An object $X\in\H$ is \emph{$n$-truncated} if for every $Y\in\H$ the Kan complex $\H(Y,X)$ is $n$-truncated. A map $f : X \to X'$ in $\H$ is $n$-truncated if one of the following equivalent conditions is satisfied:
+\begin{itemize}
+	\item its homotopy fibers are $n$-truncated objects, for every choice of a basepoint;
+	\item $f_* : \H(Y,X) \to \H(Y,X')$ has $n$-truncated fibers (this reduces truncation to $\iGpd$);
+	\item $f$ is an $n$-truncated of $\H/Y$;
+	\item[?] $f$ induces isomorphisms in $\underline{\pi}_{>n}$;
+	\item $\underline{\pi}_k(f) = *$ for all $k>n$ in $\H/Y$;
+	\item $\tau_{\le n-1}(f) = *$ (where $\tau_{\le n-1} \colon \H/Y \to (\H/Y)_{\le n-1}$ or $\tau_{\le n-1}(f)$ in $\H$).
+\end{itemize}
+\end{definition}
+\begin{proposition}[Truncation functors]
+Let $k\ge -2$, and let $\H_{\le k}$ denote the full subcategory of $\H$ spanned by the $k$-truncated objects.
+Then the inclusion $\H_{\le k} \hookrightarrow \H$ has an accessible left adjoint, which we will denote by $\tau_{\le k} : \H \to \H_{\le k}$.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\begin{remark}
+Since $\H$ is a presentable $\infty$-category, it is $\iGpd$-cotensored, so that
+\[
+\hom_{\ho(\H)}(A, X^K) \cong \hom_{\ho(\iGpd)}(K,[A,X])
+\]
+in the homotopy category of spaces, for $A,X\in\H$ and $K\in\iGpd$.
+\end{remark}
+\begin{definition}
+Let $\S^n \defequal \partial\Delta^{n+1}$, and fix a basepoint $x \colon \Delta^0 \to \S^n$. The induced morphism
+\[
+x^* \colon X^{\S^n} \to X^{\Delta[0]}\cong X
+\]
+lies in $\H$ and turns $x^*$ into an object of $\H/X$.
+
+We define $\underline{\pi}_n(X) = \tau_{\le 0}^{\H/X}(x^*) \in \H/X$, where the functor $\tau_{\le 0}^{\H/X}$ ($\tau_{\le 0}$ for short) is the reflection $\H/X \to (\H/X)_{\ge 0}$ defined above.
+\end{definition}
+Notice that since the cotensor and $\tau_{\le 0}$ commute with arbitrary products, the canonical map $\S^n\vee \S^n \leftarrow \S^n$ gives $\underline{\pi}_n(X)$ the structure of a group, abelian if $n\ge 2$.
+\begin{notat}
+It is customary to blur the distinction between
+\begin{itemize}
+	\item $\underline{\pi}_n(X)$ and its image $\pi_n(X)$ under the functor $\tau_{\le 0} : \H/X \to (\H/X)_{\le 0}$;
+	\item $\eta^*\underline{\pi}_n(X)$ and the classical homotopy groups $\pi_n(X,\eta)$, if $\H=\iGpd$ and $\eta : * \to X$ is a pointed space.
+\end{itemize}
+\end{notat}
+\begin{proposition}
+Let $f : X \to Y$ be an $(n\ge 0)$-truncated morphism in $\H$; then $\pi_m(f) \cong *$ for each $m > n$. If $\pi_n(f) \cong *$, then $f$ is at least $(n-1)$-truncated.
+\end{proposition}
+\begin{proof}
+\cite[6.5.1.7]{HTT}
+\end{proof}
+\begin{proposition}
+Let $p : X \to \tau_{\ge n}(X)$ be an $n$-truncation of $X$; then $p$ induces isomorphisms $\pi_k(X) \cong p^* \pi_k(\tau_{\ge n}(X))$ for each $k \le n$ (i.e., truncations behave like Whitehead towers).
+\end{proposition}
+\begin{definition}
+A map $f : X \to Y$ is \emph{$n$-connective} if if it an effective epi\footnote{$f : X \to Y$ is an effective epi in $\H$ if regarding it as an object of $\H/Y$ its $(-1)$-truncation $\tau_{\le -1}(f)$ is a final object of $\H/X$.} and $\underline{\pi}_k(f) = *$ for $0\le k < n$. An object is $n$-connective iff its terminal arrow is. Every map $f : X \to Y$ is $(-1)$-connective by convention.
+\end{definition}
+\begin{remark}
+\cite[6.5.2.8]{HTT} gives that there is a factorization system on $\H$ having left class the $n$-connected maps. Each of there factorization systems form the value at $n\in\mathbb{N}$ of an infinitary factorization system on $\H$, called the ``($n$-connected, $n$-truncated) factorization'' or the factorization system of $(\nEpi, \nMono)$, for $n\ge -1$.
+\end{remark}
+For each morphism $f\colon X\to Y$ then we have a factorization
+\[
+\begin{kodi}
+% Postnikov
+\end{kodi}
+\]
+or a multiple factorization
+\[
+\begin{kodi}
+% Whitehead
+\end{kodi}
+\]
+induced by the functors $R_n$ and $S_n$; these functors are ``interweaved'' in a diagram
+\[
+\begin{kodi}
+% interweaving of P and W
+\end{kodi}
+\]
+It is evident why we choose this visual analogy, as well as the relation with the construction of Whitehead and Postnikov towers.
+
+This factorization system is the $\omega$-ary factorization system that defines our notion of \emph{$n$-concreteness}.
+\begin{definition}
+Let $\H$ be an \inftop. An object $X\in\H$ is \emph{$n$-concrete} if its unit map $X \to \codisc(\Gamma X)$ is a $n$-monomorphism: equivalently, in the diagram
+\[
+\begin{kodi}
+\obj{X && |(cGX)| \codisc(\Gamma X) \\
+& c_n X &\\};
+\mor X \eta_X:-> cGX;
+\mor[swap] * "e_{n+1}":-> {c_n X} "m_{n+1}":-> *;
+\end{kodi}
+\]
+the first map is an equivalence.
+\end{definition}
+It follows from the definition that we have a chain of implications
+\[
+\conc{0} \Rightarrow \conc{1} \Rightarrow \cdots \Rightarrow \conc{n}\Rightarrow \conc{(n+1)}\Rightarrow \cdots
+\]
+giving rise to a chain of reflections
+\[
+\conc{0}(\H) \rhookref \conc{1}(\H) \rhookref \cdots \rhookref \conc{n}(\H)\rhookref \cdots
+\]
+for the subcategories of $n$-concrete objects of $\H$.
+
+We have, then, that the following results hold:
+\begin{proposition}[Properties of 0-concrete objects]
+The functor $\Gamma \colon \H \to \iGpd$ ``sends 0-concrete objects into sets'' meaning that the composition
+\[
+\begin{kodi}
+\obj{|(conc0)| \conc{0}(\H) &[4.5em] \iGpd & \Set\\};
+\mor conc0 {\Gamma|_{\conc{0}(\H)}}:-> iGpd {\pi_0}:-> Set;
+\end{kodi}
+\]
+induces a faithful functor between the homotopy category of $\conc{0}(\H)$ and the homotopy category of $\Set$ (with respect to its trivial model structure $(\W=\textsc{Iso}, \textsc{All})$).
+
+An \inftop $\H$ is said \emph{$n$-concretizable} if every object is $n$-concrete (i.e. if $\Gamma \colon \H\to \iGpd$ factors through the sub-$\infty$-category\dots). The sub-\inftop $\conc{0}(\H)$ is 0-concretizable, and equivalent to its nerve.
+\end{proposition}
+\begin{proof}
+It is easy to show that $\pi_0$ is ``homotopy faithful'' on 0-types. There is an adjunction $\pi_0 \dashv \textsf{d}$, that descends to an adjunction between the homotopy categories $h\pi_0\dashv h\textsf{d}$; but then $h\pi_0$ is faithful if and only if the unit $\eta \colon 1 \Rightarrow h\textsf{d}\circ h\pi_0$ is a monomorphism on 0-types. But a  0-type is a disjoint union of contractible connected components, and then the map $X = \coprod_{\lambda \in \pi_0(X)} X_\lambda \longrightarrow \coprod_{\lambda \in \pi_0(X)}*$ induced by the homotopy equivalences $\{X_\lambda\to *\}_\lambda$ is a homotopy equivalence.
+
+Then we have only to show that the $\Gamma$-image of a 0-concrete object of $\H$ is a 0-concrete object of $\iGpd$; the claim follows from the fact that 0-concrete objects in $\iGpd$ are precisely 0-types. But again, the fact that $\Gamma$ commutes with truncation is a consequence of \cite[???]{HTT}.
+\end{proof}
+\Que{Does the chain of inclusions
+\[
+\conc{0}(\H) \rhookref \conc{1}(\H) \rhookref \cdots \rhookref \conc{n}(\H)\rhookref \cdots
+\]
+\emph{always} converges to $\H$? (this is a \emph{completeness} assumption).}
+It is useful to have at our disposal a comparison with classical theory: classical toposes are seldom nonconcrete (the $\Gamma$ functor is often faithful so a nice topos is even \emph{representably} concrete). Now, let $\H$ be a \inftop equivalent to its nerve. Do tame conditions ensure that it is 0-concrete?
+
+As a corollary, 0-concrete spaces yield a concrete homotopy category, \ie form a 0-concrete sub-$(\infty,1)$-category of $\iGpd$:
+\begin{proposition}
+Let $(\iGpd, \W_0)$ be the category of spaces and $\pi_0$-bijection-inducing continuous maps. Then the localization $\iGpd[\W_0^{-1}]$ is concrete.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+And more generally, the following result is true:
+\begin{proposition}
+Let $\MM_n = (\iGpd, \W_{[0,n]})$ be the relative category of spaces, where $\W_{[0,n]}$ is the class of maps $f : X \to Y$ inducing isomorphisms on each $\pi_k$ for $k\in [0,n]$ (a useful shorthand is ``$\pi_{[0,n]}(f)$ is an isomorphism'').
+
+Let $\H_n$ be the associated \inftop, resulting as the composition
+\[
+\xymatrix@R=0cm{
+	\MM_n \ar@{|->}[r]& \text{L}_H(\MM_n) \ar@{|->}[r] & N_\Delta\text{L}_H(\MM_n) \\
+	\cate{RelCat} \ar[r] & \widehat{\Delta}\text{-}\Cat \ar[r] & \sSet
+}
+\]
+Then every object of $\H_n$ is $n$-concrete.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+% \section{Filling the gap}
+% We propose the following definition that ``fills the gap'' between 
+
+\appendix
+\section{Infinitary FSs}
+\begin{definition}[$k$\hyp{}ary factorization system]\label{mult.fs}
+Let $k \ge 2$ be a natural number. A \emph{$k$\hyp{}fold factorization system} on a category $\C$ consists of a monotone map $\phi\colon \Delta[k-2]\to \textsc{fs}(\C)$, where the codomain has the partial order of \adef \ref{def:prefacts}; denoting $\phi(i)=\fF_i$, a $k$\hyp{}fold factorization system on $\C$ consists of a chain
+\[
+\fF_1 \preceq \dots \preceq \fF_{k-1},
+\]
+This means that if we denote $\fF_i = (\EE_i, \MM_i)$ we have two chains --any of which determines the other-- in $\hom(\C)$:
+\begin{gather*}
+\EE_1\supset \EE_2 \supset\dots\supset \EE_{k-1},\\
+\MM_1\subset \MM_2 \subset\dots\subset \MM_{k-1}.
+\end{gather*}
+\end{definition}
+The definition of a $k$\hyp{}ary factorization system is motivated by the fact that a chain in $\textsc{fs}(\C)$ results in a way to factor each arrow ``coherently'' as the composition of $k$ pieces, coherently belonging to the various classes of arrows. This is explained by the following simple result:
+\begin{lemma}\label{multiple.fact}
+Every arrow $f\colon A\to B$ in a category endowed with a $k$\hyp{}ary factorization system $\fF_1\preceq\dots\preceq \fF_{k-1}$ can be uniquely factored into a composition
+\[
+A \xto{\EE_1} X_1 \xto{\EE_2\cap \MM_1} X_2\to\dots\to X_{k-2} \xto{\EE_{k-1}\cap \MM_{k-2}} X_{k-1} \xto{\MM_{k-1}} B,
+\]
+where each arrow is decorated with the class it belongs to.
+\end{lemma}
+\begin{proof}
+For $k=1$ this is the definition of factorization system: given $f\colon X\to Y$, we have its $\mathbb{F}_{i_1}$\hyp{}factorization
+\[
+X \xto{\EE_{i_1}} Z_{i_1}  \xto{\MM_{i_{1}}} Y.
+\]
+Then we work inductively on $k$. Given an arrow $f\colon X\to Y$ we first consider its $\mathbb{F}_{i_k}$\hyp{}factorization
+\[
+X \xto{\EE_{i_k}} Z_{i_k}  \xto{\MM_{i_{k}}} Y,
+\]
+and then observe that the chain $i_1\leq\cdots\leq i_{k-1}$ induces a $(k-1)$\hyp{}ary factorization system on $\C$, which we can use to decompose $Z_{i_k}\to Y$ as
+\[
+Z_{i_k} \xto{\EE_{i_{k-1}}} Z_{i_{k-1}} \xto{\EE_{i_{k-2}}\cap \MM_{i_{k-1}}} Z_{i_{k-2}}\to\dots\to Z_{i_{2}}\xto{\EE_{i_{1}}\cap \MM_{i_{2}}} Z_{i_{1}} \xto{\MM_{i_{1}}} Y,
+\]
+and we are only left to prove that $Z_{i_{k}} \to Z_{i_{k-1}}$ is actually in $\EE_{i_{k-1}}\cap \MM_{i_{k}}$. This is an immediate consequence of the left cancellation property for the class $\MM_{i_{1}}$. Namely, since $\MM_{i_1}\subseteq \MM_{i_2} \subseteq\dots\subseteq \MM_{i_k}$, and $ \MM_{i_k}$ is closed for composition, the morphism $Z_{i_{k-1}}\to Y$ is in $\MM_{i_k}$. Then the \textsc{l32} property applied to 
+\[
+Z_{i_{k}}\to Z_{i_k-1}\xto{\MM_{i_k}} Y
+\]
+concludes the proof.
+\end{proof}
+\subsubsection{The transfinite case.}\label{transfinite.case} We are now interested to refine the previous theory in order to deal with possibly infinite chains of factorization systems. From a conceptual point of view, it seems natural how to extend the former definition to an infinite ordinal $\alpha$; it must consists on a ``suitable'' functor $F\colon \alpha\to \textsc{fs}(\C)$. 
+
+The problem is that suitable necessary co\fshyp{}continuity assumptions for such a $F$ might be covered by the fact that its domain is finite (and in particular admits an initial and a terminal object): in principle, dealing with infinite quantities could force such $F$ to fulfill some other properties in order to preserve the basic intuition behind factorization.
+
+We start, now, by recalling a number of properties motivating \adef \ref{mult.fs} below.
+\begin{notat}
+A factorization system on $\C$ naturally defines a pair of pointed\fshyp{}co\hyp{}pointed endofunctors on $\C^{\Delta[1]}$, starting from the factorization
+\[
+\begin{kodi}
+\obj{
+	X && Y \\
+	& F(f)& \\
+};
+\mor X -> Y;
+\mor[swap] * {\overleftarrow{F}(f)}:-> {Ff} {\overrightarrow{F}(f)}:-> Y;
+\end{kodi}
+\]
+(This has also been noticed in \cite{HTT}). 
+
+A refinement of this  notion (see \cite{grandis2006natural, Gar, riehl2011algebraic}) regards this pair of functors as monad\fshyp{}comonad on $\C^{\Delta[1]}$: in this case $F\colon \C^{\Delta[1]}\to\C$ is a functor and $f\mapsto \overleftarrow{F}(f)$ has the structure of a (idempotent) comonad, whose comultiplication is
+\[
+\xymatrix@C=1.4cm{
+Ff \ar[r]^{\overleftarrow{F}(\overrightarrow{F}(f))}\ar[d]_{\overrightarrow{F}(f)} & FFf \ar[d]^{\overrightarrow{F}(\overrightarrow{F}(f))}\\
+Y \ar@{=}[r] &Y
+}
+\]
+and $f\mapsto \overrightarrow{F}(f)$ has the structure of a (idempotent) monad, whose multiplication is
+\[
+\xymatrix@C=1.4cm{
+X \ar@{=}[r]\ar[d]_{\overleftarrow{F}(\overleftarrow{F}(f))} & Ff\ar[d]^{\overleftarrow{F}(f)}\\
+FFf \ar[r]_{{\overrightarrow{F}(\overleftarrow{F}(f))}}& Ff.
+}
+\]
+\end{notat}
+\begin{definition}\label{mult.fs.trans}
+Let $\alpha$ be an ordinal. A \emph{$\alpha$\hyp{}ary factorization system}, or \emph{factorization system in $\alpha$\hyp{}stages}, on $\C$ consists of a monotone function $\alpha\to \textsc{fs}(\C)\colon i\mapsto \fF_i$ such that, if we denote by
+\[
+\xymatrix{
+X \ar[rr]\ar[dr]_{\overleftarrow{F}_i(f)}&& Y \\
+& F_i(f)\ar[ur]_{\overrightarrow{F}_i(f)}
+}
+\]
+the $\fF_i$\hyp{}factorization of $f\colon X\to Y$, we have the following two ``tame convergence'' conditions:
+\begin{gather*}
+\varprojlim_{i\in\alpha} \overrightarrow{F}_i(f) =
+\varprojlim_{i\in\alpha} \var{F_i(f)}{Y} = \var{X}{Y};
+\qquad \varinjlim_{i\in\alpha} \overleftarrow{F}_i(f) =
+\varinjlim_{i\in\alpha} \var{X}{F_i(f)} = \var{X}{Y}\\
+\varinjlim_{i\in\alpha} \overrightarrow{F}_i(f) =
+\varinjlim_{i\in\alpha} \var{F_i(f)}{Y} = 1_Y;
+\qquad \varprojlim_{i\in\alpha} \overleftarrow{F}_i(f) =
+\varprojlim_{i\in\alpha} \var{X}{F_i(f)} = 1_X
+\end{gather*}
+(all the diagrams have to be considered defined in suitable slice and coslice categories) which can be summarized in the presence of ``extremal'' factorizations
+\[
+\xymatrix{
+X \ar[rr]^f\ar@{=}[dr]_{\varprojlim_i \overleftarrow{F}_if}&& Y & X\ar[rr]^f\ar[dr]_{\varinjlim_i \overleftarrow{F}_if} && Y\\
+& X\ar[ur]_{\varprojlim_i \overrightarrow{F}_if} &&& Y\ar@{=}[ur]_{\varinjlim_i \overrightarrow{F}_if}
+}
+\]
+\end{definition}
+\begin{theorem}[The multiple small object argument]
+Let $\mathcal{J}_1\subseteq \cdots \subseteq \mathcal{J}_n$ be a chain of markings on $\C$; if each class $\mathcal{J}_\alpha$ has small domains then applying $n$ times the small object argument, the extensivity of the $\prescript{}{\perp}{((-)^\perp)}$ and $(\prescript{\perp}{}{(-)})^\perp$ closure operators entails that there exists a chain of factorization systems
+\[
+\big({}^\perp(J_n^\perp),J_n^\perp \big) \preceq \cdots \preceq \big({}^\perp(J_1^\perp),J_1^\perp \big)
+\]
+\end{theorem}
+
+\hrulefill
+\bibliography{allofthem}{}
+\bibliographystyle{amsalpha}
+\end{document}

@@ -1,0 +1,588 @@
+\documentclass[10pt,a4paper]{amsart}
+\input preambolo
+
+\author{F and I}
+\title{$n$-concreteness and $\infty$-concreteness}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Quando la local\izzazione di una categoria modello è concreta?
+\end{abstract}
+
+\tableofcontents
+
+
+\noindent\hrulefill\\
+{\color{red}\currenttime \hspace*{\fill} \today}\newline
+\noindent\hrulefill
+
+\section{Motivazioni}
+
+\epigraph{}{}
+
+Un invariante completo per omotopia può essere varie cose, in dipendenza di quanto bene ci si è svegliati al mattino. Da un lato si può dare importanza agli oggetti omotopici, dall'altro è possibile centrare l'attenzione sulle frecce (una richiesta più forte dei soli oggetti).
+
+\begin{definition}
+Un \textbf{invariante completo debole} per omotopia è un funtore $$\pi : \text{HoTop} \hookrightarrow \text{Grp}^\mathbb{N}.$$ conservativo.
+\end{definition}
+
+\begin{definition}
+Un \textbf{invariante completo forte} per omotopia è un funtore conservativo e fedele $$\pi : \text{HoTop} \hookrightarrow \text{Grp}^\mathbb{N}.$$
+\end{definition}
+
+Per certi versi gli invarianti deboli sono l'interesse naturale della topologia algebrica ma noi sapremo parlare solo di invarianti forti. Questo, di fatto è un nostro limite. 
+
+Non c'è niente di speciale nella scelta di  $\text{Grp}^\mathbb{N}$ e l'argomento si generalizza con una semplicità incredibile alle più comuni categorie algebriche. La ragione per cui si sceglie $\text{Grp}^\mathbb{N}$ è chiaramente legata ai gruppi di omotopia. \newline
+
+In effetti qui ci riuscità facile parlare di \textit{buoni invarianti} per omotopia.
+
+\begin{definition} Un \textbf{buon invariante} per omotopia è un funtore fedele $$\pi : \text{HoTop} \hookrightarrow \text{Grp}^\mathbb{N}.$$ In maniera suggestiva diciamo che $\text{Grp}^\mathbb{N}$ è un buon invariante per $\text{HoTop}$ se $\text{HoTop}$ è $\text{Grp}^\mathbb{N}$-concreta.
+\end{definition}
+
+Che sia estremamente interessante trovare buoni invarianti per omotopia è dato per scontato di qui in avanti, nella precisa ottica in cui, laddove non ci sono buoni invarianti non ci saranno neppure invarianti completi forti.
+
+Il risultato che motiva il nostro lavoro è che la parte maggiore delle categorie algebriche sono di fatto concrete.
+Nello specifico caso di $\text{Grp}^\mathbb{N}$ vediamo in che risultato si incorre.\newline
+
+Se per assurdo esiste un buon invariante $$\pi : \text{HoTop} \hookrightarrow \text{Grp}^\mathbb{N},$$ allora $\text{HoTop}$ sarebbe per composizione una categoria concreta. D'altro canto questo non può verificarsi. Freyd infatti ha provato che $\text{HoTop}$ non è una categoria concreta e che anzi vale molto di più:
+
+\begin{theorem}[Freyd]
+Sia \cate{T} una categoria di spazi topologici puntati che includa tutti i CW complessi di dimensione finita. Allora la sua categoria omotopica non è concreta.
+\end{theorem}
+
+Ci ripromettiamo di studiare quale combinatoria delle frecce sia la precisa responsabile di questo risultato in una generica categoria modello.
+
+
+\section{Cosa vogliamo fare}
+Ricordo essenzialmente cos'è la localizzazione.
+
+Se $\C$ è una categoria e $\W\subseteq \C$ è una classe di suoi morfismi la \emph{localizzazione} di $\C$ rispetto a $\W$ è la categoria iniziale per cui i morfismi di $\W$ sono mandati in iso da un funtore $\gamma \colon \C \to \C[\W^{-1}]$.
+
+Si costruisce così: si prendono gli stessi oggetti di $\C$ e per morfismi si prende
+\begin{itemize}
+\item La classe $\hom^+ := \hom(\C)\cup \W^{-1}$, dove c'è un simbolo $w^{-1} \colon Y \to X$ per ogni $w\in W$, $w\colon X \to Y$.
+\item Il monoide parziale di tutte le stringhe di morfismi componibili di $\hom^+$, rispetto alla composizione di stringhe per cui il primo elemento dell'una, e l'ultimo dell'altra, sono contigue:
+\[
+\coprod_{\substack{n\ge 0 \\ X_0,\dots, X_n\in \C}} \hom^+(X_0, X_1)\times \hom^+(X_1, X_2) \times\dots\times \hom^+(X_{n-1}, X_n)
+\]
+\item Il quoziente di questo coso per le ovvie relazioni che dicono `cancella $w^{-1}.w$ e $w.w^{-1}$', `chiama $fg$ ogni occorrenza di $f.g$ per $X \xto{g} Y \xto{f} Z$'.
+\end{itemize}
+Questa procedura è famosa per generare fastidi insiemistici:
+\begin{itemize}
+\item Nella definition di sopra, il problema è che $\W$ è `sempre grande': appena $\C$ non è piccola, $\W$ deve essere una classe (non ho chiesto niente a $\W$, ma si può rimpiazzare $\W$ con $\W'$ che sia \emph{ampia}, che contenga cioè tutti gli isomorfismi. Chiaramente la classe degli isomorfismi di $\C$ è una classe.)
+\item La definition di categoria modello, per la quale si dovrebbe far capo alle sole equivalenze deboli, coinvolge fibrazioni e cofibrazioni per \emph{presentare} $\C[\W^{-1}]$ come una categoria nello stesso universo di $\C$: la categoria costruita prendendo come oggetti quegli oggetti di $\C$ che sono sia fibranti che cofibranti, e come morfismi le classi di omotopia di $f \colon X\to Y$, ha la stessa proprietà universale di $\C[\W^{-1}]$.
+\end{itemize}
+
+
+\section{Tecnologia}
+
+Per quanto riguarda lo studio della concretezza di una categoria fissata è nota una condizione necessaria e sufficiente, nota come condizione di Isbell.
+
+\begin{lemma}[Condizione di Isbell] Una categoria \cate{C} è concreta se e solo se per ogni oggetto la classe dei suoi \textit{regular generalized subobject} è un insieme.
+\end{lemma}
+
+\begin{definition}
+Dato un oggetto $A$ diciamo che due mappe con codominio $A$ sono lo stesso sottoggetto regolare generalizzato se equalizzano le stesse coppie di mappe uscenti da $A$.
+\end{definition}
+
+Di fatto verificare la condizione di Isbell è l'unico strumento che abbiamo per provare la concretezza di una categoria.
+
+È d'obbligo sottolineare come questo criterio non ci dia alcuna informazione su come passare da un invariante forte ad uno debole, per il quale si dovrebbe assolutamente cambiare strategia.
+
+Di qui in avanti chiameremo brevemente sottoggetti i sottoggetti regolari generalizzati e fissato un oggetto $X$ chiameremo $\Sub(X)$ la classe dei suoi sottoggetti.
+
+\section{Qualche esempio}
+
+
+\subsection{Una categoria concreta con localizzazione concreta}
+
+Consideriamo la classe degli ordinali $\cate{On}$ come una categoria dove i morfismi sono proprio le inclusioni fra ordinali. Chiaramente questa categoria è concreta.
+
+\begin{proposition} Per ogni scelta di $\W$ si ha che $\cate{On}[\W^{-1}]$ è concreta.
+
+\begin{proof}
+Calcoliamo anzitutto i sottoggetti di ordinale $\gamma$. Ovviamente due ordinali minori di $\gamma$ equalizzano le stesse frecce se e soltano se sono uguali. Perciò $$\Sub(\gamma) = \{\alpha \in \cate{On} : \alpha \leq \gamma \}.$$ Questa classe è precisamente l'ordinale $\gamma$ e perciò è un insieme. L'osservazione cruciale da fare in questo caso è che ogni freccia che entra nell'ordinale determina un preciso sottoggetto e viceversa.
+Sia ora $\W$ una qualunque classe di frecce da invertire. Nella peggiore delle ipotesi stiamo identificando due sottoggetti ed in generale non ne stiamo aggiungendo, perciò la localizzazione è concreta.
+\end{proof}
+\end{proposition}
+
+
+\subsection{Una categoria concreta con localizzazione non concreta}
+Ovviamente c'è Htop ma facciamo di meglio.  Ob della categoria è unione di due classi: From e To. From sarà una classe propria ed anche To. To è un poset totalmente ordinato. In ogni oggetto di To entrano dei monomorfismi da From ma solo un insieme. Nella struttura modello inverto tutte le frecce in To in modo che in quando locallizzo in To rimanga un solo oggetto (a meno di isomorfismo) con una classe propria di sottoggetti.
+\fou{Come fai a creare una freccia da $F \in \text{From}$ verso $T\in\text{To}$ essendo sicuro che è un mono? Essere mono è una proprietà, non una struttura.}
+\jea{Bella domanda. Idee?}
+
+
+Tutte le categorie Quillen equivalenti a $\Top$ hanno localizzazione non concreta:
+\begin{itemize}
+\item $\Cat$ con la struttura modello di Thomason
+\item $\sSet$ con la struttura modello di Kan-Quillen
+\item la categoria dei CW-complessi con mappe cellulari
+\item la categoria degli spazi compattamentegeneratidebolmenteHausdorff e mappe tra loro\footnote{Giusto. Cos'è per te $\Top$? Cos'è $\Top$ per Freyd? Ora che ci penso ho difficoltà a inquadrare il risultato di Freyd nello yoga del `avere una struttura modello fa rimanere $\C[\W^{-1}]$ nello stesso universo di partenza.'}
+\end{itemize} 
+Sarebbe interessante studiare quelle strutture modello che non sono equivalenti a queste, e tuttavia sono non banali. Ne listo un po'; la mia speranza è riuscire a determinare delle condizioni necessarie, sufficienti o sufficiarie (nececienti? Suffissarie? come preferisci chiamarle?) affinché $(\C, \W)$ $\{$non$\}$ concreta abbia localizzazione $\{$non$\}$ concreta.
+\begin{itemize}
+\item la categoria dei complessi di catene in grado positivo, dove $\W = \{$le mappe che inducono iso in omologia$\}$.
+\item la categoria delle categorie piccole, dove $\W=\{$le equivalenze di categorie$\}$
+\item la categoria degli spazi topologici dove $\W_n = \{$le mappe che inducono iso in $\pi_{[0,n]}\}$ e fanno altrove quel che vogliono
+\item 
+\item 
+\item 
+\end{itemize}
+L'idea (la congettura) è che quello che succede a $\C[\W^{-1}]$ dipende solo da $\W$.
+\subsection{Una categoria non concreta con localizzazione concreta}
+
+\begin{lemma}[Bravata del bimbogigio] Sia $\cate{H}$ una categoria, allora $\cate{H}[\text{all}^{-1}]$ è concreta.
+\begin{proof}
+In questa categoria, a meno di isomorfismo, c'è solo un oggetto, che perciò ha solo se stesso per sottoggetto. La condizione di Isbell è perciò verificata.
+\end{proof}
+\end{lemma}
+
+
+\subsection{Alcuni lemmi utili}
+\begin{lemma}
+Ogni categoria piccola è concreta.
+\end{lemma}
+\begin{lemma}
+Se $\C$ è concreta e $\cate{J}$ è piccola, $\C^\cate{J}$ è concreta.
+\begin{proof}
+Infatti $\C^\cate{J}$ è chiaramente concreta su $\cate{Set}^{\cate{J}}$, che è concreta.
+\end{proof}
+\end{lemma}
+\subsection{Riflessioni sulle patologie di questi esempi}
+
+I tre nodi centrali degli esempi precedenti:
+\begin{itemize}
+\item Quante frecce c'erano? Infatti se ho pochissime frecce non posso generarne troppe, perciò è difficile perdere concretezza.
+\item Quante ne incollo?
+\item Quanti nuovi monomorfismi genero?
+\end{itemize}
+
+
+
+\section{Intermezzo: costruire concrete}
+Anzitutto un \emph{topos coesivo} è un topos il cui morfismo geometrico terminale $\disc\dashv\Gamma$ si estende ad una quaterna di aggiunti $\Pi\dashv \disc\dashv \Gamma\dashv\codisc$ in modo tale che
+\begin{itemize}
+\item $\disc$ e $\codisc$ sono entrambi pienamente fedeli;
+\item $\Pi$ rispetta i prodotti finiti.
+\end{itemize}
+Da ciò discende che 
+% \begin{proposition}
+% The adjunctions $\Pi\dashv\disc$ and $\Gamma\dashv\codisc$ exhibit the subcategories of discrete and codiscrete objects as reflective subcategories of $\H$; these subcategories form \emph{exponential ideals} in $\H$.
+% \end{proposition}
+% Notice that discrete objects are also coreflective since $\disc\dashv\Gamma$.
+% \begin{proposition}
+% If $\H$ exhibits cohesion, then $\Set$ is equivalent to the full subcategory of $\H$ whose objects are the $X$ such that $\eta_{(\Gamma\dashv\codisc),X}\colon X\to \codisc(\Gamma(X))$ is an isomorphism.
+% \end{proposition}
+% Another way to put it: $\Set$ sits inside any cohesive topos as a localization on $((\Gamma\dashv\codisc))$-unit components. That's a formal way to say that a cohesive topos ``contains the trivial geometry of $\Set$''.
+\begin{proposition}
+Say that an object $X\in\H$ is \emph{concrete} if the unit $\eta_{(\Gamma\dashv\codisc),X}\colon X\to \codisc(\Gamma(X))$ is a monomorphism. $\mathfrak{Conc}(\H)$ is the subcat of concrete objects. Then
+\begin{itemize}
+\item the functor $\Gamma\colon\H\to\Set$ is faithful on morphisms $X\to Y$ whose codomain is concrete.
+\item This means that the restriction $\Gamma|_{\mathfrak{C}}\colon\mathfrak{Conc}(\H)\to \Set$ is a faithful functor, exhibiting $\mathfrak{Conc}(\H)$ as a concrete subcategory of $\Set$.
+\end{itemize}
+\end{proposition}
+\begin{proposition}
+The category $\mathfrak{Conc}(\H)$ is a quasitopos, that exhibits cohesion (as a quasitopos) if $\H$ satisfies the ``discrete are concrete'' axiom.
+\end{proposition}
+Recall that a quasitopos is ``like a topos, but you can only classify strong subobjects''. Natural examples of quasitoposes are categories of concrete sheaves over concrete sites, so the terminology matches perfectly.
+\section{Codex Seraphinianus }
+Un po' di terminologia:
+\begin{itemize}
+\item V.I.T.R.I.O.L.: \emph{Visita Interiora Terrae Rectificando Invenies Occultum Lapidem}
+\item G.A.o.U.: the Great Architect of \emph{Universe} è il coso $\bigcup V_\alpha$ (non è un insieme, obv).
+\end{itemize}
+\section{Sulle categorie modello}
+Mi sembra che la terminologia di algebra omotopica sia un po' carente: raccolgo dei fatti di base sulla nomenclatura.
+\begin{itemize}
+\item Date due categorie modello $\cate{M}, \cate{N}$ una coppia di funtori aggiunti $L\dashv R : \cate{M}\leftrightarrows \cate{N}$ si dice una \emph{aggiunzione di Quillen} se una delle seguenti condizioni equivalenti è soddisfatta:
+\begin{enumerate}
+\item $L$ preserva le cof e le cof acicliche;
+\item $R$ preserva le fib e le fib acicliche;
+\item $L$ preserva le cof e $R$ preserva le fib;
+\item $L$ preserva le cof acicliche e $R$ preserva le fib acicliche.
+\end{enumerate}
+\item Una aggiunzione di Quillen $L\dashv R$ è una \emph{equivalenza di Quillen} se un morfismo $LM\to N$ è un'equivalenza debole in $\cate M$ se e solo se il suo \emph{mate} $M \to RN$ è un'equivalenza debole in $\cate M$; esempi di aggiunzioni di Quillen sono
+\begin{enumerate}
+\item i funtori che realizzano la dualità di Gel'fand (per una opportuna struttura modello sulle $C^*$-algebre, e per la struttura modello di Hurewicz sugli spazi)
+\item i funtori che realizzano l'equivalenza di Dold-Kan, per la struttura modello proiettiva sui complessi di catene, e per la struttura modello di Kan-Quillen sui gruppi abeliani simpliciali; queste due sono equivalenze di categorie vere e proprie, ma non è necessario che un'equivalenza di Quillen lo sia:
+\item la coppia di funtori che manda ogni insieme simpliciale nella sua realizzazione geometrica e ogni spazio topologico nel suo complesso singolare è un'equivalenza di Quillen tra $\sSet$ e $\cate{Top}$.
+\item Esiste una coppia di funtori che manda uno spazio topologico nel complesso di de Rham delle sue forme differenziali a coefficienti razionali, e una algebra differenziale graduata in un certo spazio topologico. Questo induce un'equivalenza di Quillen tra le due teorie, se sugli spazi topologici c'è la struttura modello per cui $f : X \to Y$ è un'equivalenza debole sse $\pi_n(f, \mathbb{Q}) : \pi_n(X)\otimes\mathbb{Q}\to \pi_n(Y)\otimes\mathbb{Q}$ è un'isomorfismo per ogni $n$.
+\item Mandare una categoria nella sua realizzazione geometrica e un insieme simpliciale nella sua categoria fondamentale è un'equivalenza di Quillen rispetto alle strutture modello di Thomason su $\Cat$ e di Kan-Quillen su $\sSet$.
+\end{enumerate}
+\item La presenza di un'equivalenza di Quillen tra due categorie modello implica che esse diventino equivalenti una volta localizzate. Ecco che allora la categoria dell'omotopia degli spazi ha molti nomi; alcuni di questi saranno topos, altri no, e altri ancora saranno categorie algebriche (tipo $\Cat$).
+\end{itemize}
+
+\section{Topos elementari}
+In quanto dirò le cose che contano sono trovarci in una categoria bilanciata che goda di fattorizzazione epi-mono ed un classificatore dei sottoggetti. Topos elementare qui è solo un caro amico che gode di tutte queste proprietà e che la mamma ci ha presentato quando eravamo piccoli. \newline
+
+Un sottoggetto regolare generalizzato non è un sottoggetto. Ma in un topos elementare all'interno delle classe di equivalenza di un sottoggetto regolare generalizzato si trova un sottoggetto. \newline
+
+Perciò esiste una funzione surgettiva dai sottoggetti nei sottoggetti generalizzati. Useremo i sottoggetti come cavia perché ne abbiamo un classificatore. \newline
+
+\hrulefill
+
+\section{$n$-concreteness}
+\begin{definition}
+A space is \emph{$n$-connected} if $\pi_m(X,x_0) = 0$ for $m\le n$ and any choice of basepoint. Dually, a space is \emph{$n$-truncated} if $\pi_m(X,x_0) = 0$ for $m\ge n+1$ and any choice of basepoint. Every space is $(-1)$-connected by definition.
+
+A similar definition works for \emph{maps}: $f \colon X \to Y$ is $n$-connected\fshyp{}$n$-truncated if the fiber of it over any point is an $n$-connected\fshyp{}$n$-truncated space.
+\end{definition}
+\begin{proposition}
+There is a factorization system on the category $\iGpd$ of spaces where the left class is made by $n$-connected maps, and the right class by $n$-truncated maps. This is part of a factorization system in $\omega$ stages, in the sense of \cite[\adef \textbf{1.5.10}]{tstructures} (we recall, however, the main definitions below).
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+A nontrivial feature of the notion of connectedness in a general \inftop is that it admits an equivalent characterization as a vanishing-of-homotopy-groups-like property, for a suitable notion of homotopy groups ``internal'' to the structure of $\H$. 
+\begin{definition}[Truncated objects in $\H$]
+An object $X\in\H$ is \emph{$n$-truncated} if for every $Y\in\H$ the Kan complex $\H(Y,X)$ is $n$-truncated. A map $f : X \to X'$ in $\H$ is $n$-truncated if its homotopy fibers are $n$-truncated, or equivalently if $f_* : \H(Y,X) \to \H(Y,X')$ has $n$-truncated fibers.
+\end{definition}
+\begin{proposition}[Truncation functors]
+Let $k\ge -2$, and let $\H_{\le k}$ denote the full subcategory of $\H$ spanned by the $k$-truncated objects.
+Then the inclusion $\H_{\le k} \hookrightarrow \H$ has an accessible left adjoint, which we will denote by $\tau_{\le k} : \H \to \H_{\le k}$.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\begin{remark}
+Since $\H$ is a presentable $\infty$-category, it is $\iGpd$-cotensored, so that
+\[
+\hom_{\ho(\H)}(A, X^K) \cong \hom_{\ho(\iGpd)}(K,[A,X])
+\]
+in the homotopy category of spaces, for $A,X\in\H$ and $K\in\iGpd$.
+\end{remark}
+\begin{definition}
+Let $\S^n \defequal \partial\Delta^{n+1}$, and fix a basepoint $x \colon \Delta^0 \to \S^n$. The induced morphism
+\[
+x^* \colon X^{\S^n} \to X^{\Delta[0]}\cong X
+\]
+lies in $\H$ and turns $x^*$ into an object of $\H/X$.
+
+We define $\underline{\pi}_n(X) = \tau_{\le 0}^{\H/X}(x^*) \in \H/X$, where the functor $\tau_{\le 0}^{\H/X}$ ($\tau_{\le 0}$ for short) is the reflection $\H/X \to (\H/X)_{\ge 0}$ defined above.
+\end{definition}
+Notice that since the cotensor and $\tau_{\le 0}$ commute with arbitrary products, the canonical map $\S^n\vee \S^n \leftarrow \S^n$ gives $\underline{\pi}_n(X)$ the structure of a group, abelian if $n\ge 2$.
+\begin{notat}
+It is customary to blur the distinction between
+\begin{itemize}
+	\item $\underline{\pi}_n(X)$ and its image $\pi_n(X)$ under the functor $\tau_{\le 0} : \H/X \to (\H/X)_{\le 0}$;
+	\item $\eta^*\underline{\pi}_n(X)$ and the classical homotopy groups $\pi_n(X)$, if $\H=\iGpd$ and $\eta : * \to X$ is a pointed space.
+\end{itemize}
+\end{notat}
+\begin{proposition}
+Let $f : X \to Y$ be an $(n\ge 0)$-truncated morphism in $\H$; then $\pi_m(f) \cong *$ for each $m > n$. If $\pi_n(f) \cong *$, then $f$ is at least $(n-1)$-truncated.
+\end{proposition}
+\begin{proof}
+\cite[6.5.1.7]{HTT}
+\end{proof}
+\begin{proposition}
+Let $p : X \to \tau_{\ge n}(X)$ be an $n$-truncation of $X$; then $p$ induces isomorphisms $\pi_k(X) \cong p^* \pi_k(\tau_{\ge n}(X))$ for each $k \le n$ (i.e., truncations behave like Whitehead towers).
+\end{proposition}
+\begin{definition}
+A map $f : X \to Y$ is \emph{$n$-connective} if if it an effective epi\footnote{$f : X \to Y$ is an effective epi in $\H$ if regarding it as an object of $\H/Y$ its $(-1)$-truncation $\tau_{\le -1}(f)$ is a final object of $\H/X$.} and $\underline{\pi}_k(f) = *$ for $0\le k < n$. An object is $n$-connective iff its terminal arrow is. Every map $f : X \to Y$ is $(-1)$-connective by convention.
+\end{definition}
+\begin{remark}
+\cite[6.5.2.8]{HTT} gives that there is a factorization system on $\H$ having left class the $n$-connected maps. Each of there factorization systems form the value at $n\in\mathbb{N}$ of an infinitary factorization system on $\H$, called the ``($n$-connected, $n$-truncated) factorization'' or the factorization system of $(\nEpi, \nMono)$, for $n\ge -1$.
+\end{remark}
+This FS is the $\omega$-ary factorization system that we use to define our notion of \emph{$n$-concreteness}.
+\begin{definition}
+Let $\H$ be an \inftop. An object $X\in\H$ is \emph{$n$-concrete} if its unit map $X \to \codisc(\Gamma X)$ is a $n$-monomorphism: equivalently, in the diagram
+\[
+\begin{kodi}
+\obj{X && |(cGX)| \codisc(\Gamma X) \\
+& c_n X &\\};
+\mor X \eta_X:-> cGX;
+\mor[swap] * "e_{n+1}":-> {c_n X} "m_{n+1}":-> *;
+\end{kodi}
+\]
+the first map is an equivalence.
+\end{definition}
+It follows from the definition that we have a chain of implications
+\[
+\conc{0} \Rightarrow \conc{1} \Rightarrow \cdots \Rightarrow \conc{n}\Rightarrow \conc{(n+1)}\Rightarrow \cdots
+\]
+giving rise to a chain of reflections
+\[
+\conc{0}(\H) \rhookref \conc{1}(\H) \rhookref \cdots \rhookref \conc{n}(\H)\rhookref \conc{(n+1)}(\H)\rhookref \cdots
+\]
+for the subcategories of $n$-concrete objects of $\H$.
+\begin{proposition}
+The functor $\Gamma \colon \H \to \iGpd$ ``sends 0-concrete objects into sets'' meaning that the composition
+\[
+\begin{kodi}
+\obj{|(conc0)| \conc{0}(\H) &[4.5em] \iGpd & \Set\\};
+\mor conc0 {\Gamma|_{\conc{0}(\H)}}:-> iGpd {\pi_0}:-> Set;
+\end{kodi}
+\]
+is a faithful functor. 
+
+The \inftop $\H$ is said \emph{$n$-concretizable} if every object is $n$-concrete (i.e. if $\Gamma \colon \H\to \iGpd$ factors through the sub-$\infty$-category\dots). The sub-\inftop $\conc{0}(\H)$ is 0-concretizable.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\begin{conjec}
+Classical toposes are seldom nonconcrete (the $\Gamma$ functor is often faithful so a nice topos is even \emph{representably} concrete). Now, let $\H$ be a \inftop equivalent to its nerve. Do tame conditions ensure that it is 0-concrete?
+\end{conjec}
+\begin{proposition}
+Let $(\cate{S}, \W_0)$ be the category of spaces and $\pi_0$-bijection-inducing continuous maps. Then the localization $\cate{S}[\W_0^{-1}]$ is concrete.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\begin{proposition}
+Let $\MM_n = (\iGpd, \W_{[0,n]})$ be the relative category of spaces, where $\W_{[0,n]}$ is the class of maps $f : X \to Y$ inducing isomorphisms on each $\pi_k$ for $k\in [0,n]$ (a useful shorthand is ``$\pi_{[0,n]}(f)$ is an isomorphism'').
+
+Let $\H_n$ be the associated \inftop, resulting as the composition
+\[
+\xymatrix@R=0cm{
+	\MM_n \ar@{|->}[r]& \text{L}_H(\MM_n) \ar@{|->}[r] & N_\Delta\text{L}_H(\MM_n) \\
+	\cate{RelCat} \ar[r] & \widehat{\Delta}\text{-}\Cat \ar[r] & \sSet
+}
+\]
+Then every object of $\H_n$ is $n$-concrete.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\section{Homotopy is not concrete, done right}
+\section{Thingy thingies}
+Basically a summary of the above stuff and a little extension thereof.
+\begin{definition}[$n$-truncated morphism]
+It is a $f \colon X\to Y$ such that one of the following equivalent conditions is satisfied:
+\begin{itemize}
+	\item $\H(C,f)$ is a $n$-truncated morphism of $\iGpd$;
+	\item $f$ is $n$-truncated as an object of $\H/Y$;
+	\item $\underline{\pi}_k(f) = *$ for all $k>n$;
+	\item $\tau_{\le n-1}(f) = *$ (where $\tau_{\le n-1} \colon \H/Y \to (\H/Y)_{\le n-1}$ or $\tau_{\le n-1}(f)$ in $\H$).
+\end{itemize}
+\end{definition}
+\begin{proposition}
+$n$-truncated morphisms form the right class of an infinitary FS on $\H$ whose left class is that of $n$-connected morphisms. (there's a question here: is it true that FS and reflective subcat correspond each other under a weaker assumption than reflectivity of the FS; watsup?)
+\end{proposition}
+\begin{definition}[Towers]
+Let $\mathbb{N}^\rhd$ be the (nerve of the) category $\{0\le 1\le \cdots \le \infty\}$. We define
+\begin{itemize}
+	\item A \emph{(Postnikov) tower} in $\H$ to be a functor $(\mathbb{N}^\rhd)^\opp \to \H$: $X_0\leftarrow \cdots \leftarrow X_\infty$ (such that $X_k \cong \tau_{\le k}(X_\infty)$);
+	\item A \emph{(Postnikov) pretower} in $\H$ to be a functor $\mathbb{N}^\opp \to \H$: $X_0\leftarrow \cdots$ (such that $X_n\cong \tau_{\le n}(X_{n+1})$)
+\end{itemize}
+We denote $\varphi \colon \text{Post}^+(\H) \hookrightarrow \text{Post}(\H)$ the inclusion of Postnikov towers into Postnikov pretowers. We say that \emph{Postnikov towers are convergent} in $\H$ if $\varphi$ is an equivalence, whose inverse is given by taking the limit $\varprojlim (X_0\leftarrow X_1\leftarrow \cdots)$.
+\end{definition}
+Let $\cate{W}\subseteq \H \times \mathbb{N}^\rhd$ be the category of all pairs $(C,n)$ where $C\in\H_{\le n}$ is a $n$-truncated object. Then (since this is the category of elements of $n\mapsto \H_{\le n}$) there exists a cocartesian fibration $p \colon \cate{W} \to \mathbb{N}^\rhd$ such that $p^\leftarrow(n) = \H_{\le n}$; this fibration classifies a tower of functors
+\[
+\H_{\le 0} \leftarrow \H_{\le 1}\leftarrow \cdots \leftarrow \H
+\]
+Postnikov towers are then identified with cocartesian sections of $p$, and Postnikov pretowers with the cocartesian sections of $\tilde p$:
+\[
+\begin{kodi}
+\obj[rectangular={8em}{4em}]{
+|(pull)| \cate{W}\times_{(\mathbb{N}^\rhd)^\opp}\mathbb{N}^\opp &|(W)|    \cate{W} \\
+|(Nop)|  \mathbb{N}^\opp                                        &|(Nop')| (\mathbb{N}^\rhd)^\opp\\};
+\mor pull -> W p:-> Nop';
+\mor * {\tilde p}:swap,-> Nop -> *; 
+\end{kodi}
+\]
+Now, Postnikov towers are convergent if and only if there is a limit diagram
+\[
+\H \cong \varprojlim\big( \H_{\le 0} \leftarrow \H_{\le 1}\leftarrow \cdots \big)
+\]
+in such a way that $\H(X,Y)\cong \varprojlim_n \H_{\le n}(\tau_{\le n}X, \tau_{\le n}Y)$.
+\begin{remark}
+Let $\H$ be a \inftop, and assume that Postnikov towers are convergent in $\H$. Then every Postnikov tower is a limit diagram in $\H$:
+\begin{align*}
+\H(X,Y) &\cong \varprojlim_n \H_{\le n}(\tau_{\le n}X, \tau_{\le n}Y)\\
+&\cong \varprojlim_n \H(X, \tau_{\le n}Y)\\
+&\cong \H(X,\varprojlim_n \tau_{\le n}Y).
+\end{align*}
+\end{remark}
+\appendix
+\section{Infinitary FSs}
+\begin{definition}[$k$\hyp{}ary factorization system]\label{mult.fs}
+Let $k \ge 2$ be a natural number. A \emph{$k$\hyp{}fold factorization system} on a category $\C$ consists of a monotone map $\phi\colon \Delta[k-2]\to \textsc{fs}(\C)$, where the codomain has the partial order of \adef \ref{def:prefacts}; denoting $\phi(i)=\fF_i$, a $k$\hyp{}fold factorization system on $\C$ consists of a chain
+\[
+\fF_1 \preceq \dots \preceq \fF_{k-1},
+\]
+This means that if we denote $\fF_i = (\EE_i, \MM_i)$ we have two chains --any of which determines the other-- in $\hom(\C)$:
+\begin{gather*}
+\EE_1\supset \EE_2 \supset\dots\supset \EE_{k-1},\\
+\MM_1\subset \MM_2 \subset\dots\subset \MM_{k-1}.
+\end{gather*}
+\end{definition}
+The definition of a $k$\hyp{}ary factorization system is motivated by the fact that a chain in $\textsc{fs}(\C)$ results in a way to factor each arrow ``coherently'' as the composition of $k$ pieces, coherently belonging to the various classes of arrows. This is explained by the following simple result:
+\begin{lemma}\label{multiple.fact}
+Every arrow $f\colon A\to B$ in a category endowed with a $k$\hyp{}ary factorization system $\fF_1\preceq\dots\preceq \fF_{k-1}$ can be uniquely factored into a composition
+\[
+A \xto{\EE_1} X_1 \xto{\EE_2\cap \MM_1} X_2\to\dots\to X_{k-2} \xto{\EE_{k-1}\cap \MM_{k-2}} X_{k-1} \xto{\MM_{k-1}} B,
+\]
+where each arrow is decorated with the class it belongs to.
+\end{lemma}
+\begin{proof}
+For $k=1$ this is the definition of factorization system: given $f\colon X\to Y$, we have its $\mathbb{F}_{i_1}$\hyp{}factorization
+\[
+X \xto{\EE_{i_1}} Z_{i_1}  \xto{\MM_{i_{1}}} Y.
+\]
+Then we work inductively on $k$. Given an arrow $f\colon X\to Y$ we first consider its $\mathbb{F}_{i_k}$\hyp{}factorization
+\[
+X \xto{\EE_{i_k}} Z_{i_k}  \xto{\MM_{i_{k}}} Y,
+\]
+and then observe that the chain $i_1\leq\cdots\leq i_{k-1}$ induces a $(k-1)$\hyp{}ary factorization system on $\C$, which we can use to decompose $Z_{i_k}\to Y$ as
+\[
+Z_{i_k} \xto{\EE_{i_{k-1}}} Z_{i_{k-1}} \xto{\EE_{i_{k-2}}\cap \MM_{i_{k-1}}} Z_{i_{k-2}}\to\dots\to Z_{i_{2}}\xto{\EE_{i_{1}}\cap \MM_{i_{2}}} Z_{i_{1}} \xto{\MM_{i_{1}}} Y,
+\]
+and we are only left to prove that $Z_{i_{k}} \to Z_{i_{k-1}}$ is actually in $\EE_{i_{k-1}}\cap \MM_{i_{k}}$. This is an immediate consequence of the left cancellation property for the class $\MM_{i_{1}}$. Namely, since $\MM_{i_1}\subseteq \MM_{i_2} \subseteq\dots\subseteq \MM_{i_k}$, and $ \MM_{i_k}$ is closed for composition, the morphism $Z_{i_{k-1}}\to Y$ is in $\MM_{i_k}$. Then the \textsc{l32} property applied to 
+\[
+Z_{i_{k}}\to Z_{i_k-1}\xto{\MM_{i_k}} Y
+\]
+concludes the proof.
+\end{proof}
+\subsubsection{The transfinite case.}\label{transfinite.case} We are now interested to refine the previous theory in order to deal with possibly infinite chains of factorization systems. From a conceptual point of view, it seems natural how to extend the former definition to an infinite ordinal $\alpha$; it must consists on a ``suitable'' functor $F\colon \alpha\to \textsc{fs}(\C)$. 
+
+The problem is that suitable necessary co\fshyp{}continuity assumptions for such a $F$ might be covered by the fact that its domain is finite (and in particular admits an initial and a terminal object): in principle, dealing with infinite quantities could force such $F$ to fulfill some other properties in order to preserve the basic intuition behind factorization.
+
+We start, now, by recalling a number of properties motivating \adef \ref{mult.fs} below.
+\begin{notat}
+A factorization system on $\C$ naturally defines a pair of pointed\fshyp{}co\hyp{}pointed endofunctors on $\C^{\Delta[1]}$, starting from the factorization
+\[
+\begin{kodi}
+\obj{
+	X && Y \\
+	& F(f)& \\
+};
+\mor X -> Y;
+\mor[swap] * {\overleftarrow{F}(f)}:-> {Ff} {\overrightarrow{F}(f)}:-> Y;
+\end{kodi}
+\]
+(This has also been noticed in \cite{HTT}). 
+
+A refinement of this  notion (see \cite{grandis2006natural, Gar, riehl2011algebraic}) regards this pair of functors as monad\fshyp{}comonad on $\C^{\Delta[1]}$: in this case $F\colon \C^{\Delta[1]}\to\C$ is a functor and $f\mapsto \overleftarrow{F}(f)$ has the structure of a (idempotent) comonad, whose comultiplication is
+\[
+\xymatrix@C=1.4cm{
+Ff \ar[r]^{\overleftarrow{F}(\overrightarrow{F}(f))}\ar[d]_{\overrightarrow{F}(f)} & FFf \ar[d]^{\overrightarrow{F}(\overrightarrow{F}(f))}\\
+Y \ar@{=}[r] &Y
+}
+\]
+and $f\mapsto \overrightarrow{F}(f)$ has the structure of a (idempotent) monad, whose multiplication is
+\[
+\xymatrix@C=1.4cm{
+X \ar@{=}[r]\ar[d]_{\overleftarrow{F}(\overleftarrow{F}(f))} & Ff\ar[d]^{\overleftarrow{F}(f)}\\
+FFf \ar[r]_{{\overrightarrow{F}(\overleftarrow{F}(f))}}& Ff.
+}
+\]
+\end{notat}
+\begin{definition}\label{mult.fs.trans}
+Let $\alpha$ be an ordinal. A \emph{$\alpha$\hyp{}ary factorization system}, or \emph{factorization system in $\alpha$\hyp{}stages}, on $\C$ consists of a monotone function $\alpha\to \textsc{fs}(\C)\colon i\mapsto \fF_i$ such that, if we denote by
+\[
+\xymatrix{
+X \ar[rr]\ar[dr]_{\overleftarrow{F}_i(f)}&& Y \\
+& F_i(f)\ar[ur]_{\overrightarrow{F}_i(f)}
+}
+\]
+the $\fF_i$\hyp{}factorization of $f\colon X\to Y$, we have the following two ``tame convergence'' conditions:
+\begin{gather*}
+\varprojlim_{i\in\alpha} \overrightarrow{F}_i(f) =
+\varprojlim_{i\in\alpha} \var{F_i(f)}{Y} = \var{X}{Y};
+\qquad \varinjlim_{i\in\alpha} \overleftarrow{F}_i(f) =
+\varinjlim_{i\in\alpha} \var{X}{F_i(f)} = \var{X}{Y}\\
+\varinjlim_{i\in\alpha} \overrightarrow{F}_i(f) =
+\varinjlim_{i\in\alpha} \var{F_i(f)}{Y} = 1_Y;
+\qquad \varprojlim_{i\in\alpha} \overleftarrow{F}_i(f) =
+\varprojlim_{i\in\alpha} \var{X}{F_i(f)} = 1_X
+\end{gather*}
+(all the diagrams have to be considered defined in suitable slice and coslice categories) which can be summarized in the presence of ``extremal'' factorizations
+\[
+\xymatrix{
+X \ar[rr]^f\ar@{=}[dr]_{\varprojlim_i \overleftarrow{F}_if}&& Y & X\ar[rr]^f\ar[dr]_{\varinjlim_i \overleftarrow{F}_if} && Y\\
+& X\ar[ur]_{\varprojlim_i \overrightarrow{F}_if} &&& Y\ar@{=}[ur]_{\varinjlim_i \overrightarrow{F}_if}
+}
+\]
+\end{definition}
+\begin{theorem}[The multiple small object argument]
+Let $\mathcal{J}_1\subseteq \cdots \subseteq \mathcal{J}_n$ be a chain of markings on $\C$; if each class $\mathcal{J}_\alpha$ has small domains then applying $n$ times the small object argument, the extensivity of the $\prescript{}{\perp}{((-)^\perp)}$ and $(\prescript{\perp}{}{(-)})^\perp$ closure operators entails that there exists a chain of factorization systems
+\[
+\big({}^\perp(J_n^\perp),J_n^\perp \big) \preceq \cdots \preceq \big({}^\perp(J_1^\perp),J_1^\perp \big)
+\]
+\end{theorem}
+
+\hrulefill
+
+\begin{definition}[$k$-connected map, $k$-truncated map]
+Let $f\colon X\to Y$ be a map of spaces. It is called \emph{$k$-connected} if it induces isomorphisms in $\pi_{\le k}$ and a surjection on $\pi_{k+1}$. A map of spaces $g\colon A\to B$ is called \emph{$k$-truncated} if it induces isomorphisms in $\pi_{> k+1}$ and an injection on $\pi_{k+1}$.
+\end{definition}
+\begin{proposition}
+There is a factorization system $\mathbb{S}_k = (\EE_k,\MM_k)$ on $\Top$ having left class the $k$-connected maps and right class the $k$-truncated maps.
+\end{proposition}
+We actually have a \emph{chain} of factorization systems
+\[
+\EE_0\subset \EE_1\subset \EE_2\subset\cdots
+\]
+\begin{definition}
+A map of spaces $f\colon X\to Y$ is a \emph{$k$-equivalence} if it induces an isomorphism in $\pi_{\le k}$; a map of spaces $g\colon A\to B$ is a \emph{$k$-co-equivalence} if it induces isomorphisms in $\pi_{ > k}$.
+\end{definition}
+\begin{proposition}
+There is a factorization system $\widetilde{\mathbb{S}}_k = (\widetilde{\EE}_k,\widetilde{\M}_k)$ on $\Top$ having left class the $k$-equivalences and right class the $k$-co-equivalences.
+\end{proposition}
+We actually have a \emph{chain} of factorization systems
+\[
+\widetilde{\EE}_0\subset \widetilde{\EE}_1\subset \widetilde{\EE}_2\subset\cdots
+\]
+These two factorization systems are obviously related, since $\EE\subset \widetilde{\EE}$; the second enjoys nice categorical properties, whereas there are good reasons to choose the first in outlining a theory of BM-like theorems.
+\begin{remark}
+The factorization systems $\widetilde{\S}_k$ are bireflective (in the terminology of \cite{Fiorenza2014}) for each $k\in\mathbb N$.
+
+The factorization systems $\S_k$ enjoy a weaker cancellation property which forces us to consider the $\mathbb{Z}$-parametric family of factorizations as a whole object: let $\{f,g,gf\}$ be a triple of composable maps of spaces.
+\begin{itemize}
+\item If $gf\in\EE_k$ and $f\in\EE_{k-1}$, then $g\in \EE_k$.
+\item If $gf\in\EE_k$ and $g\in\EE_{k+1}$, then $f\in \EE_k$.
+\end{itemize}
+\end{remark}
+\begin{remark}
+The closure properties for $\S$ behave strangely. (One of the two classes is irredeemably not closed under pushout, even if the other is closed unde \emph{both} pull and push.)
+\end{remark}
+\begin{theorem}[Blakers-Massey theorem]
+Let
+\[
+\tikz \node {\color{red} \bf there is a missing diagram!};
+% \begin{kD}
+% \lattice[mesh]{
+% \obj (Avuoto):A_\varnothing; & \obj A_0;\\
+% \obj A_1; & \obj A_{01};\\	
+% };
+% \mor Avuoto f_0:-> A_0 -> A_{01};
+% \mor Avuoto swap:f_1:-> A_1 -> A_{01};
+% \end{kD}
+\]
+be a pushout of spaces. Then we can consider also the pullback of $ $, and the resulting \emph{comparison map} $f_0\hat{\bullet} f_1 \colon A_\varnothing \to A_0 \times_{A_{01}} A_1$ in the diagram
+\[
+\tikz \node {\color{red} \bf there is a missing diagram!};
+% \begin{kD}
+% \lattice[comb]{
+% \obj (Avuoto):A_\varnothing; & \obj A_0;\\
+% \obj A_1; & \obj A_{01};\\	
+% };
+% \mor Avuoto f_0:-> A_0 -> A_{01};
+% \mor Avuoto swap:f_1:-> A_1 -> A_{01};
+%
+% \node (P) at ($(A_{01})!2!(Avuoto)$) {$A_0 \times_{A_{01}} A_1$};
+% \mor P r> A_0; 
+% \mor P L> A_1;
+% \mor[dashed] P f_0\hat{\bullet}f_1:<- Avuoto;
+% \end{kD}
+\]
+If we denote $f_i \colon A_\varnothing \to A_i$ the maps in the original square, and $f_i\in \EE_{k_i}$ for some $k_0, k_1\in\mathbb{N}$, then $f_0\hat{\bullet} f_1\in \EE_{k_0 + k_1}$.
+\end{theorem}
+Let $\S_0, \S_1$ be factorization systems having left classes $\EE_{\lambda_0}, \EE_{\lambda_1}$; then the comparison map $f_0\hat{\bullet} f_1 \colon A_\varnothing \to A_0 \times_{A_{01}} A_1$ is in $\EE_{\lambda_0}\hat\bullet \EE_{\lambda_1}$ (part of the problem is to define the functor $\hat\bullet \colon \Top^\to \times \Top^\to \to \Top^\to$).
+\begin{lemma}
+Let $C$ be a closed class (in the sense of Chach.) of maps of spaces; let $S,T \colon \cate{J} \to \cate{Spc}$ be two diagrams of spaces, such that $\text{fib}(S\to T)$ belongs objectwise to $C$. Then $\hocolim S \to \hocolim T$ belongs to $C$.
+\end{lemma}
+\begin{proof}
+The proof is an exercise in descent in $\infty$-toposes.\dots
+\end{proof}
+
+\hrulefill
+\bibliography{allofthem}{}
+\bibliographystyle{amsalpha}
+
+
+\end{document}

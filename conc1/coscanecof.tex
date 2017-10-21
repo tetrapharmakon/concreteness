@@ -1,0 +1,559 @@
+\documentclass[a4paper, 10pt]{amsart}
+
+\input preambolo
+\setlength{\epigraphwidth}{.5\textwidth}
+\renewcommand{\textflush}{flushepinormal}
+
+\begin{document}
+
+\title{Homotopical algebra is not concrete}
+\subtitle{On the non-concreteness of certain model categories}
+
+\author{Ivan di Liberti}
+\author{Fosco Loregian$^\dag$}
+\thanks{$^\dag$ The second author is supported by the Grant Agency of the Czech Republic under the grant \textsc{P}201/12/\textsc{G}028.}
+\address{
+$^\dag$Department of Mathematics and Statistics\newline
+Masaryk University, Faculty of Sciences\newline
+Kotl\'{a}\v{r}sk\'{a} 2, 611 37 Brno, Czech Republic\newline
+\href{mailto:diliberti@math.muni.cz}{\sf diliberti@math.muni.cz}\newline
+\href{mailto:loregianf@math.muni.cz}{\sf loregianf@math.muni.cz}
+}
+
+\date{\today}
+\maketitle 
+
+\begin{abstract}
+we generalize Freyd's well-known result that ``homotopy is not concrete''
+offering a general method to show that under certain assumptions on a model
+category $\M$, its homotopy category $\ho(\M)$ cannot be concrete with respect
+to the universe where $\M$ is assumed to be locally small. this result is part
+of an attempt to understand more deeply the relation between (some parts of) set
+theory and (some parts of) abstract homotopy theory.
+\end{abstract}
+\section{Introduction}
+\begin{aquote}{\cite{fconc}}
+<<[the homotopy category of spaces $\cate{Ho}$] has always been the best example
+of an \emph{abstract} category --though its objects are spaces, the points of
+the spaces are irrelevant because the maps are not functions-- best, because of
+all abstract categories it is the one most often lived in by real
+mathematicians. \emph{It is satisfying to know that its abstract nature is
+permanent, that there is no way of interpreting its objects as some sort of set
+and its maps as functions.}>>
+\end{aquote}
+As final as it may sound, Freyd's result that ``homotopy is not concrete'', and
+in particular the paragraph above, doesn't address the fundamental problem of
+\emph{how often} and \emph{why} the homotopy category of a category $\C$ endowed
+with a class $\W_\C \subseteq \hom(\C)$ of weak equivalences is not concrete.
+
+One of the strongest motivations in writing the present paper has been to fill
+this apparent gap in the literature, clarifying which assumptions on a (model or
+relative) category $(\M, \wk)$ give the homotopy category $\ho(\M) =
+\M[\wk^{-1}]$ the same permanently abstract nature.
+
+Our main claim here is that indeed Freyd's theorems generalizes quite easily,
+and that several model categories can't have a concrete localization at weak
+equivalences; moreover, in light of this result the reason why this happens is
+now evident. In a somewhat sloppy parlance that calls a category $(\M,\wk)$
+`homotopy\hyp{}concrete' when $\ho(\M)$ is concrete, our result can be
+summarized as the statement that very few model categories are
+homotopy\hyp{}concrete, and that this happens \emph{as a consequence} of the
+fact that they encode an homotopy theory.
+
+It is of course possible, at least in certain cases, to show that a given $\M$
+is not homotopy\hyp{}concrete using ad-hoc arguments adapted to the particular
+choice of the pair $(\M, \wk)$: Freyd's \cite{fconc} does this for the category
+$\Cat$ with its `folk' model structure where $\wk$ is the class of equivalences
+of categories. Apart from being quite involved, though, such an approach fails
+to put a lot of similar results of the same conceptual ground.
+
+The present paper adresses these questions. Our main theorem is
+\refbf{ginnunga}:
+\begin{theorem*}
+Let $\M$ be a pointed model category; if there exist an index $n_0 \in \mathbb{N}_{\ge
+1}$ and a `weak classifying object' for the functor $\pi_{n_0} \colon \M \to
+\cate{Grp}$ (\adef\refbf{wcodef}), then $\M$ is not homotopy\hyp{}concrete.
+\end{theorem*}
+It is impossible to underestimate the fact that Freyd's argument is a completely
+formal construction relying on nifty but elementary algebraic construction in
+abelian group theory (Lemma \refbf{spastic}) and on the fact that the category
+of spaces ``contains a trace'' of the category of abelian groups, via the
+\emph{Moore functors} $M(\firstblank,n) \colon \cate{Ab}\to \Top$; it will be a
+focal point of our generalization to be able to transport this to a more general
+model category using similar properties of \emph{Eilenberg-Mac Lane objects},
+and their interplay with the looping functor $\Omega$.% Shifting the attention to homotopy groups comes at a cost: it is now of capital importance to have techniques that relate the model
+% structure of $\M$ with that on its \emph{pointed} objects.
+
+We are then able to apply the machinery of \athm\refbf{ginnunga} to several
+explicit examples, thus showing that Freyd`s claim that ``homotopy is not
+concrete'' remains true in the modern parlance of homotopical algebra. This
+suggests how the permanent abstractness of homotopy theory is a reflection of
+the permanent abstractness of \emph{homotopical algebra}.
+
+More in detail, as a consequence of \athm\refbf{ginnunga} we offer
+\begin{itemize}
+	\item a proof that the homotopy category of chain complexes is not homotopy concrete;
+	\item a proof that the homotopy category of $\Cat_\text{folk}$\footnote{As
+already mentioned, this is a shorthand to refer to the category of small
+categories with its `folk' model structure having weak equivalences the
+equivalences of categories, and cofibrations the functors injective on objects.}
+is not concrete, independent from (and surely more elegant than) the argument
+presented in \cite[§4.1]{fconc}; this result follows as a corollary of the fact
+that the category of groupoids is not homotopy concrete, and this, in turn,
+follows from the fact that the category of \emph{1-types} is not homotopy
+concrete (these two categories being Quillen equivalent).
+	\item A proof that the stable category of spectra $\cate{Sp}$ is not homotopy
+concrete. Freyd \cite{Freydconc} observes that the stable category obtained as
+Spanier-Whitehead stabilization of \textsc{cw}-complexes of dimension $\ge 3$
+can't be concrete; our \refbf{spectra} can be thought as a slight refinement
+that makes no assumptions on dimension.
+	\item A proof that the local model structure
+\cite{jardine1987simplical,dugger2004hypercovers} on the category of simplicial
+sheaves on a site is not homotopy concrete.
+\end{itemize}
+Of course, we do not see these results as unexpected, given the tight relation
+between unstable and stable homotopy, between categories and (geometric
+realization of) simplicial sets, and between algebraic topology and algebraic
+geometry.
+
+We feel this is an additional step towards a deeper understanding of the notion
+of concreteness and foundational issues in homotopy theory, and an additional
+hint, if needed, for how set theory and homotopy theory do (or do not)
+interplay.
+\section{Generalities on concreteness}
+We recall the main definition we will operate with (see \cite{Bor1,McL}):
+\begin{definition}\label{concrecat} A category $\C$ is called \emph{concrete} if
+it admits a faithful functor $U\colon \C \to \Sets$.
+\end{definition} Concreteness can be regarded as a smallness request; in fact,
+the following remark shows that many of the categories arising in mathematical
+practice are concrete simply because they are not big enough, either because
+they are small, or because they are accessible (the proof of each of the
+following statements is easy).
+\begin{remark}[almost everything is concrete]\label{all-is-conc} Every small
+category is concrete. Every accessible category is concrete; if a category is
+not concrete, none of its small subcategories can be dense. Concreteness is a
+self-dual property, \ie $\C$ is concrete if and only if $\C^\opp$ is concrete.
+If $\C$ is a concrete, and $J$ is a small category, then the functor category
+$\C^J$ is concrete. If $\C$ is monadic over $\Set$, then it is concrete.
+\end{remark} 
+The paper \cite{Isbell1964} states a condition for the concreteness of a category $\C$; this condition relies on the notion of a \emph{resolvable relation} between the classes of spans and cospans in $\C$. This was linked by \cite{freyd1973concreteness} to a smallness request on the class of so-called \emph{generalized regular subobjects} of objects in $\C$. More in detail, \cite{freyd1973concreteness} proves the following statements:
+\begin{itemize}
+	\item the Isbell condition of \cite{Isbell1964} is equivalent, in a category with finite products, to the smallness of the class of \emph{generalized regular subobjects} of each object $A\in\C$, that we define below in \refbf{grsdef};
+	\item in a category with finite limits, the Isbell condition is equivalent to the smallness of the class of regular subobjects of each object $A\in\C$;
+	\item the smallness of each class of generalized regular subobjects is necessary for concreteness.
+\end{itemize}
+\begin{definition}[Regular Generalized Subobject]\label{grsdef} Let $f\in
+\K_{/A}$ an object of the slice category, and let $C(f,B)$ be the class of pairs
+$u,v : A \to B$ such that $uf=vf$ as morphisms $\text{src}(f) \to A \to B$.
+Define an equivalence relation $\asymp$ on objects of $\K_{/A}$ as
+\begin{center}
+$f\asymp g$ iff $C(f,B)=C(g,B)$ for every $B\in\K$, 
+\end{center}
+and let $\sub(\K_{/A})$ be the quotient of $\K_{/A}$ under this
+equivalence relation. This is called the class of \emph{generalized regular
+subobjects} of $A\in\K$.
+\begin{remark}
+Briefly, the $\asymp$ relation identifies two maps with codomain $A$ if and only if they equalize the same pairs of arrows. In the category of sets and functions, given a function $f$, $f\asymp m_f$, where $m_f$ is the (essentially unique, regular) monomorphism appearing in the epi-mono factorization of $f$; more generally, the same argument shows that $f\asymp m_f$ in every category endowed with a factorization system with regular monomorphisms as right class. A slightly more general argument shows that in a finitely complete category with cokernel pairs, a morphism $f \colon X\to A$ is $\asymp$-equivalent to the regular monomorphism $q$ appearing in the equalizer
+\[\notag
+\begin{kodi}
+\obj{E & A & |(push)| A\cup_X A \\};
+\mor E q:-> A u:{swap,shove=4pt},-> push;
+\mor A v:{shove=-4pt},-> push;
+\end{kodi}
+% \xymatrix{
+% 	E \ar[r]^-q& A\ar@<4pt>[r]^-u\ar@<-4pt>[r]_-v & A\cup_XA.\\
+% }
+\]
+In \cite{freyd1973concreteness} it is stated that in a category with finite limits the generalized regular subobjects of $A$ coincide with the regular subobjects of $A$ for each object $A$.
+\end{remark}
+\end{definition}
+\begin{proposition}[Freyd condition]\label{isbell}
+If $\K$ is concrete then its class of generalized regular subobjects $\sub(\K_{/A})$ is a set for every $A\in\K$.
+\end{proposition}
+It is worthwhile to notice that there is a completely dual definition of \emph{generalized regular quotients} $\quot(\K_{A/})$: there is a similar definition for a relation that identifies two maps with \emph{domain} $A$ if and only if they \emph{coequalize} the same pairs of arrows, and the size of equivalence classes of generalized regular quotients characterize concreteness as well:
+\begin{proposition}[co-Freyd condition]\label{coisbell}
+If $\K$ is concrete then its class of generalized regular quotient $\quot(\K_{A/})$ is a set for every $A\in\K$.
+\end{proposition}
+
+\begin{remark}
+Recall that if $\K$ has finite products, the Freyd condition is equivalent to the Isbell condition and thus to concreteness of $\K$. Since all the categories of interest in this paper have finite products there is no real interest in distinguishing the two conditions. Instead of choosing cumbersome notation as Freyd-Isbell condition or similar, we decide to call this common condition ``Isbell condition".
+\end{remark}
+
+Several universal constructions of $\Cat$ restrict to constructions on model categories: given the purpose of this work, we are principally interested in those constructions that transport non-concreteness. Of course, among them there can be utterly trivial considerations, for example the fact that equivalent categories are either both concrete or both non-concrete (so that every category which is Quillen equivalent to a given non-homotopy\hyp{}concrete one is non-homotopy concrete as well), or the fact that if $\mathcal{L}\hookrightarrow \K$ is a subcategory and $\mathcal{L}$ is not concrete, so is~$\K$.
+
+We will sometimes exploit such straightforward results to prove that a model category $\M$ is not homotopy\hyp{}concrete. We only have to pay attention to the fact that we want a functor that is \emph{homotopy faithful}, meaning that it induces inclusion \emph{between localizations}; usually, there is really no control on which maps $\mathcal{L}(X,Y)\to \M(X,Y)$ become monomorphisms $\ho(\mathcal{L})(X,Y)\to \ho(\M)(X,Y)$.
+\begin{definition}[piercing model subcategory]
+Let $\M$ be a model category; a \emph{piercing model subcategory} is a full subcategory $\W \overset{U}\hookrightarrow \M$, which is reflective and coreflective, and having the model structure for which an arrow $\varphi \colon W \to W'$ is in $\wk,\cof,\fib$ if and only if $U\varphi$ is in $\wk,\cof,\fib$ as an arrow of $\M$.
+\end{definition}
+\begin{remark}
+In the terminology of \cite{may2011more}, a piercing model subcategory is a reflective and coreflective subcategory such that the inclusion $U$ \emph{strongly creates} the model structure on $\W$.
+\end{remark}
+\begin{definition}
+Let $\W \hookrightarrow \M$ be a piercing model subcategory; we say that $\W$ is \emph{homotopy replete} if given a zig zag of weak equivalences in $\M$ from an object of $\W$, 
+\[
+W \leftrightarrow  \dots \leftrightarrow M
+\]
+the arrows, as well as the object $M$, lie in $\W$.
+\end{definition}
+\begin{proposition}
+A piercing model subcategory $\W \overset{U}\hookrightarrow \M$ induces a faithful functor $\ho(\W) \overset{\ho(U)}\hookrightarrow \ho(\M)$.
+\end{proposition}
+\begin{proof}
+Since $\W$ is piercing in $\M$, there is a commutative square
+\[
+\begin{kodi}
+\obj{|(A)| \W(\tilde V,\hat W)& [6.5em] |(B)| \M(U\tilde V,U\hat W) \\ |(D)| \ho(\W)(\tilde V,\hat W) & |(C)| \ho(\M)(U\tilde V,U\hat W)\\};
+\mor A -> B ->> C;
+\mor[swap] * ->> D {\overline{U}_{VW}}:dashed,-> *;
+\end{kodi}
+\]
+where the horizonal arrows are the actions of the functors $U,\ho(U)$ on hom-sets. The first isomorphism theorem for sets now yields that $\overline{U}_{VW}$ is injective.
+\end{proof}
+\begin{example}\label{gpd-in-cat}
+The inclusion $\Gpd_\text{folk}\hookrightarrow \Cat_\text{folk}$ turns $\Gpd_\text{folk}$ into a piercing model subcategory.
+\end{example}
+\begin{remark}\label{unconcrete-frombelow}
+As a consequence of this result, if a piercing model subcategory $\W \hookrightarrow \M$ is not homotopy concrete, then neither $\M$ is.
+\end{remark}
+\section{$\cate{Ho}$ is not concrete}
+The group of remarks in \refbf{all-is-conc} suggests that ``every'' category arising in mathematical practice should be concrete. And yet, in his \cite{fconc} Peter Freyd was able to offer a nontrivial example of a non-concrete category, made by topological spaces and homotopy classes of continuous functions.
+
+Freyd's proof is based on several technical lemmas and it is in fact the result of an extremely clever manipulation of basic constructions on topological spaces. We now propose a short but detailed survey of his original idea.
+Our aim in this section is to refurbish the classical proof of the theorem contained in \cite{fconc} that, spelled out in modern terms, asserts the following:
+\begin{theorem}[Homotopy is not concrete]\label{honoconc}
+Let $\wk$ denote the class of \emph{homotopy equivalences} in the category $\Top$ of topological spaces. Then the Gabriel-Zisman localization \cite{GZ} $\cate{Ho}=\Top[\wk^{-1}]$ is not concrete in the sense of \adef\refbf{concrecat}.
+\end{theorem}
+\begin{remark}
+Even though Freyd's proof seems to leave us free to choose \emph{any} model category structure on $\Top$ that has homotopy equivalences as weak equivalences (also because \cite{fconc} never mentions the classes of cofibrations thereof), and even though such a model structure seems to exist \cite{strom1972homotopy}, the details of this proof seem to be an object of debate (there's an instructive discussion on the $n$Lab page \cite{nlabstrommodel}). Therefore, we decide to restrict ourselves to consider the subcategory of $\Top$ whose objects are \emph{compactly generated spaces}, for which more modern technologies are available. We still denote this subcategory as $\Top$.
+\end{remark}
+\subsection{$\cate{Ho}$ is not concrete: the proof}
+Freyd's strategy can be summarized in the following two points:
+\begin{itemize}
+	\item As stated above \refbf{grsdef}, concreteness for a category $\A$ is equivalent to \emph{Isbell condition}; this necessary and sufficient condition was first proved in \cite{Isbell1964} (necessity) and \cite{fconc} (sufficiency).
+	\item In the homotopy category of spaces $\cate{Ho}$ it is possible to find an object (in fact, many) admitting a proper class of generalized regular subobjects.
+\end{itemize}
+Until the end of the proof, we fix:
+\begin{enumerate}
+	\item An integer $n\ge 1$;
+	\item an arbitrary prime $p$.
+\end{enumerate}
+To build an object with a proper class of generalized regular subobjects we manipulate the cofibration sequence of a suitable Moore spaces. The main technical tool here is a technical lemma that generates a proper class of groups having arbitrarily large height (see \cite{fuchs2015abelian}). 
+\begin{lemma}[black box lemma]\label{spastic}
+There exists a sequence $B_\bullet = (B_\alpha)$ of $p$-torsion abelian groups, one for each ordinal number $\alpha\in\cate{Ord}$, satisfying the following properties:
+\begin{itemize}
+	\item each $B_\alpha$ contains an element $x_\alpha$ such that $p x_\alpha = 0$;
+	\item when $\alpha < \beta$ every homomorphism of groups $f_{\alpha\beta} \colon B_\alpha \to B_\beta$ such that $f(px)=p f(x)$ sends $x_\alpha$ to zero.
+\end{itemize}
+\end{lemma}
+We adopt this statement without further explanation (hence the name \emph{black box}): the interested reader will find a proof, based on the theory of \emph{heights} of torsion abelian groups, in \cite{Freydconc}.
+\begin{notat}
+For each ordinal $\alpha$, let now $M_\alpha$ be the Moore space $M(B_\alpha,n)$ on the group $B_\alpha$  in grade $n$ that we found inside the black box of Lemma \refbf{spastic}. Let $t_\alpha\colon \mathbb{Z}/p\mathbb{Z} \to B_\alpha$ be a group morphism having $x_\alpha$ in its image, and $u_\alpha\colon M \to M_\alpha$ the map $M(t_\alpha,n)$ induced between Moore spaces; finally, we denote with $M$ the Moore space for $\mathbb{Z}/p\mathbb{Z}$ in degree $n$.
+\end{notat}
+\begin{remark}
+Notice that in the canonical cofiber sequence
+\[
+M \xto{u_\alpha} M_\alpha \to C_\alpha \to \Sigma M \to \Sigma M_\alpha\to\dots
+\]
+the space $C_\alpha$ is an $M_n(\coker(t_\alpha))$, and $\Sigma M_\alpha$ is an $M_{n+1}(B_\alpha)$. This is a key point in the proof.
+\end{remark}
+Now we claim that $$(C_{\alpha} \to \Sigma M)_{\alpha \in \cate{Ord}}$$ is a proper class of generalized regular subobject for $\Sigma M$. In order to prove this claim we need
+\begin{proposition}
+\label{key}
+For each pair of ordinals $\alpha < \beta$ the composition
+\[
+C_\beta \xto{v_\beta} \Sigma M \xto{\Sigma u_{\alpha}} \Sigma M_\alpha
+\]
+is not null-homotopic.
+\end{proposition}
+\begin{proof}
+We argue by contradiction: assume that the composition is homotopic to a constant map; since $\Sigma M_\beta \simeq \text{cone}(v_\beta)$, we get a map $\Sigma M_\beta \to \Sigma M_\alpha$ that makes the left triangle below commute.
+\[\label{the-diag}
+\begin{tikzcd}
+\Sigma M \ar[r]\ar[dr]& \Sigma M_\beta \ar[dotted, d]\\
+& \Sigma M_\alpha
+\end{tikzcd}
+\qquad\qquad
+\begin{tikzcd}
+\mathbb{Z}/p\mathbb{Z} \ar[r]\ar[dr]& B_\beta \ar[dotted, d]\\
+& B_\alpha
+\end{tikzcd}
+\]
+But then taking the $H_{n+1}(\firstblank, \mathbb{Z})$ of this commutative triangle we would get a contradiction on the right diagram of abelian groups whose solid arrows contain $x_\beta$ in their images, and yet the dotted arrow is the zero map on $x_\beta$.
+\end{proof}
+\begin{remark}
+This is one of the capital remarks in the section. Until now our proof lived in $\Top$. But at the time to draw diagram (\refbf{the-diag}), and in particular the arrow $\Sigma M_\beta \to \Sigma M_\alpha$, we have to move in the localization $\cate{Ho}$, as this arrow only exists there: in fact, there can be no map whatsoever between these two objects filling the triangle above, but only a zig-zag of continuous maps
+\[
+\Sigma M_\beta \xot{\simeq} \bullet \to \bullet \xot{\simeq} \bullet \dots \to \Sigma M_\alpha
+\]
+\end{remark}
+
+Finally we can conclude the proof.
+
+\begin{proposition}
+All the arrows $v_\alpha \colon C_\alpha \to \Sigma M$ form \emph{distinct} generalized regular subobjects of $\Sigma M$, so that $\sub(\cate{Ho}_{/\Sigma M})$ contains a proper class.
+\end{proposition}
+\begin{proof}
+Suppose $v_\alpha \asymp v_\beta$ for $\alpha < \beta$. Since in the following diagram
+\[
+\begin{kodi}
+\obj{
+|(Ca)| C_\beta & &[3em] \\[-2em]
+&|(SM)| \Sigma M &|(SMb)| \Sigma M_\alpha\\[-2em]
+|(Cb)| C_\beta & & \\
+};
+\mor SM {\Sigma u_\alpha}:-> SMb;
+\mor Ca v_\beta:-> +;
+\mor[swap] Cb v_\alpha:-> SM;
+\end{kodi}
+\]
+the composition of $\Sigma u_\alpha \circ v_\alpha$ is null-homotopic (we assumed that $v_\alpha$ and $v_\beta$ equalize the same arrows, hence they both equalize the pair $(0,\Sigma u_\alpha)$), also the composition $\Sigma u_\alpha \circ v_\beta$ is null-homotopic. This contradicts lemma \refbf{key}.
+\end{proof}
+This concludes Freyd's original proof, and paves the way to a certain number of questions and generalization.
+\section{A criterion for unconcreteness}
+The proof of \athm\refbf{honoconc} relies on
+\begin{itemize}
+\item the existence of Moore spaces;
+\item the existence of the homology functors; and in particular
+\item their interplay with suspension.
+\end{itemize}
+Not every model category has a notion of homology. But in various pointed model categories we can define \emph{homotopy groups} (in fact, with respect to arbitrary coefficients on an object $A$) via the suspension-loop adjunction. Adapting Freyd's proof to this somewhat ``dual'' situation constitutes the original result of the present work. The discussion so far has been tailored to let the proof of \athm\refbf{ginnunga} seem obvious; this proof will occupy the rest of the present section.
+\subsection{Homotopy groups on model categories}
+We start re\-cal\-ling how homotopy groups with coefficients can be constructed in a pointed model category; for the record, we simply adapt the construction that \cite[§II.6]{Baues1989} performs in the fairly more general setting of cofibration categories.
+\begin{definition}[$\Sigma\dashv \Omega$ adjunction, homotopy groups]\label{sigmomega}
+Let $\M$ be a pointed model category,  one can define the \emph{suspension-loop adjunction} via the following diagrams that are, respectively, an homotopy pushout and an homotopy pullback
+\[
+\begin{kodi}
+\obj{
+	|(M)|\ho(\M) &[2em] |(pM)| \ho(\M) &[3em] |(pM')| \ho(\M) &[2em] |(M')| \ho(\M)\\[-2em]
+	X &|(1a)| 0 & \Omega Y &|(1b)| 0\\
+	|(1c)| 0 & \Sigma X &|(1d)| 0 & Y \\
+};
+\mor X -> 1a -> {Sigma X};
+\mor * -> 1c -> *;
+\mor {Omega Y} -> 1b -> Y;
+\mor * -> 1d -> *;
+\mor M \Sigma:-> pM; \mor pM' \Omega:-> M';
+\pushout{X}{Sigma X}
+\pullback{Omega Y}{Y}
+\end{kodi}
+\]
+It is easy to notice that the two functors $\Sigma, \Omega$ form an adjunction, in that arrows $A\to \Omega B$ correspond bijectively to arrows $\Sigma A \to B$.
+With this definition we pose
+\[
+\pi^A_n(X) :=  \ho(\M)(A, \Omega^n X).
+\]
+\end{definition}
+\begin{remark}\label{ocio-coef}
+This definition is of course compatible with shifting, in the sense that, as a consequence of the adjunction $\Sigma\dashv \Omega$, we have $$\pi^A_n (\Omega (X)) = \pi^A_{n+1}(X).$$ In our discussion coefficients will be hidden just for notational simplicity. Of course this is a group when $n \geq 1$ and it is abelian when $n\geq 2$.
+\end{remark}
+
+
+\subsection{The main theorem}
+\begin{remark}
+The idea of our theorem in a nutshell is: if you can realize a ``weak classifying object'' $k(G)$, for at least the abelian groups in the black box lemma, then a construction similar to that of Freyd's proof generates a proper class of quotients for a chosen object $K$.
+
+An exact translation of Freyd's argument is impossible in a general setting, due to the lack of a `universal' homology theory on a general model category, and yet the main result is preserved with only a few adjustments. The main \emph{idea} is, indeed, absolutely unchanged in this translation procedure. We briefly outline the reasons why we are constrained to these adjustments:
+\begin{itemize}
+	\item First of all we must switch to generalized \emph{quotients}, since we work with homotopy groups, and this consequently forces us to play with \emph{looping} operations, and not suspensions; this forces to consider \emph{fiber sequences} in the homotopy category of $\M$.
+	\item This entails that we have to build a proper class of generalized regular quotient $K \to K_\alpha$ for some object $K$. And yet we can't expect the existence of maps $B_\alpha \to \mathbb{Z}/p\mathbb{Z}$ that are nonzero on $x_\alpha$ for each $\alpha$ (this is because $B_\alpha$ contains a cyclic direct summand of order $p$ generated by $x_\alpha$, so there will always be a homomorphism $B_\alpha\to B_\beta$ sending $x_\alpha$ to $x_\beta$).
+	\item Fortunately, the cyclic group $\mathbb{Z}/p\mathbb{Z}$ plays no special r\^ole in the proof; we can safely assume that each $B_\alpha$ has a group homomorphism $B_\alpha \to \QZ$ that does not vanish on $x_\alpha$ (and these always exist, since $\QZ$ is injective).
+\end{itemize}
+\end{remark}
+\begin{definition}[Weak classifying object]\label{wcodef}
+Let $\M$ be a model category, and $\cate{K}$ any category. A \emph{weak classifying object} for $\M$, relative to a functor\footnote{The symbol $\varpi$ is an alternative glyph for the Greek letter $\pi$.} $\varpi \colon \ho(\M) \to \cate{K}$ is a functor $k\colon \cate{K} \to \ho(\M)$ such that
+\begin{itemize}
+	\item the composition $\varpi\circ k$ is a full functor;
+	\item there is a natural transformation $\epsilon\colon \varpi\circ k \Rightarrow 1$ which is an objectwise epimorphism (in this case $k$ is a \emph{right} \wco), \emph{or} a natural transformation $\eta \colon 1\Rightarrow \varpi\circ k$ which is an objectwise monomorphism (in this case $k$ is a \emph{left} \wco).
+\end{itemize}
+\end{definition}
+\begin{notat}
+We speak of a \emph{weak classifying object} $k$ (without specifying a side) when we do not care about $k$ being a left or right weak classifying object.
+
+When a model category $\M$ has a \wco relative to the functor $\pi_n \colon \ho(\M) \to \cate{Grp}$ (see \refbf{ocio-coef}) we say that it has a \emph{\wco of type $n$} and it will be denoted $k(\firstblank,n) \colon \cate{Grp}\to \ho(\M)$. No effort is made to hide that the notion of a \wco is an abstraction, tailored to our purposes, of Eilenberg-Mac Lane spaces $G\mapsto K(G,n)$ on $\Top$. Of course, if $n\ge 2$, $k(\firstblank,n)$ has domain $\cate{Ab}$.
+\end{notat}
+\begin{remark}
+Having found a \wco of type $n_0$ for some $n_0\ge 2$ entails that there is a \wco also for every other $\pi_m$, with $m>n_0$; in fact it can be easily checked that the functor 
+\[
+k(\firstblank,n_0+k) := \Omega^k \circ k(\firstblank,n_0)
+\]
+is a \wco of type $n_0+k$.
+\end{remark}
+\begin{remark}
+There are at least three cases where $\M$ has a \wco of type $n$: like before, we denote $\pi_n^A$ the $n^\text{th}$ homotopy group functor (see \refbf{ocio-coef}) for \emph{some} $n\ge 1$ and \emph{some} coefficient object $A$.
+\begin{enumerate}
+	\item When $\pi_n^A\colon \ho(\M)\to \cate{Ab}$ has a section (\ie there is a functor $K_n$ such that $\pi_n^A\circ K_n \cong 1$);
+	\item When $\pi_n^A$ has a faithful left adjoint;
+	\item When $\pi_n^A$ has a full right adjoint.
+\end{enumerate}
+\end{remark}
+We now come to the main theorem of this work:
+\begin{theorem}\label{ginnunga}
+Let $\M$ be a pointed model category; if there exist an index $n\ge 2$ and a \wco of type $n$ for $\M$, then $\ho(\M)$ can not be concrete.
+\end{theorem}
+The proof occupies the rest of the section. We establish the following notation:
+\begin{itemize}
+	\item we assume that there exists a \emph{right} \wco; with straightforward modifications the proof can be adapted to the case of a left \wco with $\eta\colon 1 \Rightarrow \pi_n\circ k(\firstblank,n)$;
+	\item the object $K_\alpha$ is the image of the group $B_\alpha$ in Lemma \refbf{spastic} via the functor $k(\firstblank,n)$; we also pose $B=\QZ$ and $K = k(\QZ,n)$;
+	\item we fix a map $t_\alpha \colon B_\alpha \to \QZ$ such that $t_\alpha(x_\alpha)\neq 0$ (this can always be found since $\QZ$ is an injective abelian group); we denote $u_\alpha = k(t_\alpha,n) \colon K_\alpha \to K$.
+\end{itemize}
+Now, consider the fiber sequence
+\[
+\dots \to \Omega K_\alpha \to \Omega K \xto{v_\alpha} F_{\alpha} \to K_{\alpha} \xto{u_\alpha} K 
+\]
+We will use the co-Isbell condition \refbf{coisbell} to prove that since
+\[
+(\Omega K \xto{v_\alpha} F_{\alpha})_{\alpha\in\cate{Ord}}
+\]
+is a proper class of generalized regular quotient for $\Omega K$, the category can't be concrete. In order to do this, we re-enact Lemma \refbf{key} in the following form using the loop functor $\Omega$ instead of $\Sigma$:
+\begin{lemma}\label{peterkey}
+For each pair of ordinals $\alpha < \beta$ the composition
+\[
+\Omega K_\beta  \xto{\Omega u_\beta } \Omega K \xto{v_\alpha} F_{\alpha}
+\]
+is not null-homotopic.
+\end{lemma}
+\begin{proof}
+We argue by contradiction: assume that the composition above is nullhomotopic; since $\Omega K_\alpha \simeq \text{fib}(v_\alpha)$, we get a map (in $\ho(\M)$) $\Omega K_\beta \to \Omega K_\alpha$ that makes the triangle below commute.
+\[\label{the-diag-2}
+\begin{kodi}
+\obj{\Omega K_\beta & \Omega K & F_\alpha \\
+& \Omega K_\alpha & \\};
+\mor {Omega K_beta} {\Omega u_\beta}:-> {Omega K} {v_\alpha}:-> {F_alpha};
+\mor[swap] * \varphi:-> {Omega K_alpha} {\Omega u_\alpha}:-> {Omega K};
+\end{kodi}
+\]
+But then the $\pi_{n-1}(\firstblank)$ of this commutative triangle embeds into the following bigger diagram:
+\[
+\begin{kodi}[remove characters=_\{\}, expand=full]
+\foreach \i/\j in {0/,120/\alpha,-120/\beta}{
+	\obj at (\i:1.4) {\pi_n k(B_{\j},n)};
+	\obj at (\i:3.5) {B_{\j}};
+	}
+\mor {pi n kBalpha n} {\epsilon_\alpha}:-> {Balpha};
+\mor {pi n kBbeta n} {\epsilon_\beta}:-> {Bbeta};
+\mor {pi n kBn} {\epsilon}:-> {B};
+\mor[swap] {pi n kBbeta n} {\pi_{n-1}(\varphi)}:{bend left},-> {pi n kBalpha n} {bend left},-> {pi n kBn};
+\mor {pi n kBbeta n} {bend right},-> {pi n kBn};
+\mor[swap] {Bbeta} \psi:{bend left, dashed},-> {Balpha} t_\alpha:{bend left},-> {B};
+\mor * t_\beta:{bend right},-> {B};
+\end{kodi}
+\]
+Every subdiagram made by solid arrows commutes, and the dotted arrow exists by the fullness assumption on $\pi_n\circ K(\firstblank,n)$. 
+
+Since the $\epsilon$ arrows are all epimorphisms the outer triangle commutes. But this is impossible, since $\psi$ sends $x_\beta$ to $0$, whereas $t_\beta$ does not.
+\end{proof}
+\begin{proposition}
+All the arrows $v_\alpha \colon \Omega K \to F_\alpha$ form \emph{distinct} generalized regular quotient of $\Omega K$, so that $\quot(\cate{Ho}_{\Omega K/})$ contains a proper class.
+\end{proposition}
+\begin{proof}
+Suppose $v_\alpha \asymp v_\beta$ for $\alpha < \beta$. Since in the following diagram
+\[
+\begin{kodi}
+\obj{
+&&|(Fa)| F_\beta\\[-2em]
+|(OmegaKa)|\Omega K_\beta &|(OmegaK)| \Omega K & \\[-2em]
+&&|(Fb)| F_\alpha\\};
+\mor OmegaKa {\Omega u_\beta}:-> OmegaK;
+\mor OmegaK v_\beta:-> Fa;
+\mor[swap] * v_\alpha:-> Fb;
+\end{kodi}
+\]
+the composition of $v_\beta \circ \Omega u_{\beta}$ is null-homotopic and we assumed that $v_\alpha$ and $v_\beta$ equalize the same arrows, also the composition $ v_\alpha \circ \Omega u_\beta$ is null-homotopic. This contradicts lemma \refbf{peterkey}.
+\end{proof}
+\subsection{Quasistable model categories}
+\begin{definition}[Quasistability]
+A pointed model category is \emph{quasistable} if  the comonad $\Sigma\Omega$ of the adjunction $\Sigma\dashv \Omega$ in \refbf{sigmomega} is full.
+\end{definition}
+\begin{remark}
+This definition is a weakening of the stability property for $\M$, as in the stable case the comonad $\Sigma\Omega$ is full (in fact, it is an equivalence).
+\end{remark}
+In a quasistable model category our main theorem takes the following form:
+\begin{theorem}
+\label{qsginnunga}
+If $\M$ is quasistable, and it has a generalized \wco for \emph{some} functor $\varpi\colon \ho(\M) \to \cate{Grp}$ such that $\varpi * \varepsilon$ is an objectwise epimorphism, then it is not homotopy concrete.
+\begin{proof}
+The unstable proof can be adapted in the following way: consider the sequence of groups $B_\bullet$ obtained in \refbf{spastic}, regarded as valued in $\cate{Ab}\subset \cate{Grp}$, and the diagram
+\[
+\tiny
+\begin{kodi}[remove characters=_\{\}, expand=full,xscale=.75,yscale=.75]
+\foreach \i/\j in {0/,120/\alpha,-120/\beta}{
+\obj at (\i:1.5) {\varpi\Sigma\Omega K_{\j}};
+\obj at (\i:3.5) {\varpi K_{\j}};
+\obj at (\i:5.5) {B_{\j}};
+}
+\mor {varpi Sigma Omega Kalpha} -> {varpi Kalpha} -> Balpha;
+\mor {varpi Sigma Omega Kbeta} -> {varpi Kbeta} -> Bbeta;
+\mor {varpi Sigma Omega K} -> {varpi K} -> B;
+\mor :[bend left] {varpi Sigma Omega Kalpha} -> {varpi Sigma Omega K};
+\mor :[bend right] * -> {varpi Sigma Omega Kbeta} -> *;
+\mor :[bend right] {varpi Kbeta} -> {varpi K};
+\mor :[bend left] * \star:dashed,-> {varpi Kalpha} -> *;
+\mor :[bend right] {Bbeta} t_\beta:-> {B};
+\mor[swap]:[bend left] * \star\star:dotted,-> {Balpha} t_\alpha:-> *;
+\end{kodi}
+\]
+obtained using the same notation of the unstable proof. The starred arrows appear thanks to the assumption of quasistability, and the same argument shows that there can't be no nullhomotopic sequence $\Omega K_\beta \to \Omega K \to F_\alpha$ for $\alpha < \beta$.
+\end{proof}
+\end{theorem}
+\section{Examples}
+\begin{example}[Example 0]
+Obviously, if two model categories are Quillen equivalent one is homotopy concrete if and only if the other is. So, as a consequence of \refbf{honoconc} every category Quillen equivalent to $\Top$ cannot be homotopy concrete. 
+\end{example}
+\begin{example}[The category of chain complexes]\label{complessi}
+The homotopy category $\ho(\text{Ch}(\mathbb{Z}))$ of chain complexes of abelian groups with its standard model structure is not concrete. 
+
+In fact homology functors $H_n$ have a \wco, that is the complex having a given abelian group $G$ in degree $n$ and zeroes elsewhere; since this category is quasi stable (in fact, stable), the homotopy category cannot be concrete by \athm\refbf{qsginnunga}.
+\end{example}
+\begin{example}[The category of spectra]\label{spectra}
+The category $\ho(\Omega\text{-}\cate{Sp}))$ obtained localizing the category of (Bousfield\hyp{}Friedlander) spectra is not concrete. Indeed, the stable homotopy functor $\pi^\text{s}_0 \colon \cate{Sp} \to \cate{Ab}$ has a \wco given by the Eilenberg-Mac Lane construction $A\mapsto K(A,\firstblank)$.
+\end{example}
+\begin{example}[The category of simplicial sheaves]\label{fasci}
+Let $(\C, J)$ be a small Grothendieck site; a model for hypercomplete $\infty$-stacks is the following:
+\begin{itemize}
+	\item Consider the category $[\C^\opp, \sSet]_\text{proj}$, endowed with the projective model structure with respect to the Kan-Quillen model structure on $\sSet$; this is called the \emph{global model structure}.
+	\item now consider the left Bousfield localization given by the equivalences with respect to \emph{homotopy sheaves}, obtained as follows: consider the compositions
+	\begin{gather*}
+	[\C^\opp,\sSet] \xto{\pi_{0,*}} [\C^\opp, \Set] \xto{(\firstblank)^+} \cate{Sh}(\C,J) \\
+	[(\C_{/X})^\opp,\sSet] \xto{\pi_{n,*}} [(\C_{/X})^\opp,\cate{Grp}] \xto{(\firstblank)^+} \cate{Sh}_\Delta(\C_{/X},J)
+	\end{gather*}
+	where the rightmost functor is $J$-sheafification. This defines functors $\underline{\pi}_n$ called the \emph{homotopy sheaves} of a simplicial presheaf $F$. A morphism $\eta\colon F\to G$ is a \emph{local equivalence} if it induces isomorphisms $\underline{\pi}_n(\eta) \colon \underline{\pi}_n(F) \overset{\cong}\to \underline{\pi}_n(G)$ between homotopy sheaves in each degree, and local equivalences form a Bousfield localization of the \emph{local model structure} described in \cite{jardine1987simplical,dugger2004hypercovers}.
+\end{itemize}
+We claim that the local model structure turns $\M=[\C^\opp, \sSet]$ into a category which is not homotopy concrete. To prove this, it suffices to consider the functor $\varpi_n \coloneqq \Gamma \circ \underline{\pi}_n\colon \M \to \{\Set, \cate{Grp}, \cate{Ab}\}$, giving the global sections of the homotopy sheaves. The construction of Eilenberg-Mac Lane stacks $K(\firstblank,n)$ of \cite[§\textbf{2.2}]{toen2010simplicial} gives \wco{}s of type $n$.
+\end{example}
+\section{A long and instructive example}
+As it is well known, the homotopy category of groupoids with respect to its `folk' model structure is equivalent to the homotopy category of unstable 1-types, via the classifying space and fundamental groupoid functors. This result, often accepted as folklore, certainly has an interest for both category theorists and homotopy theorists (we advise \cite{camarena2013whirlwind} as a modern and pleasant introductory reading on this topic).
+
+The present section is completely devoted to prove that none of the three categories of 1-types, groupoids, and categories has a concrete localization at its natural choice of weak equivalences; of course we will heavily rely on the above-mentioned equivalence between groupoids and 1-types; this gives a different and quite elegant proof that the homotopy category of $\Cat$ is not concrete (a result that \cite[§4.1]{fconc} obtains with weeping and gnashing of teeth).
+
+It is worth to underline that, obviously, there can't be a model structure on the category $1\text{-}\cate{types}_*$ of (pointed) spaces with vanishing $\pi_{\ge 2}$. This might appear as an issue, as it shows that the assumptions of \athm\refbf{ginnunga} are not minimal: the presence of a mere class of weak equivalences $\W$ and a pair of homotopical functors $(\varpi,k)$, one of which nicely interacts with some `looping' functor $\Omega$ and the other is a \wco for the first is sufficient to build an object of the homotopy category with too many quotients. In fact, one could be tempted to state \athm\refbf{ginnunga} in the more general setting of \emph{categories of fibrant objects} ($1\text{-}\cate{types}_*$ is such a category), or in the even more general setting of what might be called `Puppe categories' where we are given $(\W,\varpi,k,\Omega)$ as above.
+
+We feel that such a weakening of assumptions does not yield substantial improvement in the discussion, as the proof of a statement like
+\begin{theorem*}
+Let $\{\M,(\W,\varpi,k,\Omega)\}$ be a pointed Puppe category; if there exist an index $n\ge 2$ and a \wco of type $n$ for $\M$, then $\M[\W^{-1}]$ can not be concrete.
+\end{theorem*}
+would go in the same way as the proof of \athm\refbf{ginnunga} (it is worth to notice that we already mentioned, right before \adef\refbf{sigmomega}, how the definition of homotopy groups with coefficient works also in a co/fibration category). A deeper discussion on this issue (\ie, what \emph{minimal} assumptions make our main theorem true) will certainly be the subject of further investigations.
+\begin{example}[$1\text{-}\cate{types}_*$ is not homotopy concrete]\label{uno-tipi}
+The category $1\text{-}\cate{types}_*$ has no concrete localization at its class of weak equivalences (induced by the inclusion $1\text{-}\cate{types}_*\subset\Top$): the fundamental group functor $\pi_1\colon 1\text{-}\cate{types}_* \to \cate{Grp}$ has the classifying space $K(\firstblank,1)$ as a \wco.
+\end{example}
+Even though there's nothing difficult in it, it is worth to outline the argument completely; as already mentioned, there's no model structure on $1\text{-}\cate{types}_*$ (it is not cocomplete), and yet $1\text{-}\cate{types}_*$ is a \emph{category of fibrant objects} in the sense of \cite{Kennet-1973}. Quite miracolously, this is enough to conclude that it is not homotopy concrete, as the pair of functors $(\pi_1,K(\firstblank,1))$ still does what is needed: in the same notation of \athm\refbf{ginnunga}, the object $\Omega K$ is a 0-type (hence a fortiori a 1-type), and the maps $\Omega K \to F_\alpha$ still form a proper class of distinguished generalized quotients of $\Omega K$.
+
+Now we would like to deduce, from the fact that the category of \emph{pointed} 1-types is not homotopy concrete, the fact that the category $1\text{-}\cate{types}$ of \emph{unpointed} 1-types is not concrete. This seemingly easy result requires instead quite an involved argument, as it is in general impossible to deduce the homotopy non-concreteness of $\M$ from the homotopy non-concreteness of the model category $\M_{*/}$ of pointed objects in $\M$: in this particular case, however, it's easy to see that the functor $1\text{-}\cate{types}_* \to 1\text{-}\cate{types}$ injects the proper class $\mathsf{Q}_*(\Omega K)$ of pointed generalized regular quotients into the class $\mathsf{Q}(\Omega K)$ of unpointed ones.
+\begin{corollary}
+The category of groupoids with the choice of its `folk' model structure, is not homotopy concrete.%, since \cite{camarena2013whirlwind} it is Quillen equivalent to $1\text{-}\cate{types}$.
+\end{corollary}
+This is clear, in view of the above-mentioned equivalence between groupoids and (unpointed) 1-types.
+\begin{corollary}
+Since (cf. \refbf{gpd-in-cat}) $\Gpd_\text{folk}$ is an homotopy replete model subcategory of $\Cat_\text{folk}$, we conclude (cf. \refbf{unconcrete-frombelow}) that $\Cat_\text{folk}$ can not be homotopy concrete.
+\end{corollary}
+
+% \section{Future directions}
+% \todo[inline]{Da riscrivere}
+
+\subsubsection*{Acknowledgements}
+The authors would like to thank professor Dan Christensen for a preliminary and attentive reading of the first draft of this paper, professor Jiří Rosický for  his support in our investigation, professor Ivo Dell'Ambrogio for persuading us about the relevance of our result to a public of algebraic topologists, and more in general everybody who contributed to the improvement of this work.
+ 
+\hrulefill
+
+\bibliography{allofthem}{}
+\bibliographystyle{amsalpha}
+\end{document}

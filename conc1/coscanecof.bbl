@@ -1,0 +1,81 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{Cam13}
+
+\bibitem[Bau89]{Baues1989}
+H.J. Baues, \emph{Algebraic homotopy}, Cambridge Univ. Press, 1989.
+
+\bibitem[Bor94]{Bor1}
+Francis Borceux, \emph{Handbook of categorical algebra. 1}, Encyclopedia of
+  Mathematics and its Applications, vol.~50, Cambridge University Press,
+  Cambridge, 1994, Basic category theory.
+
+\bibitem[Bro73]{Kennet-1973}
+Kenneth~S. Brown, \emph{Abstract homotopy theory and generalized sheaf
+  cohomology}, Transactions of the American Mathematical Society \textbf{186}
+  (1973).
+
+\bibitem[Cam13]{camarena2013whirlwind}
+Omar~Antol{\`i}n Camarena, \emph{A whirlwind tour of the world of
+  $(\infty,1)$-categories}, 2013.
+
+\bibitem[DHI04]{dugger2004hypercovers}
+Daniel Dugger, Sharon Hollander, and Daniel~C Isaksen, \emph{Hypercovers and
+  simplicial presheaves}, Mathematical Proceedings of the Cambridge
+  Philosophical Society, vol. 136, Cambridge University Press, 2004, pp.~9--51.
+
+\bibitem[Fre69]{fconc}
+Peter Freyd, \emph{On the concreteness of certain categories}, Symposia
+  Mathematica, vol.~4, 1969, pp.~431--456.
+
+\bibitem[Fre70]{Freydconc}
+Peter Freyd, \emph{Homotopy is not concrete}, 25--34.
+
+\bibitem[Fre73]{freyd1973concreteness}
+Peter~J Freyd, \emph{Concreteness}, Journal of Pure and Applied Algebra
+  \textbf{3} (1973), no.~2, 171--191.
+
+\bibitem[Fuc15]{fuchs2015abelian}
+L{\'a}szl{\'o} Fuchs, \emph{Abelian groups}, Springer, 2015.
+
+\bibitem[GZ67]{GZ}
+Peter Gabriel and Michel Zisman, \emph{Calculus of fractions and homotopy
+  theory}, Ergebnisse der Mathematik und ihrer Grenzgebiete, Band 35,
+  Springer-Verlag New York, Inc., New York, 1967.
+
+\bibitem[Isb64]{Isbell1964}
+J.~Isbell, \emph{Two set-theoretical theorems in categories}, Fundamenta
+  Mathematicae \textbf{53} (1964), no.~1, 43--49 (eng).
+
+\bibitem[Jar87]{jardine1987simplical}
+John~Frederick Jardine, \emph{Simplical presheaves}, Journal of Pure and
+  Applied Algebra \textbf{47} (1987), no.~1, 35--87.
+
+\bibitem[ML98]{McL}
+S.~Mac~Lane, \emph{Categories for the working mathematician}, second ed.,
+  Graduate Texts in Mathematics, vol.~5, Springer-Verlag, New York, 1998.
+
+\bibitem[MP11]{may2011more}
+J~Peter May and Kate Ponto, \emph{More concise algebraic topology:
+  localization, completion, and model categories}, University of Chicago Press,
+  2011.
+
+\bibitem[$n$17]{nlabstrommodel}
+The $n$Lab, \emph{Strøm model structure},
+  \url{https://ncatlab.org/nlab/revision/Strom+model+structure/23}, 2017.
+
+\bibitem[Str72]{strom1972homotopy}
+Arne Str{\o}m, \emph{The homotopy category is a homotopy category}, Archiv der
+  Mathematik \textbf{23} (1972), no.~1, 435--441.
+
+\bibitem[To{\"e}10]{toen2010simplicial}
+Bertrand To{\"e}n, \emph{Simplicial presheaves and derived algebraic geometry},
+  Advanced Course on Simplicial Methods in Higher Categories, Notes of the
+  Course (2010), 95--146.
+
+\end{thebibliography}

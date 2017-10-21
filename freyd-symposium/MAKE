@@ -1,0 +1,2 @@
+latexmk -pdf CAF.tex
+latexmk -c

@@ -1,0 +1,12 @@
+Detailed remarks:
+Remark 2.4 - an example might help here, e.g. for when K is the category of sets.
+
+Proposition 3.9 - the proof would be a little easier to follow if you actually wrote out which pair of arrows is being equalized. Right now it's buried in the definition of the word "nullhomotopic", but with one more sentence you could help the reader follow.
+
+Notation 4.5 - I suppose you could make this definition for right or left or both. Please quickly clarify which is meant in the notation, to avoid confusion.
+
+Definition 4.11 - is quasi-stability related to what Mark Hovey called a pretriangulated category in his book? Or, to any other notion from the theory of triangulated categories? At the very least, it would be good to point out that every stable model category is quasi-stable.
+
+Examples 5.2, 5.3, and 5.5 - all assert that a given functor is a WCO, but you've only defined WCOs relative to some other functor. It would be good to say what the other functor is in each case, or to use Notation 4.5 and say "of type n" in each case. Also, a word about whether you mean "right WCO" or "left WCO" or both would be nice. Generally speaking, I think a few more details about these examples are in order, since this is probably the most important part of the paper.
+
+

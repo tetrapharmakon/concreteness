@@ -1,0 +1,128 @@
+\documentclass[12pt]{amsart}
+\usepackage{latexsym, url}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+
+\usetikzlibrary{calc,positioning}
+\thispagestyle{plain}
+
+\def\cate#1{\mathbf{#1}}
+
+\newcommand{\Pf}{\noindent \mbox{\em \bf Proof. \hspace{2mm}} }
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{lemma}[theo]{Lemma}
+\newtheorem{assume}[theo]{Assumption}
+\newtheorem{propo}[theo]{Proposition}
+\newtheorem{defi}[theo]{Definition}
+\newtheorem{coro}[theo]{Corollary}
+\newtheorem{rem}[theo]{Remark}
+\newtheorem{pb}[theo]{Problem}
+\newtheorem{exam}[theo]{Example}
+\newtheorem{exams}[theo]{Examples}
+\newcommand\shift{\operatorname{shift}}
+\newcommand\ck{\mathcal {K}}
+ 
+\date{}
+ 
+\begin{document}
+\title{Negli occhi di Medusa}
+\author[]
+{JP Freyd}
+\thanks{} 
+\address{}
+ 
+\begin{abstract}
+Faccio poco, concentro l'attenzione su Freyd.
+\end{abstract} 
+\keywords{}
+\subjclass{}
+
+\maketitle
+
+\section{Il caso che sappiamo fare}
+
+Allora, adesso facciamo il discorso per $\cate{Htop}$ e alla fine leviamo le ipotesi. Quello che faremo è rileggere la dimostrazione di Freyd tentando di sottolineare i nodi centrali della dimostrazione (i.e. dando i nomi alle rotelle che fanno girare l'argomento).
+
+Consideriamo il diagramma che segue.
+\begin{center}
+\begin{tikzcd}
+\arrow[loop left]{l}{\Sigma} \cate{hTop} \ar[r, shift left, "\pi"] & \ar[l,shift left,"i"]\cate{Grp}^\mathbb{N} \arrow[loop right]{r}{\text{sh}}
+\end{tikzcd}
+\end{center}
+
+\begin{rem}
+Supponiamo che $i$ sia una sezione di $\pi$:
+\begin{enumerate}
+\item $\pi \circ \Sigma = \shift  \circ  \ \pi$
+\item Esiste una trasformazione naturale $\text{id} \Rightarrow \Sigma$
+\item La trasformazione naturale \emph{serpeggia}, nel senso che esiste una mappa che fa commutare il seguente diagramma.
+\begin{center}
+\begin{tikzpicture}
+\node (X) at (0,0) {$X$};
+\node[right=1.5cm of X] (Y) {$Y$};
+\node[below=1.5cm of X] (SX) {$\Sigma Y$};
+\node[below=1.5cm of Y] (SY) {$\Sigma Y$};
+\draw[->] (X) -- (Y); 
+\draw[->] (Y) -- (SY);
+\draw[->] (X) -- (SX); 
+\draw[->] (SX) -- (SY);
+\node (C) at ($(X)!.5!(SY)$) {$C$};
+\draw[->] (Y) -- (C);
+\draw[->] (C) -- (SX);
+\end{tikzpicture}
+\end{center}
+($C=\text{cofib}(f)$ è in questo caso hocolim$f$ guardato come diagramma $\Delta^1 \to \cate{Top}$).
+\end{enumerate}
+\end{rem}
+\newpage
+Prendiamo una successione transfinita di gruppi $\{X_{\alpha}\}$ abeliani tali che esista una mappa non nulla $X_\alpha \to X_{\alpha+1}$ e nessuna composizione può essere nulla e concentriamoli su una fila, diciamo l'n esima. E buttiamo giù il seguente diagramma.
+\begin{center}
+\begin{tikzcd}
+X_1 \ar[rr]\ar[dd]&& \Sigma X_1 \ar[rr]\ar[dd]&& \Sigma^2 X_1\ar[dd]\\
+&C\ar[ur]&\\
+X_2 \ar[ur]\ar[rr]\ar[dd]&& \Sigma X_2 \ar[rr]\ar[dd]&& \Sigma^2 X_2\ar[dd]\\
+&C\ar[uuur]&\\
+X_3 \ar[ur]\ar[rr]&& \Sigma X_3 \ar[rr]&& \Sigma^2 X_3\\
+\end{tikzcd}
+\end{center}
+Dove stiamo confondendo volontariamente $iX_{\alpha}$ con $X_{\alpha}$.
+
+Ora dico che le mappe $X_{\alpha} \to \Sigma X_1$ sono una successione transifinita di sottoggetti e ciao.
+
+\section{Generalizzare}
+
+Con la stessa dimostrazione si prova che
+
+\begin{theo}
+Se $\ck$ è una categoria che verifica le ipotesi $(i)-(iii)$ nel remark, allora $\ck$ non è concreta.
+\end{theo}
+
+\hrulefill
+
+Mi chiedo, a questo punto, se sia vero quanto segue
+\begin{theo}
+Sia $\ck$ una categoria modello che verifica le $(i)-(iii)$ del remark; in particolare 
+\begin{enumerate}
+\item $\Sigma : \ck \to \ck$ è il funtore $X \mapsto \mathrm{hocolim}\!
+\left[\hskip-1em
+\vcenter{%
+\begin{tikzcd}
+X \ar[r]\ar[d]& * \\ * & 
+\end{tikzcd}%
+}%
+\hskip-1em\right]$
+\item $C=C(f)$ è $\mathrm{hocolim}(f)$.
+\end{enumerate}
+Allora $\cate{h}\ck$ non è concreta.
+\end{theo}
+
+
+
+
+\end{document}

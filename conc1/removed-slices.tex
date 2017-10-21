@@ -1,0 +1,92 @@
+% \setlength{\epigraphwidth}{.8\textwidth}
+% \epigraph{
+% \setlength{\epigraphwidth}{.5\textwidth}
+% An additional remark suggesting the fact that a non-concrete category is unattainable, is the following: the proof is immediate.
+% \begin{remark}
+% Let $\mathcal{L}$ be a small subcategory of a non-concrete category $\K$; then the inclusion functor can't be dense.
+% \end{remark}
+% This specializes to the case of homotopy categories of model categories; also, a (possibly large) concrete subcategory $\mathcal{L}\hookrightarrow \ho(\M)$ can't be dense if $\ho(\M)$ is not concrete.
+% \begin{proof}
+% \Alert{}
+% \end{proof}
+% A more interesting remark, for us, is that dense subcategories of unconcretizable model categories must have non-concrete homotopy categories:
+% \begin{remark}
+% Let $\mathcal{L} \hookrightarrow \M$ a dense subcategory of a model category; if $\M$ is unconcretizable, then so is $\mathcal{L}$.
+% \begin{proof}
+% \Alert{}
+% \end{proof}
+% \end{remark}
+% \begin{proof}
+% The proof of \refbf{isbell} is fairly technical; we address the reader to \cite{fconc}.
+% \end{proof}
+% \begin{example}
+% The inclusion $\cate{Dgla}\hookrightarrow \Ch(\mathbb{Z})$ turns $\cate{Dgla}(K)$ into a homotopy replete model subcategory.
+% \end{example}
+% \Alert{Domenico? Manetti? Qualcuno che lo conferma/smentisce?}
+% The following result shows how concreteness can be checked on slices. A dual result holds for coslices.
+% \begin{proposition}
+% Let $\M$ be a model category, and $X\in\M$ an object; let $\M/X \to \M$ be the forgetful functor that sends $(A, f\colon A\to X)$ into $A$. Then $\M$ is concrete if and only if $\M/X$ is.
+% \end{proposition}
+% The following result shows how Bousfield localization \todo{blablabla}
+% \begin{proposition}
+% Let $\M$ be a model category, and $\mathfrak{L}_S\M$ a left Bousfield localization with respect to $S$-local equivalences ($S\subseteq\hom(\M)$). Then in the adjunction
+% \[
+% \begin{kodi}
+% \obj{|(loc)| \mathfrak{L}_S\M & \M \\};
+% \mor:[shove=-4pt] loc j:>-> M;
+% \mor:[shove=-4pt] M R_S:-> loc;
+% \node at ($(M)!.45!(loc)$) {\tiny$\top$};
+% \end{kodi}
+% \]
+% if $\M$ is homotopy concrete, then so is $\mathfrak{L}_S\M$.
+% \end{proposition}
+%\pi_n(f) \colon \pi_n(X)\cong \pi_n(Y),\; \forall n\ge 0\}
+%
+%
+%
+%\begin{remark}
+%The construction above can be generalized to the case of ``arbitrary coefficients'', meaning that we can define homotopy groups with $A$-coefficients, for $A$ a based object of $\M$, posing
+%\[
+%\pi_n^A(X) := [\Sigma^n A, X] = \ho(\M)(\Sigma^n A, X).
+%\]
+%Even if the following discussion is not affected by the loss of generality of taking $A=S^0$, it is sometimes necessary to make a ``clever choice'' for $A$, as sometimes $S^0$-coefficients yield too trivial a notion of homotopy group.
+%\end{remark}
+% \begin{remark}
+% Now if one wants to prove that $\ho(\M)$ is not concrete it is sufficient to prove that $\ho(\M_{*/})$ is not concrete. 
+% \begin{proposition} Let $\M$ be a model category. If  $\ho(\M_{*/})$ is not concrete, so is $\ho(\M)$.
+% \begin{proof}
+% We argue by contraddition. Let $U \colon \M_{*/} \to \M$ be the obvious forgetful functor; $U$ is ``Quillen faithful'' with respect to the natural choice of model structure on $\M_{*/}$: this means that it is faithful, and that the induced functor $\ho(U) \colon \ho(\M_{*/}) \to \ho(\M)$ remains faithful. If $\ho(\M)$ is concrete than there is a faithfull functor $$F: \ho(\M) \to \Set  $$ which would yield by composition $F \circ \ho(U) : \ho(\M_{*/}) \to \Set$ a faithfull functor functor for $\ho(\M_{*/})$.
+% \end{proof}
+% \end{proposition}
+% \end{remark}
+% \todo[inline]{Togliere la specializzazione ai $\pi_n$, togliere "in grado n" e mettere, se ce l'hai per $\pi_n$ lo chiamo di grado $n$}
+%
+%
+%%%%%
+% ;
+% \item the counit $\varepsilon: \Sigma\Omega \Rightarrow 1$ is an objectwise epimorphism. (This is equivalent to the faithfulness of $\Omega$.)
+% \end{itemize}
+%
+%
+%
+% \begin{remark}
+% Using the generalization of \refbf{spastic} to $R$-modules, we can also prove that the homotopy category of $G$-equivariant spectra \cite{} is not concrete.
+% % An alternative proof involves theorem \ref{addaveni} where we prove that given an adjunction \todo{blah} if the domain of the \todo{bluh} adjoint is not homotopy concrete, then so is the codomain.
+% \end{remark}
+% \begin{remark}
+% There are many reasons why categories of simplicial sheaves on sites are an object of interest. A deep theorem of Dugger \cite{} says that combinatorial model categories all arise as left Bousfield localizations of categories of simplicial sheaves. These categories also constitute a cornerstone of modern, derived algebraic geometry.
+% It is satisfying, hence, to be able to prove that derived algebraic geometry can't live in a concrete category. Especially because the former axiomatization given by the Grothendieck school, based on the axiom of universes \cite{artin1972sga}, testifies that to lay the foundation of algebraic geometry you do not need such a big horizon.
+% \end{remark}
+% We are interested in proving that all the following categories have a \textsc{wco} for some $n$:
+% \begin{enumerate}
+% \item The category of rational spaces;
+% \item The category of topological spaces having weak equivalences the maps $f : X \to Y$ such that $\pi_n(f, G)$ is an isomorphism for all $n$ (we're not sure these are the weak equivalences of a model structure!), if $\pi_n(\firstblank,G)$ is the homotopy group with coefficients in an abelian group $G$ (see \cite[§1]{neisendorfer2010algebraic}).
+% \item The category of 2-categories, where weak equivalences are the biequivalences, and the homotopy relation on 2-functors is just pseudonatural equivalence (see \cite{lack2002quillen})
+% \item \dots
+% \end{enumerate}
+% \section{Future directions}
+% \todo[inline]{\dots}
+% \appendix
+% \section{A proof of Lemma \refbf{spastic}}
+% \begin{proof}
+% \end{proof}

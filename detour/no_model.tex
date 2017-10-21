@@ -1,0 +1,101 @@
+\documentclass[12pt]{amsart}
+
+\input preambolo
+
+\def\J{\mathcal{J}}
+\def\Alg{\cate{Alg}}
+\def\Grp{\cate{Grp}}
+\def\T{\mathbb{T}}
+\def\K{\mathcal K}
+\begin{document}
+\begin{abstract}
+Ci sono strutture modello non banali sulle categorie di roba algebrica?
+\end{abstract}
+\begin{definition}
+Una categoria $\K = \Alg(\T)$ di algebre per una monade è ``non interessante'' se le uniche strutture modello su $\K$ si ottengono per transfer di Crans da strutture modello su $\Set$ mediante il funtore dimenticante $U \colon \K \to \Set$.
+\end{definition}
+\begin{example}
+Un esempio di categoria non interessante: $\Set$, e forse $\Grp$. Un esempio di categoria interessante: i moduli sinistri su un anello di Frobenius (see Hovey).
+\end{example}
+\begin{quest}
+Quante categorie non interessanti ci sono? Come riconoscerle? Che cosa, nell'algebra universale, differenzia i due esempi sopra?
+\end{quest}
+Facciamo un tentativo.
+
+C'è un risultato molto forte su come si ottengono strutture modello su categorie presentabili (tutte le $\Alg(\T)$ lo sono), a partire da una singola classe di mappe e un assioma insiemistico molto potente. 
+\begin{definition}
+Una struttura modello su $\K$ è \emph{determinata a sinistra} se la classe $\wk$ delle sue equivalenze deboli è la minima classe di mappe tale per cui
+\begin{enumerate}
+	\item $\cof^\perp \subseteq \wk$;
+	\item $\wk$ è chiusa per retratti ed è 2-su-3;
+	\item $\cof\cap \wk$ è chiusa per pushout e composizioni transfinite
+\end{enumerate}
+(queste sono vere per la classe $\wk$ di qualsiasi struttura modello che esiste su $\K$, ovviamente).
+\end{definition}
+In questo caso, la struttura modello è univocamente determinata dalla sola classe delle cofibrazioni, perché
+\begin{itemize}
+	\item I due sistemi di fattorizzazione su $\K$ sono $(\cof, \cof^\perp)$ e $(\wk\cap\cof, (\wk\cap\cof)^\perp)$;
+	\item La classe $\wk$ è determinata come...?
+\end{itemize}
+\begin{definition}
+Per una data $\J\subseteq \hom(\K)$ diciamo $\wk_c$ la più piccola classe di morfismi di $\K$ che soddisfa 1--3 sopra:
+\begin{enumerate}
+	\item $\J^\perp \subseteq \wk$;
+	\item $\wk$ è chiusa per retratti ed è 2-su-3;
+	\item $\J\cap \wk$ è chiusa per pushout e composizioni transfinite.
+\end{enumerate}
+\end{definition}
+Chiaramente $\wk_c$ sta in tutte le classi di equivalenze deboli di strutture modello su $\K$ che hanno $\J$ come cofibrazioni; le strutture modello determinate a sinistra da $\J$ sono esattamente quelle per cui $\wk = \wk_c$.
+\begin{theorem}[Teorema fichissimo]\label{fico}
+Sia $\K$ localmente presentabile e valga il principio di Vop\v{e}nka. Sia $\J_c = \text{cof}(\J)$ la chiusura di $\J$ rispetto a\dots, e sia $\wk = \wk_c$. Questa scelta di classi di morfismi dà a $\K$ una struttura modello determinata a sinistra che è combinatoria (\dots se $\J$ è un insieme?).
+\end{theorem}
+Ricordo che se $\mathcal Z \subseteq \hom(\K)$ definiamo la \emph{localizzazione di Bousfield sinitra di $\K$ a $\mathcal Z$} come la nuova categoria modello
+\[
+\mathfrak{l}_{\mathcal Z}\K = \big( \K; [\wk\cup\mathcal Z, \cof, (\cof\cap(\wk\cup\mathcal Z))^\perp]\big)
+\]
+\begin{remark}
+Se $\K$ è generata a sinistra e $\wk_{\mathcal Z}$ è la minima classe tale che
+\begin{enumerate}
+	\item $\wk\cup\mathcal Z \subseteq \wk_{\mathcal Z}$;
+	\item $\wk_{\mathcal Z}$ è chiusa per retratti e 2-su-3;
+	\item $\cof\cap \wk_{\mathcal Z}$ è chiusa per pushout e composizioni transfinite.
+\end{enumerate}
+Allora $\mathfrak{l}_{\mathcal Z}\K$ (esiste ed) è determinata a sinistra.
+\end{remark}
+\begin{remark}
+Se $\K$ è cof generated e determinata a sinistra, la categoria modello $[I,\K]$ dei funtori $I\to\K$ è determinata a sinistra.
+\end{remark}
+\begin{example}
+Esempi di strutture modello determinate a sinistra: quella banale su $\Set$; una certa struttura modello sugli insiemi simpliciali simmetrici.
+
+Esempi di strutture modello non determinate a sinistra: $\sSet$ con Kan-Quillen.
+
+Tuttavia, la categoria $\sSet$ con Kan-Quillen è Q-equivalente alla categoria modello degli insiemi simmetrici.
+\end{example}
+Ora che si fa?
+\begin{itemize}
+	\item Sarebbe bello usare questa costruzione per mostrare che $\Alg(\T)$ non è interessante;
+	\item C'è infatti una struttura modello su $\Alg(\T)$ data per transfer di Crans e cofibrantemente generata da $F(\varnothing \to *)$ e da \dots (le cofibrazioni nel secondo caso sono gli epimorfismi di $\T$-algebre; nel primo\dots).
+
+	Come si dimostra che non ce ne sono altre?
+\end{itemize}
+Vi sono alcuni problemi o cose poco chiare:
+\begin{itemize}
+	\item $F\dashv U$ deve soddisfare delle ipotesi (che saranno vere, almeno per $\T$ decenti, ma bisogna controllare);
+	\item \emph{Ogni} struttura modello è Q-equivalente a una determinata a sinistra?
+	\item Diciamo che la classe dei morfismi \emph{proiettivi} in $\Alg(\T)$ è la chiusura per retratti delle inclusioni $A \hookrightarrow A \amalg FX$ con $X\in\Set$. Allora esiste un wfs su $\Alg(\T)$ fatto da $(\textsc{Proj}, \textsc{Epi})$. Questo è una struttura modello su $\Alg(\T)$? Se sì quando è il transfer di Crans lungo $U$?
+\end{itemize}
+Richiamo cos'è il transfer di Crans: sia $F \dashv U \colon \C \leftrightarrows \D$ una aggiunzione con $U\colon \D \to \C$, e $\C$ ha una struttura modello cof generata.
+
+Definiamo
+\begin{itemize}
+	\item $\wk = U^\leftarrow(\wk_\C)$;
+	\item $\fib = U^\leftarrow(\fib_\C)$.
+\end{itemize}
+Allora su $\D$ esiste una struttura modello se
+\begin{itemize}
+	\item $F$ preserva gli oggetti piccoli (condizione sufficiente a che questo avvenga è che $U$ commuti coi colimiti filtrati);
+	\item Ogni composizione transfinita di pushout di morfismi del tipo $F(f)$, con $f$ cof aciclica generante, sta in $\wk_\D$.
+\end{itemize}
+Le cofibrazioni, a queste ipotesi, sono definite da $F$: $\D$ ha una struttura modello cof generata dall'immagine mediante $F$ delle cof acicliche e delle cof generanti.
+\end{document}

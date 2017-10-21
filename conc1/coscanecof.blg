@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: coscanecof.aux
+The style file: amsalpha.bst
+Database file #1: allofthem.bib
+Warning--string name "j-lect-notes-math" is undefined
+--line 1721 of file allofthem.bib
+Warning--can't use both author and editor fields in Baues1989
+Warning--missing pages in Kennet-1973
+Warning--can't use both volume and number if series info is missing
+in BibTeX entry type `inproceedings'
+Warning--missing journal name in Freydconc
+Warning--missing journal, volume, and year in Freydconc
+You've used 17 entries,
+            2624 wiz_defined-function locations,
+            674 strings with 6492 characters,
+and the built_in function-call counts, 5581 in all, are:
+= -- 493
+> -- 175
+< -- 18
++ -- 51
+- -- 49
+* -- 428
+:= -- 876
+add.period$ -- 17
+call.type$ -- 17
+change.case$ -- 90
+chr.to.int$ -- 17
+cite$ -- 21
+duplicate$ -- 280
+empty$ -- 498
+format.name$ -- 79
+if$ -- 1144
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 38
+newline$ -- 61
+num.names$ -- 51
+pop$ -- 125
+preamble$ -- 1
+purify$ -- 106
+quote$ -- 0
+skip$ -- 195
+stack$ -- 0
+substring$ -- 297
+swap$ -- 39
+text.length$ -- 18
+text.prefix$ -- 13
+top$ -- 1
+type$ -- 113
+warning$ -- 5
+while$ -- 54
+width$ -- 20
+write$ -- 190
+(There were 6 warnings)

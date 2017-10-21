@@ -1,0 +1,229 @@
+\section{Thingy thingies}		
+Basically a summary of the above stuff and a little extension thereof.		
+\begin{definition}[$n$-truncated morphism]		
+It is a $f \colon X\to Y$ such that one of the following equivalent conditions is satisfied:		
+\begin{itemize}		
+	\item $\H(C,f)$ is a $n$-truncated morphism of $\iGpd$;		
+	\item $f$ is $n$-truncated as an object of $\H/Y$;		
+	\item $\underline{\pi}_k(f) = *$ for all $k>n$;		
+	\item $\tau_{\le n-1}(f) = *$ (where $\tau_{\le n-1} \colon \H/Y \to (\H/Y)_{\le n-1}$ or $\tau_{\le n-1}(f)$ in $\H$).		
+\end{itemize}		
+\end{definition}		
+\begin{proposition}		
+$n$-truncated morphisms form the right class of an infinitary FS on $\H$ whose left class is that of $n$-connected morphisms. (there's a question here: is it true that FS and reflective subcat correspond each other under a weaker assumption than reflectivity of the FS; watsup?)		
+\end{proposition}		
+\begin{definition}[Towers]		
+Let $\mathbb{N}^\rhd$ be the (nerve of the) category $\{0\le 1\le \cdots \le \infty\}$. We define		
+\begin{itemize}		
+	\item A \emph{(Postnikov) tower} in $\H$ to be a functor $(\mathbb{N}^\rhd)^\opp \to \H$: $X_0\leftarrow \cdots \leftarrow X_\infty$ (such that $X_k \cong \tau_{\le k}(X_\infty)$);		
+	\item A \emph{(Postnikov) pretower} in $\H$ to be a functor $\mathbb{N}^\opp \to \H$: $X_0\leftarrow \cdots$ (such that $X_n\cong \tau_{\le n}(X_{n+1})$)		
+\end{itemize}		
+We denote $\varphi \colon \text{Post}^+(\H) \hookrightarrow \text{Post}(\H)$ the inclusion of Postnikov towers into Postnikov pretowers. We say that \emph{Postnikov towers are convergent} in $\H$ if $\varphi$ is an equivalence, whose inverse is given by taking the limit $\varprojlim_(X_0\leftarrow X_1\leftarrow \cdots)$.		
+\end{definition}		
+Let $\cate{W}\subseteq \H \times \mathbb{N}^\rhd$ be the category of all pairs $(C,n)$ where $C\in\H_{\le n}$ is a $n$-truncated object. Then (since this is the category of elements of $n\mapsto \H_{\le n}$) there exists a cocartesian fibration $p \colon \cate{W} \to \mathbb{N}^\rhd$ such that $p^\leftarrow(n) = \H_{\le n}$; this fibration classifies a tower of functors		
+\[		
+\H_{\le 0} \leftarrow \H_{\le 1}\leftarrow \cdots \leftarrow \H		
+\]		
+Postnikov towers are then identified with cocartesian sections of $p$, and Postnikov pretowers with the cocartesian sections of $\tilde p$:		
+\[		
+\begin{kodi}		
+\obj[rectangular={8em}{4em}]{		
+|(pull)| \cate{W}\times_{(\mathbb{N}^\rhd)^\opp}\mathbb{N}^\opp &|(W)|    \cate{W} \\		
+|(Nop)|  \mathbb{N}^\opp                                        &|(Nop')| (\mathbb{N}^\rhd)^\opp\\};		
+\mor pull -> W p:-> Nop';		
+\mor * {\tilde p}:swap,-> Nop -> *; 		
+\end{kodi}		
+\]		
+Now, Postnikov towers are convergent if and only if there is a limit diagram		
+\[		
+\H \cong \varprojlim\big( \H_{\le 0} \leftarrow \H_{\le 1}\leftarrow \cdots \big)		
+\]		
+in such a way that $\H(X,Y)\cong \varprojlim_n \H_{\le n}(\tau_{\le n}X, \tau_{\le n}Y)$.		
+\begin{remark}		
+Let $\H$ be a \inftop, and assume that Postnikov towers are convergent in $\H$. Then every Postnikov tower is a limit diagram in $\H$:		
+\begin{align*}		
+\H(X,Y) &\cong \varprojlim_n \H_{\le n}(\tau_{\le n}X, \tau_{\le n}Y)\\		
+&\cong \varprojlim_n \H(X, \tau_{\le n}Y)\\		
+&\cong \H(X,\varprojlim_n \tau_{\le n}Y).		
+\end{align*}		
+\end{remark}		
+\appendix		
+\section{Infinitary FSs}		
+\begin{definition}[$k$\hyp{}ary factorization system]\label{mult.fs}		
+Let $k \ge 2$ be a natural number. A \emph{$k$\hyp{}fold factorization system} on a category $\C$ consists of a monotone map $\phi\colon \Delta[k-2]\to \textsc{fs}(\C)$, where the codomain has the partial order of \adef \ref{def:prefacts}; denoting $\phi(i)=\fF_i$, a $k$\hyp{}fold factorization system on $\C$ consists of a chain		
+\[		
+\fF_1 \preceq \dots \preceq \fF_{k-1},		
+\]		
+This means that if we denote $\fF_i = (\EE_i, \MM_i)$ we have two chains --any of which determines the other-- in $\hom(\C)$:		
+\begin{gather*}		
+\EE_1\supset \EE_2 \supset\dots\supset \EE_{k-1},\\		
+\MM_1\subset \MM_2 \subset\dots\subset \MM_{k-1}.		
+\end{gather*}		
+\end{definition}		
+The definition of a $k$\hyp{}ary factorization system is motivated by the fact that a chain in $\textsc{fs}(\C)$ results in a way to factor each arrow ``coherently'' as the composition of $k$ pieces, coherently belonging to the various classes of arrows. This is explained by the following simple result:		
+\begin{lemma}\label{multiple.fact}		
+Every arrow $f\colon A\to B$ in a category endowed with a $k$\hyp{}ary factorization system $\fF_1\preceq\dots\preceq \fF_{k-1}$ can be uniquely factored into a composition		
+\[		
+A \xto{\EE_1} X_1 \xto{\EE_2\cap \MM_1} X_2\to\dots\to X_{k-2} \xto{\EE_{k-1}\cap \MM_{k-2}} X_{k-1} \xto{\MM_{k-1}} B,		
+\]		
+where each arrow is decorated with the class it belongs to.		
+\end{lemma}		
+\begin{proof}		
+For $k=1$ this is the definition of factorization system: given $f\colon X\to Y$, we have its $\mathbb{F}_{i_1}$\hyp{}factorization		
+\[		
+X \xto{\EE_{i_1}} Z_{i_1}  \xto{\MM_{i_{1}}} Y.		
+\]		
+Then we work inductively on $k$. Given an arrow $f\colon X\to Y$ we first consider its $\mathbb{F}_{i_k}$\hyp{}factorization		
+\[		
+X \xto{\EE_{i_k}} Z_{i_k}  \xto{\MM_{i_{k}}} Y,		
+\]		
+and then observe that the chain $i_1\leq\cdots\leq i_{k-1}$ induces a $(k-1)$\hyp{}ary factorization system on $\C$, which we can use to decompose $Z_{i_k}\to Y$ as		
+\[		
+Z_{i_k} \xto{\EE_{i_{k-1}}} Z_{i_{k-1}} \xto{\EE_{i_{k-2}}\cap \MM_{i_{k-1}}} Z_{i_{k-2}}\to\dots\to Z_{i_{2}}\xto{\EE_{i_{1}}\cap \MM_{i_{2}}} Z_{i_{1}} \xto{\MM_{i_{1}}} Y,		
+\]		
+and we are only left to prove that $Z_{i_{k}} \to Z_{i_{k-1}}$ is actually in $\EE_{i_{k-1}}\cap \MM_{i_{k}}$. This is an immediate consequence of the left cancellation property for the class $\MM_{i_{1}}$. Namely, since $\MM_{i_1}\subseteq \MM_{i_2} \subseteq\dots\subseteq \MM_{i_k}$, and $ \MM_{i_k}$ is closed for composition, the morphism $Z_{i_{k-1}}\to Y$ is in $\MM_{i_k}$. Then the \textsc{l32} property applied to 		
+\[		
+Z_{i_{k}}\to Z_{i_k-1}\xto{\MM_{i_k}} Y		
+\]		
+concludes the proof.		
+\end{proof}		
+\subsubsection{The transfinite case.}\label{transfinite.case} We are now interested to refine the previous theory in order to deal with possibly infinite chains of factorization systems. From a conceptual point of view, it seems natural how to extend the former definition to an infinite ordinal $\alpha$; it must consists on a ``suitable'' functor $F\colon \alpha\to \textsc{fs}(\C)$. 		
+		
+The problem is that suitable necessary co\fshyp{}continuity assumptions for such a $F$ might be covered by the fact that its domain is finite (and in particular admits an initial and a terminal object): in principle, dealing with infinite quantities could force such $F$ to fulfill some other properties in order to preserve the basic intuition behind factorization.		
+		
+We start, now, by recalling a number of properties motivating \adef \ref{mult.fs} below.		
+\begin{notat}		
+A factorization system on $\C$ naturally defines a pair of pointed\fshyp{}co\hyp{}pointed endofunctors on $\C^{\Delta[1]}$, starting from the factorization		
+\[		
+\begin{kodi}		
+\obj{		
+	X && Y \\		
+	& F(f)& \\		
+};		
+\mor X -> Y;		
+\mor[swap] * {\overleftarrow{F}(f)}:-> {Ff} {\overrightarrow{F}(f)}:-> Y;		
+\end{kodi}		
+\]		
+(This has also been noticed in \cite{HTT}). 		
+		
+A refinement of this  notion (see \cite{grandis2006natural, Gar, riehl2011algebraic}) regards this pair of functors as monad\fshyp{}comonad on $\C^{\Delta[1]}$: in this case $F\colon \C^{\Delta[1]}\to\C$ is a functor and $f\mapsto \overleftarrow{F}(f)$ has the structure of a (idempotent) comonad, whose comultiplication is		
+\[		
+\xymatrix@C=1.4cm{		
+Ff \ar[r]^{\overleftarrow{F}(\overrightarrow{F}(f))}\ar[d]_{\overrightarrow{F}(f)} & FFf \ar[d]^{\overrightarrow{F}(\overrightarrow{F}(f))}\\		
+Y \ar@{=}[r] &Y		
+}		
+\]		
+and $f\mapsto \overrightarrow{F}(f)$ has the structure of a (idempotent) monad, whose multiplication is		
+\[		
+\xymatrix@C=1.4cm{		
+X \ar@{=}[r]\ar[d]_{\overleftarrow{F}(\overleftarrow{F}(f))} & Ff\ar[d]^{\overleftarrow{F}(f)}\\		
+FFf \ar[r]_{{\overrightarrow{F}(\overleftarrow{F}(f))}}& Ff.		
+}		
+\]		
+\end{notat}		
+\begin{definition}\label{mult.fs.trans}		
+Let $\alpha$ be an ordinal. A \emph{$\alpha$\hyp{}ary factorization system}, or \emph{factorization system in $\alpha$\hyp{}stages}, on $\C$ consists of a monotone function $\alpha\to \textsc{fs}(\C)\colon i\mapsto \fF_i$ such that, if we denote by		
+\[		
+\xymatrix{		
+X \ar[rr]\ar[dr]_{\overleftarrow{F}_i(f)}&& Y \\		
+& F_i(f)\ar[ur]_{\overrightarrow{F}_i(f)}		
+}		
+\]		
+the $\fF_i$\hyp{}factorization of $f\colon X\to Y$, we have the following two ``tame convergence'' conditions:		
+\begin{gather*}		
+\varprojlim_{i\in\alpha} \overrightarrow{F}_i(f) =		
+\varprojlim_{i\in\alpha} \var{F_i(f)}{Y} = \var{X}{Y};		
+\qquad \varinjlim_{i\in\alpha} \overleftarrow{F}_i(f) =		
+\varinjlim_{i\in\alpha} \var{X}{F_i(f)} = \var{X}{Y}\\		
+\varinjlim_{i\in\alpha} \overrightarrow{F}_i(f) =		
+\varinjlim_{i\in\alpha} \var{F_i(f)}{Y} = 1_Y;		
+\qquad \varprojlim_{i\in\alpha} \overleftarrow{F}_i(f) =		
+\varprojlim_{i\in\alpha} \var{X}{F_i(f)} = 1_X		
+\end{gather*}		
+(all the diagrams have to be considered defined in suitable slice and coslice categories) which can be summarized in the presence of ``extremal'' factorizations		
+\[		
+\xymatrix{		
+X \ar[rr]^f\ar@{=}[dr]_{\varprojlim_i \overleftarrow{F}_if}&& Y & X\ar[rr]^f\ar[dr]_{\varinjlim_i \overleftarrow{F}_if} && Y\\		
+& X\ar[ur]_{\varprojlim_i \overrightarrow{F}_if} &&& Y\ar@{=}[ur]_{\varinjlim_i \overrightarrow{F}_if}		
+}		
+\]		
+\end{definition}		
+\begin{theorem}[The multiple small object argument]		
+Let $\mathcal{J}_1\subseteq \cdots \subseteq \mathcal{J}_n$ be a chain of markings on $\C$; if each class $\mathcal{J}_\alpha$ has small domains then applying $n$ times the small object argument, the extensivity of the $\prescript{}{\perp}{((-)^\perp)}$ and $(\prescript{\perp}{}{(-)})^\perp$ closure operators entails that there exists a chain of factorization systems		
+\[		
+\big({}^\perp(J_n^\perp),J_n^\perp \big) \preceq \cdots \preceq \big({}^\perp(J_1^\perp),J_1^\perp \big)		
+\]		
+\end{theorem}		
+		
+\hrulefill		
+		
+\begin{definition}[$k$-connected map, $k$-truncated map]		
+Let $f\colon X\to Y$ be a map of spaces. It is called \emph{$k$-connected} if it induces isomorphisms in $\pi_{\le k}$ and a surjection on $\pi_{k+1}$. A map of spaces $g\colon A\to B$ is called \emph{$k$-truncated} if it induces isomorphisms in $\pi_{> k+1}$ and an injection on $\pi_{k+1}$.		
+\end{definition}		
+\begin{proposition}		
+There is a factorization system $\mathbb{S}_k = (\EE_k,\MM_k)$ on $\Top$ having left class the $k$-connected maps and right class the $k$-truncated maps.		
+\end{proposition}		
+We actually have a \emph{chain} of factorization systems		
+\[		
+\EE_0\subset \EE_1\subset \EE_2\subset\cdots		
+\]		
+\begin{definition}		
+A map of spaces $f\colon X\to Y$ is a \emph{$k$-equivalence} if it induces an isomorphism in $\pi_{\le k}$; a map of spaces $g\colon A\to B$ is a \emph{$k$-co-equivalence} if it induces isomorphisms in $\pi_{ > k}$.		
+\end{definition}		
+\begin{proposition}		
+There is a factorization system $\widetilde{\mathbb{S}}_k = (\widetilde{\EE}_k,\widetilde{\M}_k)$ on $\Top$ having left class the $k$-equivalences and right class the $k$-co-equivalences.		
+\end{proposition}		
+We actually have a \emph{chain} of factorization systems		
+\[		
+\widetilde{\EE}_0\subset \widetilde{\EE}_1\subset \widetilde{\EE}_2\subset\cdots		
+\]		
+These two factorization systems are obviously related, since $\EE\subset \widetilde{\EE}$; the second enjoys nice categorical properties, whereas there are good reasons to choose the first in outlining a theory of BM-like theorems.		
+\begin{remark}		
+The factorization systems $\widetilde{\S}_k$ are bireflective (in the terminology of \cite{Fiorenza2014}) for each $k\in\mathbb N$.		
+		
+The factorization systems $\S_k$ enjoy a weaker cancellation property which forces us to consider the $\mathbb{Z}$-parametric family of factorizations as a whole object: let $\{f,g,gf\}$ be a triple of composable maps of spaces.		
+\begin{itemize}		
+\item If $gf\in\EE_k$ and $f\in\EE_{k-1}$, then $g\in \EE_k$.		
+\item If $gf\in\EE_k$ and $g\in\EE_{k+1}$, then $f\in \EE_k$.		
+\end{itemize}		
+\end{remark}		
+\begin{remark}		
+The closure properties for $\S$ behave strangely. (One of the two classes is irredeemably not closed under pushout, even if the other is closed unde \emph{both} pull and push.)		
+\end{remark}		
+\begin{theorem}[Blakers-Massey theorem]		
+Let		
+\[		
+% \begin{kD}		
+% \lattice[mesh]{		
+% \obj (Avuoto):A_\varnothing; & \obj A_0;\\		
+% \obj A_1; & \obj A_{01};\\			
+% };		
+% \mor Avuoto f_0:-> A_0 -> A_{01};		
+% \mor Avuoto swap:f_1:-> A_1 -> A_{01};		
+% \end{kD}		
+\]		
+be a pushout of spaces. Then we can consider also the pullback of $ $, and the resulting \emph{comparison map} $f_0\hat{\bullet} f_1 \colon A_\varnothing \to A_0 \times_{A_{01}} A_1$ in the diagram		
+\[		
+% \begin{kD}		
+% \lattice[comb]{		
+% \obj (Avuoto):A_\varnothing; & \obj A_0;\\		
+% \obj A_1; & \obj A_{01};\\			
+% };		
+% \mor Avuoto f_0:-> A_0 -> A_{01};		
+% \mor Avuoto swap:f_1:-> A_1 -> A_{01};		
+%		
+% \node (P) at ($(A_{01})!2!(Avuoto)$) {$A_0 \times_{A_{01}} A_1$};		
+% \mor P r> A_0; 		
+% \mor P L> A_1;		
+% \mor[dashed] P f_0\hat{\bullet}f_1:<- Avuoto;		
+% \end{kD}		
+\]		
+If we denote $f_i \colon A_\varnothing \to A_i$ the maps in the original square, and $f_i\in \EE_{k_i}$ for some $k_0, k_1\in\mathbb{N}$, then $f_0\hat{\bullet} f_1\in \EE_{k_0 + k_1}$.		
+\end{theorem}		
+Let $\S_0, \S_1$ be factorization systems having left classes $\EE_{\lambda_0}, \EE_{\lambda_1}$; then the comparison map $f_0\hat{\bullet} f_1 \colon A_\varnothing \to A_0 \times_{A_{01}} A_1$ is in $\EE_{\lambda_0}\hat\bullet \EE_{\lambda_1}$ (part of the problem is to define the functor $\hat\bullet \colon \Top^\to \times \Top^\to \to \Top^\to$).		
+% \begin{lemma}		
+% Let $C$ be a closed class of maps of spaces; let $S,T \colon \cate{J} \to \cate{Spc}$ be two diagrams of spaces, such that $\fib(S\to T)$ belongs objectwise to $C$. Then $\hocolim S \to \hocolim T$ belongs to $C$.		
+% \end{lemma}		
+% \begin{proof}		
+% The proof is an exercise in descent in $\infty$-toposes.\dots		
+% \end{proof}
