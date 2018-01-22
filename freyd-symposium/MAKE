@@ -1,2 +1,3 @@
+tex -v | head -n 1 > version.tex
 latexmk -pdf CAF.tex
 latexmk -c

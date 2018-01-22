@@ -1,0 +1,95 @@
+\section{Generalities on concreteness}
+We recall the main definition we will operate with (see \cite{Bor1,McL}):
+\begin{definition}\label{concrecat} A category $\C$ is called \emph{concrete} if
+it admits a faithful functor $U\colon \C \to \Sets$.
+\end{definition} Concreteness can be regarded as a smallness request; in fact,
+the following remark shows that many of the categories arising in mathematical
+practice are concrete simply because they are not big enough, either because
+they are small, or because they are accessible (the proof of each of the
+following statements is easy).
+\begin{remark}[almost everything is concrete]\label{all-is-conc} Every small
+category is concrete. Every accessible category is concrete; if a category is
+not concrete, none of its small subcategories can be dense. Concreteness is a
+self-dual property, \ie $\C$ is concrete if and only if $\C^\opp$ is concrete.
+If $\C$ is a concrete, and $J$ is a small category, then the functor category
+$\C^J$ is concrete. If $\C$ is monadic over $\Set$, then it is concrete.
+\end{remark} 
+The paper \cite{Isbell1964} states a condition for the concreteness of a category $\C$; this condition relies on the notion of a \emph{resolvable relation} between the classes of spans and cospans in $\C$. This was linked by \cite{freyd1973concreteness} to a smallness request on the class of so-called \emph{generalized regular subobjects} of objects in $\C$. More in detail, \cite{freyd1973concreteness} proves the following statements:
+\begin{itemize}
+	\item the Isbell condition of \cite{Isbell1964} is equivalent, in a category with finite products, to the smallness of the class of \emph{generalized regular subobjects} of each object $A\in\C$, that we define below in \refbf{grsdef};
+	\item in a category with finite limits, the Isbell condition is equivalent to the smallness of the class of regular subobjects of each object $A\in\C$;
+	\item the smallness of each class of generalized regular subobjects is necessary for concreteness.
+\end{itemize}
+\begin{definition}[Regular Generalized Subobject]\label{grsdef} Let $f\in
+\K_{/A}$ an object of the slice category, and let $C(f,B)$ be the class of pairs
+$u,v : A \to B$ such that $uf=vf$ as morphisms $\text{src}(f) \to A \to B$.
+Define an equivalence relation $\asymp$ on objects of $\K_{/A}$ as
+\begin{center}
+$f\asymp g$ iff $C(f,B)=C(g,B)$ for every $B\in\K$, 
+\end{center}
+and let $\sub(\K_{/A})$ be the quotient of $\K_{/A}$ under this
+equivalence relation. This is called the class of \emph{generalized regular
+subobjects} of $A\in\K$.
+\begin{remark}
+Briefly, the $\asymp$ relation identifies two maps with codomain $A$ if and only if they equalize the same pairs of arrows. In the category of sets and functions, given a function $f$, $f\asymp m_f$, where $m_f$ is the (essentially unique, regular) monomorphism appearing in the epi-mono factorization of $f$; more generally, the same argument shows that $f\asymp m_f$ in every category endowed with a factorization system with regular monomorphisms as right class. A slightly more general argument shows that in a finitely complete category with cokernel pairs, a morphism $f \colon X\to A$ is $\asymp$-equivalent to the regular monomorphism $q$ appearing in the equalizer
+\[\notag
+\begin{kodi}
+\obj{E & A & |(push)| A\cup_X A \\};
+\mor E q:-> A u:{swap,shove=4pt},-> push;
+\mor A v:{shove=-4pt},-> push;
+\end{kodi}
+% \xymatrix{
+% 	E \ar[r]^-q& A\ar@<4pt>[r]^-u\ar@<-4pt>[r]_-v & A\cup_XA.\\
+% }
+\]
+In \cite{freyd1973concreteness} it is stated that in a category with finite limits the generalized regular subobjects of $A$ coincide with the regular subobjects of $A$ for each object $A$.
+\end{remark}
+\end{definition}
+\begin{proposition}[Freyd condition]\label{isbell}
+If $\K$ is concrete then its class of generalized regular subobjects $\sub(\K_{/A})$ is a set for every $A\in\K$.
+\end{proposition}
+It is worthwhile to notice that there is a completely dual definition of \emph{generalized regular quotients} $\quot(\K_{A/})$: there is a similar definition for a relation that identifies two maps with \emph{domain} $A$ if and only if they \emph{coequalize} the same pairs of arrows, and the size of equivalence classes of generalized regular quotients characterize concreteness as well:
+\begin{proposition}[co-Freyd condition]\label{coisbell}
+If $\K$ is concrete then its class of generalized regular quotient $\quot(\K_{A/})$ is a set for every $A\in\K$.
+\end{proposition}
+
+\begin{remark}
+Recall that if $\K$ has finite products, the Freyd condition is equivalent to the Isbell condition and thus to concreteness of $\K$. Since all the categories of interest in this paper have finite products there is no real interest in distinguishing the two conditions. Instead of choosing cumbersome notation as Freyd-Isbell condition or similar, we decide to call this common condition ``Isbell condition".
+\end{remark}
+
+Several universal constructions of $\Cat$ restrict to constructions on model categories: given the purpose of this work, we are principally interested in those constructions that transport non-concreteness. Of course, among them there can be utterly trivial considerations, for example the fact that equivalent categories are either both concrete or both non-concrete (so that every category which is Quillen equivalent to a given non-homotopy\hyp{}concrete one is non-homotopy concrete as well), or the fact that if $\mathcal{L}\hookrightarrow \K$ is a subcategory and $\mathcal{L}$ is not concrete, so is~$\K$.
+
+We will sometimes exploit such straightforward results to prove that a model category $\M$ is not homotopy\hyp{}concrete. We only have to pay attention to the fact that we want a functor that is \emph{homotopy faithful}, meaning that it induces inclusion \emph{between localizations}; usually, there is really no control on which maps $\mathcal{L}(X,Y)\to \M(X,Y)$ become monomorphisms $\ho(\mathcal{L})(X,Y)\to \ho(\M)(X,Y)$.
+\begin{definition}[piercing model subcategory]
+Let $\M$ be a model category; a \emph{piercing model subcategory} is a full subcategory $\W \overset{U}\hookrightarrow \M$, which is reflective and coreflective, and having the model structure for which an arrow $\varphi \colon W \to W'$ is in $\wk,\cof,\fib$ if and only if $U\varphi$ is in $\wk,\cof,\fib$ as an arrow of $\M$.
+\end{definition}
+\begin{remark}
+In the terminology of \cite{may2011more}, a piercing model subcategory is a reflective and coreflective subcategory such that the inclusion $U$ \emph{strongly creates} the model structure on $\W$.
+\end{remark}
+\begin{definition}
+Let $\W \hookrightarrow \M$ be a piercing model subcategory; we say that $\W$ is \emph{homotopy replete} if given a zig zag of weak equivalences in $\M$ from an object of $\W$, 
+\[
+W \leftrightarrow  \dots \leftrightarrow M
+\]
+the arrows, as well as the object $M$, lie in $\W$.
+\end{definition}
+\begin{proposition}
+A piercing model subcategory $\W \overset{U}\hookrightarrow \M$ induces a faithful functor $\ho(\W) \overset{\ho(U)}\hookrightarrow \ho(\M)$.
+\end{proposition}
+\begin{proof}
+Since $\W$ is piercing in $\M$, there is a commutative square
+\[
+\begin{kodi}
+\obj{|(A)| \W(\tilde V,\hat W)& [6.5em] |(B)| \M(U\tilde V,U\hat W) \\ |(D)| \ho(\W)(\tilde V,\hat W) & |(C)| \ho(\M)(U\tilde V,U\hat W)\\};
+\mor A -> B ->> C;
+\mor[swap] * ->> D {\overline{U}_{VW}}:dashed,-> *;
+\end{kodi}
+\]
+where the horizonal arrows are the actions of the functors $U,\ho(U)$ on hom-sets. The first isomorphism theorem for sets now yields that $\overline{U}_{VW}$ is injective.
+\end{proof}
+\begin{example}\label{gpd-in-cat}
+The inclusion $\Gpd_\text{folk}\hookrightarrow \Cat_\text{folk}$ turns $\Gpd_\text{folk}$ into a piercing model subcategory.
+\end{example}
+\begin{remark}\label{unconcrete-frombelow}
+As a consequence of this result, if a piercing model subcategory $\W \hookrightarrow \M$ is not homotopy concrete, then neither $\M$ is.
+\end{remark}

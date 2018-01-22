@@ -1,0 +1,94 @@
+\section{$\cate{Ho}$ is not concrete}
+The group of remarks in \refbf{all-is-conc} suggests that ``every'' category arising in mathematical practice should be concrete. And yet, in his \cite{fconc} Peter Freyd was able to offer a nontrivial example of a non-concrete category, made by topological spaces and homotopy classes of continuous functions.
+
+Freyd's proof is based on several technical lemmas and it is in fact the result of an extremely clever manipulation of basic constructions on topological spaces. We now propose a short but detailed survey of his original idea.
+Our aim in this section is to refurbish the classical proof of the theorem contained in \cite{fconc} that, spelled out in modern terms, asserts the following:
+\begin{theorem}[Homotopy is not concrete]\label{honoconc}
+Let $\wk$ denote the class of \emph{homotopy equivalences} in the category $\Top$ of topological spaces. Then the Gabriel-Zisman localization \cite{GZ} $\cate{Ho}=\Top[\wk^{-1}]$ is not concrete in the sense of \adef\refbf{concrecat}.
+\end{theorem}
+\begin{remark}
+Even though Freyd's proof seems to leave us free to choose \emph{any} model category structure on $\Top$ that has homotopy equivalences as weak equivalences (also because \cite{fconc} never mentions the classes of cofibrations thereof), and even though such a model structure seems to exist \cite{strom1972homotopy}, the details of this proof seem to be an object of debate (there's an instructive discussion on the $n$Lab page \cite{nlabstrommodel}). Therefore, we decide to restrict ourselves to consider the subcategory of $\Top$ whose objects are \emph{compactly generated spaces}, for which more modern technologies are available. We still denote this subcategory as $\Top$.
+\end{remark}
+\subsection{$\cate{Ho}$ is not concrete: the proof}
+Freyd's strategy can be summarized in the following two points:
+\begin{itemize}
+	\item As stated above \refbf{grsdef}, concreteness for a category $\A$ is equivalent to \emph{Isbell condition}; this necessary and sufficient condition was first proved in \cite{Isbell1964} (necessity) and \cite{fconc} (sufficiency).
+	\item In the homotopy category of spaces $\cate{Ho}$ it is possible to find an object (in fact, many) admitting a proper class of generalized regular subobjects.
+\end{itemize}
+Until the end of the proof, we fix:
+\begin{enumerate}
+	\item An integer $n\ge 1$;
+	\item an arbitrary prime $p$.
+\end{enumerate}
+To build an object with a proper class of generalized regular subobjects we manipulate the cofibration sequence of a suitable Moore spaces. The main technical tool here is a technical lemma that generates a proper class of groups having arbitrarily large height (see \cite{fuchs2015abelian}). 
+\begin{lemma}[black box lemma]\label{spastic}
+There exists a sequence $B_\bullet = (B_\alpha)$ of $p$-torsion abelian groups, one for each ordinal number $\alpha\in\cate{Ord}$, satisfying the following properties:
+\begin{itemize}
+	\item each $B_\alpha$ contains an element $x_\alpha$ such that $p x_\alpha = 0$;
+	\item when $\alpha < \beta$ every homomorphism of groups $f_{\alpha\beta} \colon B_\alpha \to B_\beta$ such that $f(px)=p f(x)$ sends $x_\alpha$ to zero.
+\end{itemize}
+\end{lemma}
+We adopt this statement without further explanation (hence the name \emph{black box}): the interested reader will find a proof, based on the theory of \emph{heights} of torsion abelian groups, in \cite{Freydconc}.
+\begin{notat}
+For each ordinal $\alpha$, let now $M_\alpha$ be the Moore space $M(B_\alpha,n)$ on the group $B_\alpha$  in grade $n$ that we found inside the black box of Lemma \refbf{spastic}. Let $t_\alpha\colon \mathbb{Z}/p\mathbb{Z} \to B_\alpha$ be a group morphism having $x_\alpha$ in its image, and $u_\alpha\colon M \to M_\alpha$ the map $M(t_\alpha,n)$ induced between Moore spaces; finally, we denote with $M$ the Moore space for $\mathbb{Z}/p\mathbb{Z}$ in degree $n$.
+\end{notat}
+\begin{remark}
+Notice that in the canonical cofiber sequence
+\[
+M \xto{u_\alpha} M_\alpha \to C_\alpha \to \Sigma M \to \Sigma M_\alpha\to\dots
+\]
+the space $C_\alpha$ is an $M_n(\coker(t_\alpha))$, and $\Sigma M_\alpha$ is an $M_{n+1}(B_\alpha)$. This is a key point in the proof.
+\end{remark}
+Now we claim that $$(C_{\alpha} \to \Sigma M)_{\alpha \in \cate{Ord}}$$ is a proper class of generalized regular subobject for $\Sigma M$. In order to prove this claim we need
+\begin{proposition}
+\label{key}
+For each pair of ordinals $\alpha < \beta$ the composition
+\[
+C_\beta \xto{v_\beta} \Sigma M \xto{\Sigma u_{\alpha}} \Sigma M_\alpha
+\]
+is not null-homotopic.
+\end{proposition}
+\begin{proof}
+We argue by contradiction: assume that the composition is homotopic to a constant map; since $\Sigma M_\beta \simeq \text{cone}(v_\beta)$, we get a map $\Sigma M_\beta \to \Sigma M_\alpha$ that makes the left triangle below commute.
+\[\label{the-diag}
+\begin{tikzcd}
+\Sigma M \ar[r]\ar[dr]& \Sigma M_\beta \ar[dotted, d]\\
+& \Sigma M_\alpha
+\end{tikzcd}
+\qquad\qquad
+\begin{tikzcd}
+\mathbb{Z}/p\mathbb{Z} \ar[r]\ar[dr]& B_\beta \ar[dotted, d]\\
+& B_\alpha
+\end{tikzcd}
+\]
+But then taking the $H_{n+1}(\firstblank, \mathbb{Z})$ of this commutative triangle we would get a contradiction on the right diagram of abelian groups whose solid arrows contain $x_\beta$ in their images, and yet the dotted arrow is the zero map on $x_\beta$.
+\end{proof}
+\begin{remark}
+This is one of the capital remarks in the section. Until now our proof lived in $\Top$. But at the time to draw diagram (\refbf{the-diag}), and in particular the arrow $\Sigma M_\beta \to \Sigma M_\alpha$, we have to move in the localization $\cate{Ho}$, as this arrow only exists there: in fact, there can be no map whatsoever between these two objects filling the triangle above, but only a zig-zag of continuous maps
+\[
+\Sigma M_\beta \xot{\simeq} \bullet \to \bullet \xot{\simeq} \bullet \dots \to \Sigma M_\alpha
+\]
+\end{remark}
+
+Finally we can conclude the proof.
+
+\begin{proposition}
+All the arrows $v_\alpha \colon C_\alpha \to \Sigma M$ form \emph{distinct} generalized regular subobjects of $\Sigma M$, so that $\sub(\cate{Ho}_{/\Sigma M})$ contains a proper class.
+\end{proposition}
+\begin{proof}
+Suppose $v_\alpha \asymp v_\beta$ for $\alpha < \beta$. Since in the following diagram
+\[
+\begin{kodi}
+\obj{
+|(Ca)| C_\beta & &[3em] \\[-2em]
+&|(SM)| \Sigma M &|(SMb)| \Sigma M_\alpha\\[-2em]
+|(Cb)| C_\beta & & \\
+};
+\mor SM {\Sigma u_\alpha}:-> SMb;
+\mor Ca v_\beta:-> +;
+\mor[swap] Cb v_\alpha:-> SM;
+\end{kodi}
+\]
+the composition of $\Sigma u_\alpha \circ v_\alpha$ is null-homotopic (we assumed that $v_\alpha$ and $v_\beta$ equalize the same arrows, hence they both equalize the pair $(0,\Sigma u_\alpha)$), also the composition $\Sigma u_\alpha \circ v_\beta$ is null-homotopic. This contradicts lemma \refbf{key}.
+\end{proof}
+This concludes Freyd's original proof, and paves the way to a certain number of questions and generalization.

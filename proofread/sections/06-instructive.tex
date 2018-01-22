@@ -1,0 +1,28 @@
+\section{A long and instructive example}
+As it is well known, the homotopy category of groupoids with respect to its `folk' model structure is equivalent to the homotopy category of unstable 1-types, via the classifying space and fundamental groupoid functors. This result, often accepted as folklore, certainly has an interest for both category theorists and homotopy theorists (we advise \cite{camarena2013whirlwind} as a modern and pleasant introductory reading on this topic).
+
+The present section is completely devoted to prove that none of the three categories of 1-types, groupoids, and categories has a concrete localization at its natural choice of weak equivalences; of course we will heavily rely on the above-mentioned equivalence between groupoids and 1-types; this gives a different and quite elegant proof that the homotopy category of $\Cat$ is not concrete (a result that \cite[§4.1]{fconc} obtains with weeping and gnashing of teeth).
+
+It is worth to underline that, obviously, there can't be a model structure on the category $1\text{-}\cate{types}_*$ of (pointed) spaces with vanishing $\pi_{\ge 2}$. This might appear as an issue, as it shows that the assumptions of \athm\refbf{ginnunga} are not minimal: the presence of a mere class of weak equivalences $\W$ and a pair of homotopical functors $(\varpi,k)$, one of which nicely interacts with some `looping' functor $\Omega$ and the other is a \wco for the first is sufficient to build an object of the homotopy category with too many quotients. In fact, one could be tempted to state \athm\refbf{ginnunga} in the more general setting of \emph{categories of fibrant objects} ($1\text{-}\cate{types}_*$ is such a category), or in the even more general setting of what might be called `Puppe categories' where we are given $(\W,\varpi,k,\Omega)$ as above.
+
+We feel that such a weakening of assumptions does not yield substantial improvement in the discussion, as the proof of a statement like
+\begin{theorem*}
+Let $\{\M,(\W,\varpi,k,\Omega)\}$ be a pointed Puppe category; if there exist an index $n\ge 2$ and a \wco of type $n$ for $\M$, then $\M[\W^{-1}]$ can not be concrete.
+\end{theorem*}
+would go in the same way as the proof of \athm\refbf{ginnunga} (it is worth to notice that we already mentioned, right before \adef\refbf{sigmomega}, how the definition of homotopy groups with coefficient works also in a co/fibration category). A deeper discussion on this issue (\ie, what \emph{minimal} assumptions make our main theorem true) will certainly be the subject of further investigations.
+\begin{example}[$1\text{-}\cate{types}_*$ is not homotopy concrete]\label{uno-tipi}
+The category $1\text{-}\cate{types}_*$ has no concrete localization at its class of weak equivalences (induced by the inclusion $1\text{-}\cate{types}_*\subset\Top$): the fundamental group functor $\pi_1\colon 1\text{-}\cate{types}_* \to \cate{Grp}$ has the classifying space $K(\firstblank,1)$ as a \wco.
+\end{example}
+Even though there's nothing difficult in it, it is worth to outline the argument completely; as already mentioned, there's no model structure on $1\text{-}\cate{types}_*$ (it is not cocomplete), and yet $1\text{-}\cate{types}_*$ is a \emph{category of fibrant objects} in the sense of \cite{Kennet-1973}. Quite miracolously, this is enough to conclude that it is not homotopy concrete, as the pair of functors $(\pi_1,K(\firstblank,1))$ still does what is needed: in the same notation of \athm\refbf{ginnunga}, the object $\Omega K$ is a 0-type (hence a fortiori a 1-type), and the maps $\Omega K \to F_\alpha$ still form a proper class of distinguished generalized quotients of $\Omega K$.
+
+Now we would like to deduce, from the fact that the category of \emph{pointed} 1-types is not homotopy concrete, the fact that the category $1\text{-}\cate{types}$ of \emph{unpointed} 1-types is not concrete. This seemingly easy result requires instead quite an involved argument, as it is in general impossible to deduce the homotopy non-concreteness of $\M$ from the homotopy non-concreteness of the model category $\M_{*/}$ of pointed objects in $\M$: in this particular case, however, it's easy to see that the functor $1\text{-}\cate{types}_* \to 1\text{-}\cate{types}$ injects the proper class $\mathsf{Q}_*(\Omega K)$ of pointed generalized regular quotients into the class $\mathsf{Q}(\Omega K)$ of unpointed ones.
+\begin{corollary}
+The category of groupoids with the choice of its `folk' model structure, is not homotopy concrete.%, since \cite{camarena2013whirlwind} it is Quillen equivalent to $1\text{-}\cate{types}$.
+\end{corollary}
+This is clear, in view of the above-mentioned equivalence between groupoids and (unpointed) 1-types.
+\begin{corollary}
+Since (cf. \refbf{gpd-in-cat}) $\Gpd_\text{folk}$ is an homotopy replete model subcategory of $\Cat_\text{folk}$, we conclude (cf. \refbf{unconcrete-frombelow}) that $\Cat_\text{folk}$ can not be homotopy concrete.
+\end{corollary}
+
+\subsubsection*{Acknowledgements}
+The authors would like to thank professor Dan Christensen for a preliminary and attentive reading of the first draft of this paper, professor Jiří Rosický for  his support in our investigation, professor Ivo Dell'Ambrogio for persuading us about the relevance of our result to a public of algebraic topologists, and more in general everybody who contributed to the improvement of this work.
