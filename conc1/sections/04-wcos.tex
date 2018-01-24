@@ -2,18 +2,18 @@
 The proof of \athm\refbf{honoconc} relies on
 \begin{itemize}
 \item the existence of Moore spaces;
-\item the existence of the homology functors; and in particular
-\item their interplay with suspension.
+\item the existence of the homology functors;
+\item their interplay with the suspension functor $\Sigma : \Top \to \Top$.
 \end{itemize}
-Not every model category has a notion of homology. But in various pointed model categories we can define \emph{homotopy groups} (in fact, with respect to arbitrary coefficients on an object $A$) via the suspension-loop adjunction. Adapting Freyd's proof to this somewhat ``dual'' situation constitutes the original result of the present work. The discussion so far has been tailored to let the proof of \athm\refbf{ginnunga} seem obvious; this proof will occupy the rest of the present section.
+Now, not every model category has a notion of homology, but in pointed model categories we can define \emph{homotopy groups} using the suspension-loop adjunction. Adapting Freyd's proof to this dual situation constitutes the original result of the present work. The discussion so far has been tailored to let the proof of our main theorem seem natural.
 \subsection{Homotopy groups on model categories}
-We start re\-cal\-ling how homotopy groups with coefficients can be constructed in a pointed model category; for the record, we simply adapt the construction that \cite[§II.6]{Baues1989} performs in the fairly more general setting of cofibration categories.
+Homotopy groups with coefficients can be constructed in every pointed model category; for the record, we simply adapt the construction that \cite[§II.6]{Baues1989} performs in the more general setting of \emph{cofibration categories}.
 \begin{definition}[$\Sigma\dashv \Omega$ adjunction, homotopy groups]\label{sigmomega}
-Let $\M$ be a pointed model category,  one can define the \emph{suspension-loop adjunction} via the following diagrams that are, respectively, an homotopy pushout and an homotopy pullback
+Let $\M$ be a pointed model category,  one can define the \emph{suspension-loop adjunction} via the following diagrams that are, respectively, an homotopy pushout and an homotopy pullback in $\M$
 \[
 \begin{kodi}
 \obj{
-	|(M)|\ho(\M) &[2em] |(pM)| \ho(\M) &[3em] |(pM')| \ho(\M) &[2em] |(M')| \ho(\M)\\[-2em]
+%	|(M)|\ho(\M) &[2em] |(pM)| \ho(\M) &[3em] |(pM')| \ho(\M) &[2em] |(M')| \ho(\M)\\[-2em]
 	X &|(1a)| 0 & \Omega Y &|(1b)| 0\\
 	|(1c)| 0 & \Sigma X &|(1d)| 0 & Y \\
 };
@@ -21,69 +21,70 @@ Let $\M$ be a pointed model category,  one can define the \emph{suspension-loop 
 \mor * -> 1c -> *;
 \mor {Omega Y} -> 1b -> Y;
 \mor * -> 1d -> *;
-\mor M \Sigma:-> pM; \mor pM' \Omega:-> M';
+%\mor M \Sigma:-> pM; \mor pM' \Omega:-> M';
 \pushout{X}{Sigma X}
 \pullback{Omega Y}{Y}
 \end{kodi}
 \]
-It is easy to notice that the two functors $\Sigma, \Omega$ form an adjunction, in that arrows $A\to \Omega B$ correspond bijectively to arrows $\Sigma A \to B$.
-With this definition we pose
+This defines two functors that we denote $\Sigma : \ho(\M) \to \ho(\M)$ and $\Omega : \ho(\M) \to \ho(\M)$. It is easy to notice that $(\Sigma, \Omega)$ is an adjoint pair, since arrows $A\to \Omega B$ correspond bijectively to arrows $\Sigma A \to B$.
+So we define the \emph{$n^\text{th}$ homotopy group of $X$ with coefficients in $A$} to be
 \[
 \pi^A_n(X) :=  \ho(\M)(A, \Omega^n X).
 \]
 \end{definition}
 \begin{remark}\label{ocio-coef}
-This definition is of course compatible with shifting, in the sense that, as a consequence of the adjunction $\Sigma\dashv \Omega$, we have $$\pi^A_n (\Omega (X)) = \pi^A_{n+1}(X).$$ In our discussion coefficients will be hidden just for notational simplicity. Of course this is a group when $n \geq 1$ and it is abelian when $n\geq 2$.
+This definition is of course compatible with shifting, in the sense that, as a consequence of the adjunction $\Sigma\dashv \Omega$, we have a natural isomorphism 
+$$\pi^A_n \circ \Omega  = \pi^A_{n+1}.$$ 
+In our discussion coefficients will be hidden for notational simplicity. Of course this is a group when $n \geq 1$, abelian when $n\geq 2$.
 \end{remark}
 
 
 \subsection{The main theorem}
 \begin{remark}
-The idea of our theorem in a nutshell is: if you can realize a ``weak classifying object'' $k(G)$, for at least the abelian groups in the black box lemma, then a construction similar to that of Freyd's proof generates a proper class of quotients for a chosen object $K$.
+The idea of our theorem is that if we can realize a \emph{weak classifying object} $k(G)$, at least for each abelian group $B_\alpha$ in the black box lemma, then we can define a suitable object $K$ having a proper class of generalized regular quotients.
 
-An exact translation of Freyd's argument is impossible in a general setting, due to the lack of a `universal' homology theory on a general model category, and yet the main result is preserved with only a few adjustments. The main \emph{idea} is, indeed, absolutely unchanged in this translation procedure. We briefly outline the reasons why we are constrained to these adjustments:
+As already mentioned, an exact translation of Freyd's argument is impossible due to the lack of a `universal' homology theory on a general model category, and yet the main result is preserved with only a few adjustments:%. The main \emph{idea} is, indeed, absolutely unchanged in this translation procedure. We briefly outline the reasons why we are constrained to these adjustments:
 \begin{itemize}
-	\item First of all we must switch to generalized \emph{quotients}, since we work with homotopy groups, and this consequently forces us to play with \emph{looping} operations, and not suspensions; this forces to consider \emph{fiber sequences} in the homotopy category of $\M$.
-	\item This entails that we have to build a proper class of generalized regular quotient $K \to K_\alpha$ for some object $K$. And yet we can't expect the existence of maps $B_\alpha \to \mathbb{Z}/p\mathbb{Z}$ that are nonzero on $x_\alpha$ for each $\alpha$ (this is because $B_\alpha$ contains a cyclic direct summand of order $p$ generated by $x_\alpha$, so there will always be a homomorphism $B_\alpha\to B_\beta$ sending $x_\alpha$ to $x_\beta$).
-	\item Fortunately, the cyclic group $\mathbb{Z}/p\mathbb{Z}$ plays no special r\^ole in the proof; we can safely assume that each $B_\alpha$ has a group homomorphism $B_\alpha \to \QZ$ that does not vanish on $x_\alpha$ (and these always exist, since $\QZ$ is injective).
+	\item First of all we must switch to generalized \emph{quotients}, since we work with homotopy groups, and this consequently forces us to play with \emph{looping} operations, and not suspensions; we have to consider \emph{fiber sequences} in the homotopy category of $\M$.
+	\item Thus, we have to build a proper class of generalized regular quotient $K \to K_\alpha$ for some object $K$. 
+	\item We can't rely on the existence of maps $B_\alpha \to \mathbb{Z}/p\mathbb{Z}$ that are nonzero on $x_\alpha$ for each $\alpha$ (this is because $B_\alpha$ contains a cyclic direct summand of order $p$ generated by $x_\alpha$, so there will always be a homomorphism $B_\alpha\to B_\beta$ sending $x_\alpha$ to $x_\beta$). Fortunately, the cyclic group $\mathbb{Z}/p\mathbb{Z}$ plays no special r\^ole in the proof; we can safely assume that each $B_\alpha$ has a group homomorphism $B_\alpha \to \QZ$ that does not vanish on $x_\alpha$ (and these always exist, since $\QZ$ is an injective abelian group).
 \end{itemize}
 \end{remark}
 \begin{definition}[Weak classifying object]\label{wcodef}
-Let $\M$ be a model category, and $\cate{K}$ any category. A \emph{weak classifying object} for $\M$, relative to a functor\footnote{The symbol $\varpi$ is an alternative glyph for the Greek letter $\pi$.} $\varpi \colon \ho(\M) \to \cate{K}$ is a functor $k\colon \cate{K} \to \ho(\M)$ such that
+Let $\M$ be a model category, and $\K$ any category. A \emph{weak classifying object} for $\M$, relative to a functor\footnote{The symbol $\varpi$ is an alternative glyph for the Greek letter $\pi$.} $\varpi \colon \ho(\M) \to \K$ is a functor $k\colon \K \to \ho(\M)$ such that
 \begin{itemize}
 	\item the composition $\varpi\circ k$ is a full functor;
 	\item there is a natural transformation $\epsilon\colon \varpi\circ k \Rightarrow 1$ which is an objectwise epimorphism (in this case $k$ is a \emph{right} \wco), \emph{or} a natural transformation $\eta \colon 1\Rightarrow \varpi\circ k$ which is an objectwise monomorphism (in this case $k$ is a \emph{left} \wco).
 \end{itemize}
 \end{definition}
 \begin{notat}
-We speak of a \emph{weak classifying object} $k$ (without specifying a side) when we do not care about $k$ being a left or right weak classifying object.
+We speak of a \emph{weak classifying object} $k$ (without specifying a side) when it is irrelevant whether $k$ is a left or right weak classifying object. All arguments can be easily adapted according to this slight abude of notation.
 
-When a model category $\M$ has a \wco relative to the functor $\pi_n \colon \ho(\M) \to \cate{Grp}$ (see \refbf{ocio-coef}) we say that it has a \emph{\wco of type $n$} and it will be denoted $k(\firstblank,n) \colon \cate{Grp}\to \ho(\M)$. No effort is made to hide that the notion of a \wco is an abstraction, tailored to our purposes, of Eilenberg-Mac Lane spaces $G\mapsto K(G,n)$ on $\Top$. Of course, if $n\ge 2$, $k(\firstblank,n)$ has domain $\cate{Ab}$.
+When a model category $\M$ has a \wco relative to the functor $\pi_n \colon \ho(\M) \to \cate{Grp}$ (see \refbf{ocio-coef}) we say that it has a \emph{\wco of type $n$} and it will be denoted $k(\firstblank,n) \colon \cate{Grp}\to \ho(\M)$. The notion of a \wco is an abstraction, tailored to our purposes, of Eilenberg-Mac Lane spaces $G\mapsto K(G,n)$ on $\Top$. Of course, if $n\ge 2$, we feel free to restrict the domain of $k(\firstblank,n)$ to the category of abelian groups.
 \end{notat}
 \begin{remark}
-Having found a \wco of type $n_0$ for some $n_0\ge 2$ entails that there is a \wco also for every other $\pi_m$, with $m>n_0$; in fact it can be easily checked that the functor 
+Having found a \wco of type $n_0$ for some $n_0\ge 2$ entails that there is a \wco also for every other $\pi_m$, with $m>n_0$ (so $\ell = m-n_0 > 0$): the functor
 \[
-k(\firstblank,n_0+k) := \Omega^k \circ k(\firstblank,n_0)
+k(\firstblank,n_0+\ell) := \Omega^\ell \circ k(\firstblank,n_0)
 \]
-is a \wco of type $n_0+k$.
+is a \wco of type $n_0+\ell$.
 \end{remark}
 \begin{remark}
-There are at least three cases where $\M$ has a \wco of type $n$: like before, we denote $\pi_n^A$ the $n^\text{th}$ homotopy group functor (see \refbf{ocio-coef}) for \emph{some} $n\ge 1$ and \emph{some} coefficient object $A$.
+There are at least three cases where $\M$ has a \wco of type $n$: like before, we denote $\pi_n^A$ the $n^\text{th}$ homotopy group functor (see \refbf{ocio-coef}) for $n\ge 1$ and a coefficient object $A$.
 \begin{enumerate}
 	\item When $\pi_n^A\colon \ho(\M)\to \cate{Ab}$ has a section (\ie there is a functor $K_n$ such that $\pi_n^A\circ K_n \cong 1$);
 	\item When $\pi_n^A$ has a faithful left adjoint;
 	\item When $\pi_n^A$ has a full right adjoint.
 \end{enumerate}
 \end{remark}
-We now come to the main theorem of this work:
 \begin{theorem}\label{ginnunga}
-Let $\M$ be a pointed model category; if there exist an index $n\ge 2$ and a \wco of type $n$ for $\M$, then $\ho(\M)$ can not be concrete.
+Let $\M$ be a pointed model category; if there exist a natural number $n\ge 2$ and a \wco of type $n$ for $\M$, then $\ho(\M)$ can not be concrete.
 \end{theorem}
-The proof occupies the rest of the section. We establish the following notation:
+This proof occupies the rest of the section. We establish the following notation:
 \begin{itemize}
-	\item we assume that there exists a \emph{right} \wco; with straightforward modifications the proof can be adapted to the case of a left \wco with $\eta\colon 1 \Rightarrow \pi_n\circ k(\firstblank,n)$;
-	\item the object $K_\alpha$ is the image of the group $B_\alpha$ in Lemma \refbf{spastic} via the functor $k(\firstblank,n)$; we also pose $B=\QZ$ and $K = k(\QZ,n)$;
-	\item we fix a map $t_\alpha \colon B_\alpha \to \QZ$ such that $t_\alpha(x_\alpha)\neq 0$ (this can always be found since $\QZ$ is an injective abelian group); we denote $u_\alpha = k(t_\alpha,n) \colon K_\alpha \to K$.
+	\item we only prove the statement in case the functor $k$ is a \emph{right} \wco; with straightforward modifications the proof can be easily dualized to the case of a left \wco with $\eta\colon 1 \Rightarrow \pi_n\circ k(\firstblank,n)$;
+	\item the object $K_\alpha$ is the image of the group $B_\alpha$ in Lemma \refbf{spastic} via the functor $k(\firstblank,n)$; we also denote $B=\QZ$ and $K = k(\QZ,n)$;
+	\item we fix a map $t_\alpha \colon B_\alpha \to \QZ$ such that $t_\alpha(x_\alpha)\neq 0$ (there is always such a $t_\alpha$ since $\QZ$ is an injective abelian group); we denote $u_\alpha = k(t_\alpha,n) \colon K_\alpha \to K$.
 \end{itemize}
 Now, consider the fiber sequence
 \[
@@ -102,7 +103,7 @@ For each pair of ordinals $\alpha < \beta$ the composition
 is not null-homotopic.
 \end{lemma}
 \begin{proof}
-We argue by contradiction: assume that the composition above is nullhomotopic; since $\Omega K_\alpha \simeq \text{fib}(v_\alpha)$, we get a map (in $\ho(\M)$) $\Omega K_\beta \to \Omega K_\alpha$ that makes the triangle below commute.
+We argue by contradiction: assume that the composition above is nullhomotopic; since $\Omega K_\alpha \simeq \text{fib}(v_\alpha)$, we get a map $\Omega K_\beta \to \Omega K_\alpha$ in $\ho(\M)$ that makes the triangle 
 \[\label{the-diag-2}
 \begin{kodi}
 \obj{\Omega K_\beta & \Omega K & F_\alpha \\
@@ -111,7 +112,7 @@ We argue by contradiction: assume that the composition above is nullhomotopic; s
 \mor[swap] * \varphi:-> {Omega K_alpha} {\Omega u_\alpha}:-> {Omega K};
 \end{kodi}
 \]
-But then the $\pi_{n-1}(\firstblank)$ of this commutative triangle embeds into the following bigger diagram:
+commute. But then the $\pi_{n-1}(\firstblank)$ of this commutative triangle embeds into the following bigger diagram:
 \[
 \begin{kodi}[remove characters=_\{\}, expand=full]
 \foreach \i/\j in {0/,120/\alpha,-120/\beta}{
@@ -127,7 +128,7 @@ But then the $\pi_{n-1}(\firstblank)$ of this commutative triangle embeds into t
 \mor * t_\beta:{bend right},-> {B};
 \end{kodi}
 \]
-Every subdiagram made by solid arrows commutes, and the dotted arrow exists by the fullness assumption on $\pi_n\circ K(\firstblank,n)$. 
+Every subdiagram made by solid arrows commutes, and the dotted arrow exists by the fullness assumption on $\pi_n\circ k(\firstblank,n)$. 
 
 Since the $\epsilon$ arrows are all epimorphisms the outer triangle commutes. But this is impossible, since $\psi$ sends $x_\beta$ to $0$, whereas $t_\beta$ does not.
 \end{proof}

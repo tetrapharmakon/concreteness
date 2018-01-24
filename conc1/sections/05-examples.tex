@@ -1,16 +1,16 @@
 \section{Examples}
 \begin{example}[Example 0]
-Obviously, if two model categories are Quillen equivalent one is homotopy concrete if and only if the other is. So, as a consequence of \refbf{honoconc} every category Quillen equivalent to $\Top$ cannot be homotopy concrete. 
+Obviously, if two model categories are Quillen equivalent one is homotopy concrete if and only if the other is, and this requires no theorem whatsoever. So, as a consequence of \refbf{honoconc} every category Quillen equivalent to $\Top$ cannot be homotopy concrete. 
 \end{example}
-\begin{example}[The category of chain complexes]\label{complessi}
+\begin{example}[Chain complexes]\label{complessi}
 The homotopy category $\ho(\text{Ch}(\mathbb{Z}))$ of chain complexes of abelian groups with its standard model structure is not concrete. 
 
-In fact homology functors $H_n$ have a \wco, that is the complex having a given abelian group $G$ in degree $n$ and zeroes elsewhere; since this category is quasi stable (in fact, stable), the homotopy category cannot be concrete by \athm\refbf{qsginnunga}.
+In fact homology functors $H_n$ have a \wco, that is the complex having a given abelian group $G$ in degree $n$ and zeroes elsewhere. Since this category is quasi stable (in fact, stable), the homotopy category cannot be concrete by \athm\refbf{qsginnunga}.
 \end{example}
-\begin{example}[The category of spectra]\label{spectra}
-The category $\ho(\Omega\text{-}\cate{Sp}))$ obtained localizing the category of (Bousfield\hyp{}Friedlander) spectra is not concrete. Indeed, the stable homotopy functor $\pi^\text{s}_0 \colon \cate{Sp} \to \cate{Ab}$ has a \wco given by the Eilenberg-Mac Lane construction $A\mapsto K(A,\firstblank)$.
+\begin{example}[Spectra]\label{spectra}
+The category $\ho(\Omega\text{-}\cate{Sp}))$ obtained localizing the category of (Bousfield\hyp{}Friedlander) spectra is not concrete. Indeed, the stable homotopy functor $\pi^\text{s}_0 \colon \cate{Sp} \to \cate{Ab}$ has a \wco given by the Eilenberg-Mac Lane construction $A\mapsto K(A,\firstblank)$. Again, since this category is stable, the homotopy category cannot be concrete by \athm\refbf{qsginnunga}.
 \end{example}
-\begin{example}[The category of simplicial sheaves]\label{fasci}
+\begin{example}[Simplicial sheaves on a site]\label{fasci}
 Let $(\C, J)$ be a small Grothendieck site; a model for hypercomplete $\infty$-stacks is the following:
 \begin{itemize}
 	\item Consider the category $[\C^\opp, \sSet]_\text{proj}$, endowed with the projective model structure with respect to the Kan-Quillen model structure on $\sSet$; this is called the \emph{global model structure}.
@@ -19,7 +19,7 @@ Let $(\C, J)$ be a small Grothendieck site; a model for hypercomplete $\infty$-s
 	[\C^\opp,\sSet] \xto{\pi_{0,*}} [\C^\opp, \Set] \xto{(\firstblank)^+} \cate{Sh}(\C,J) \\
 	[(\C_{/X})^\opp,\sSet] \xto{\pi_{n,*}} [(\C_{/X})^\opp,\cate{Grp}] \xto{(\firstblank)^+} \cate{Sh}_\Delta(\C_{/X},J)
 	\end{gather*}
-	where the rightmost functor is $J$-sheafification. This defines functors $\underline{\pi}_n$ called the \emph{homotopy sheaves} of a simplicial presheaf $F$. A morphism $\eta\colon F\to G$ is a \emph{local equivalence} if it induces isomorphisms $\underline{\pi}_n(\eta) \colon \underline{\pi}_n(F) \overset{\cong}\to \underline{\pi}_n(G)$ between homotopy sheaves in each degree, and local equivalences form a Bousfield localization of the \emph{local model structure} described in \cite{jardine1987simplical,dugger2004hypercovers}.
+	where the rightmost functor is $J$-sheafification. This defines functors $\underline{\pi}_n$ called the \emph{homotopy sheaves} of a simplicial presheaf $F$. A morphism $\eta\colon F\to G$ is a \emph{local equivalence} if it induces isomorphisms $\underline{\pi}_n(\eta) \colon \underline{\pi}_n(F) \overset{\cong}\to \underline{\pi}_n(G)$ between homotopy sheaves in each degree.%, and local equivalences form a Bousfield localization of the \emph{local model structure} described in \cite{jardine1987simplical,dugger2004hypercovers}.
 \end{itemize}
-We claim that the local model structure turns $\M=[\C^\opp, \sSet]$ into a category which is not homotopy concrete. To prove this, it suffices to consider the functor $\varpi_n \coloneqq \Gamma \circ \underline{\pi}_n\colon \M \to \{\Set, \cate{Grp}, \cate{Ab}\}$, giving the global sections of the homotopy sheaves. The construction of Eilenberg-Mac Lane stacks $K(\firstblank,n)$ of \cite[§\textbf{2.2}]{toen2010simplicial} gives \wco{}s of type $n$.
+We claim that the local model structure turns $\M=[\C^\opp, \sSet]$ into a category which is not homotopy concrete. To prove this, it suffices to consider the functor $\varpi_n \coloneqq \Gamma \circ \underline{\pi}_n\colon \M \to \Set_{*/}$ (depending on $n$ this functor will take values in abelian groups), giving the global sections of the homotopy sheaves. The construction of Eilenberg-Mac Lane stacks $K(\firstblank,n)$ of \cite[§\textbf{2.2}]{toen2010simplicial} gives \wco{}s of type $n$.
 \end{example}

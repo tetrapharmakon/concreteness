@@ -1,6 +1,6 @@
 \section{Introduction}
 \begin{aquote}{\cite{fconc}}
-[the homotopy category of spaces $\cate{Ho}$] has always been the best example
+[The homotopy category of spaces $\cate{Ho}$] has always been the best example
 of an \emph{abstract} category -- though its objects are spaces, the points of
 the spaces are irrelevant because the maps are not functions -- best, because of
 all abstract categories it is the one most often lived in by real
@@ -18,35 +18,34 @@ this apparent gap in the literature, clarifying which assumptions on a (model or
 relative) category $(\M, \wk)$ give the homotopy category $\ho(\M) =
 \M[\wk^{-1}]$ the same permanently abstract nature.
 
-Our main claim here is that indeed Freyd's theorems generalizes quite easily,
-and that several model categories can't have a concrete localization at weak
-equivalences; moreover, in light of this result the reason why this happens is
-now evident. In a somewhat sloppy parlance that calls a category $(\M,\wk)$
+Our main claim here is that indeed Freyd's theorem generalizes quite easily,
+and that many model categories that naturally arise in practice 
+do not have a concrete localization at weak
+equivalences; moreover, in light of our theorem the reason why this happens is
+now evident. If we say, somewhat sloppily, that a category $(\M,\wk)$ is
 `homotopy\hyp{}concrete' when $\ho(\M)$ is concrete, our result can be
 summarized as the statement that very few model categories are
-homotopy\hyp{}concrete, and that this happens \emph{as a consequence} of the
+homotopy\hyp{}concrete, and that this somehow happens \emph{as a consequence} of the
 fact that they encode an homotopy theory.
 
 It is of course possible, at least in certain cases, to show that a given $\M$
 is not homotopy\hyp{}concrete using ad-hoc arguments adapted to the particular
-choice of the pair $(\M, \wk)$: Freyd's \cite{fconc} does this for the category
-$\Cat$ with its `folk' model structure where $\wk$ is the class of equivalences
-of categories. Apart from being quite involved, though, such an approach fails
-to put a lot of similar results of the same conceptual ground.
+choice of the pair $(\M, \wk)$: in \cite{fconc} Freyd does this for the category
+$\Cat$ with its `folk' model structure in which $\wk$ is the class of equivalences
+of categories. Apart from being quite involved, Freyd's approach fails
+to put the result, and similar others, on the same conceptual ground. Pursuing such a 
+structural approach is the main aim of the present work.
 
-The present paper adresses these questions. Our main theorem is
+Our main theorem, proved at page \pageref{ginnunga}, is
 \refbf{ginnunga}:
 \begin{theorem*}
 Let $\M$ be a pointed model category; if there exist an index $n_0 \in \mathbb{N}_{\ge
 1}$ and a `weak classifying object' for the functor $\pi_{n_0} \colon \M \to
 \cate{Grp}$ (\adef\refbf{wcodef}), then $\M$ is not homotopy\hyp{}concrete.
 \end{theorem*}
-Freyd's argument is a completely formal construction relying on nifty but elementary algebraic construction in abelian group theory (Lemma \refbf{spastic}) and on the fact that the category
+Freyd's argument is a completely formal construction relying on nifty, elementary algebraic construction in abelian group theory (Lemma \refbf{spastic}) and on the fact that the category
 of spaces ``contains a trace'' of the category of abelian groups, via the
-\emph{Moore functors} $M(\firstblank,n) \colon \cate{Ab}\to \Top$; it will be a
-focal point of our generalization to be able to transport this to a more general
-model category using similar properties of \emph{Eilenberg-Mac Lane objects},
-and their interplay with the looping functor $\Omega$.
+\emph{Moore functors} $M(\firstblank,n) \colon \cate{Ab}\to \Top$. In our generalization to model categories, we rely on similar properties of Eilenberg-Mac Lane-like objects (we call them \emph{weak classifying objects} in \autoref{wcodef}), and their interplay with the looping functor $\Omega$.
 
 We are then able to apply the machinery of \athm\refbf{ginnunga} to several
 explicit examples, thus showing that Freyd`s claim that ``homotopy is not
@@ -54,7 +53,7 @@ concrete'' remains true in the modern parlance of homotopical algebra. This
 suggests how the permanent abstractness of homotopy theory is a reflection of
 the permanent abstractness of \emph{homotopical algebra}.
 
-More in detail, as a consequence of \athm\refbf{ginnunga} we offer
+In more detail, as a consequence of \athm\refbf{ginnunga} we offer
 \begin{itemize}
 	\item a proof that the homotopy category of chain complexes is not homotopy concrete;
 	\item a proof that the homotopy category of $\Cat_\text{folk}$\footnote{As
@@ -62,7 +61,7 @@ already mentioned, this is a shorthand to refer to the category of small
 categories with its `folk' model structure having weak equivalences the
 equivalences of categories, and cofibrations the functors injective on objects.}
 is not concrete, independent from (and surely more elegant than) the argument
-presented in \cite[§4.1]{fconc}; this result follows as a corollary of the fact
+presented in \cite[§4.1]{fconc}; here the result is a corollary of the fact
 that the category of groupoids is not homotopy concrete, and this, in turn,
 follows from the fact that the category of \emph{1-types} is not homotopy
 concrete (these two categories being Quillen equivalent).
@@ -83,4 +82,4 @@ geometry.
 We feel this is an additional step towards a deeper understanding of the notion
 of concreteness and foundational issues in homotopy theory, and an additional
 hint, if needed, for how set theory and homotopy theory do (or do not)
-interplay.
+interact.

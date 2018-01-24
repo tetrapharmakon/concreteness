@@ -1,4 +1,0 @@
-tex -v | head -n 1 > version.tex
-latexmk -pdf coscanecof.tex
-mv coscanecof.pdf homotopical-algebra-not-concrete.pdf
-latexmk -C
