@@ -1,0 +1,25 @@
+\begin{defn}[Augmented and split simplex category]
+Let $\bDelta$ denote the category of nonempty finite ordinal, and monotone maps; taken as it is, $\bDelta$ lacks an initial object: we denote $\bDelta_+$ the category $\bDelta^\lhd$ where this initial object (the empty ordinal) has been added. Of course, $\bDelta\op$ lacks a \emph{terminal} object, that we can add defining $\bDelta\op_+ = (\bDelta\op)^\rhd = (\bDelta^\lhd)\op$.
+
+In a similar way (\cite[]{HA}) we can define the category of \emph{split} simplices as the category
+\[
+aoigadogbao
+\]
+it is like $\bDelta$, but \dots
+\end{defn}
+\begin{defn}[Augmented and split coherent simplicial objects]
+A plain (resp. augmented, split) simplicial diagram for a prederivator $\D$ is an object $X\in \D(\bDelta\op)$ (resp., $X\in\D(\bDelta\op_+)$, $X\in\D(\bDelta\op_{-\infty})$). Similarly, if needed, we can define coherent augmented and split cosimplicial diagrams.
+\end{defn}
+\begin{rmk}
+The inclusion $\bDelta\op \xto{i} \bDelta\op_+ \xto{j} \bDelta\op_{-\infty}$ exhibits $\bDelta\op_{-\infty}$ as an absolute colimit shape according to \autoref{}.
+\end{rmk}
+\begin{rmk}
+The two examples given for absolute colimit shapes in fact fit together: a coequalizer diagram in $\iC$ is indeed nothing but a truncated simplicial object $j : \bDelta\op_{\le 1} \to \iC$, which is a \emph{split} coequalizer if and only if it admits an extension $\bar\jmath : \bDelta\op_{\le 1, -\infty} \to \iC$.
+\end{rmk}
+\begin{defn}
+Let $G : \D \to \E$ be a morphism of prederivators, and $X \in \D(\bDelta\op)$ a coherent simplicial object. We say that $X$ is a $G$-\textbf{split} simplicial object if $G_{\bDelta\op}X$ lies in the essential image of $j^* : \E(\bDelta\op_{-\infty})\to \E(\bDelta\op)$, \ie if $G_{\bDelta\op}X\cong j^*\bar X$ for some $\bar X \in \E(\bDelta\op_{-\infty})$.
+\end{defn}
+% If $X$ is a $G$-split coherent simplicial object, then $X$ has, and $G$ preserves, the homotopy colimit of $X$.
+\begin{rmk}
+ If we restrict the monadicity theorem to \emph{derivators} instead than prederivators, condition MN2.3 can be replaced with the simpler condition that $G$ \emph{preserves} the colimits of $G$-split simplicial objects. This is because a functor between co/complete categories creates all the co/limits it preserves.
+ \end{rmk} 
